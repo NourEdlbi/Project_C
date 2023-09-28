@@ -6,6 +6,8 @@ import Root from './routes/root.tsx';
 import ErrorPage from "./error-page";
 import Home from './routes/homepage.tsx';
 import Agenda from './routes/agenda.tsx'
+import Forum from './routes/forum.tsx';
+import Inst from './routes/instellingen.tsx';
 
 const router = createBrowserRouter([
     {
@@ -18,8 +20,16 @@ const router = createBrowserRouter([
                 element: <Agenda />,
             },
             {
-                path: "Home/1",
+                path: "Home",
                 element: <Home />
+            },
+            {
+                path: "Forum",
+                element: <Forum />
+            },
+            {
+                path: "inst",
+                element: <Inst />
             }
         ],
 

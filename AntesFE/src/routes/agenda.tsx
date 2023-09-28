@@ -3,9 +3,7 @@ export default function Agenda() {
         <div>
             <h1> AGENDAAAAAAAAAAAAAA</h1>
             <p>
-                gndgjsdgls
-                dklgnsdngs
-                sdlkgnksdng
+                g
                 nsdkgnksd;gngkjdnfjgknsdkjgnsdkjngkjdsfkjdshfkjdsnkfdsfsjdnfjsdnfklds
 
             </p>
