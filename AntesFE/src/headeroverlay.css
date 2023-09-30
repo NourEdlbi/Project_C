@@ -5,27 +5,45 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: rgba(181,15,34, 0.4); /* Antes red*/
+    color: rgb(181,15,34);
+    background-color: white; /* Antes red*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 0px ; 
+    padding-top: 0px;
     transition: 0.5s; /*voor animation slide*/
     overflow: auto;
-    justify-content: left;
-    justify-items: left;
+    justify-content: center;
+    justify-items: center;
+    flex-basis: auto;
+    border-right-width: 20px;
+    border-right-color: rgb(181,15,34);
+    border-right: solid;
+}
+
+.sidebarbox {
+    height: fit-content;
+    color: rgb(181,15,34); /* kleur hier werkt niet*/
+    border-bottom: solid;
+    background-color: white; /* white; /* / on hover or select hier veranderen*/
+}
+
+.sidebarbox:hover {
+    background-color: rgba(181,15,34,0.4);
 }
 
 .header a {
     padding: 1rem 0px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: black;
     display: block;
     transition: 0.3s;
+    justify-content: center;
+    justify-items: center;
 }
 
 /* When you mouse over the navigation links, change their color */
 .header a:hover {
-    color: #f1f1f1;
+    /*color: #f1f1f1; */
 }
 
 /* Position and style the close button (top right corner) */
