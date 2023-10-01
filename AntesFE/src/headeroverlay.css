@@ -1,22 +1,20 @@
-.header {
+.sidebar {
     height: 100%; /* 100% Full-height */
     width: 12rem; /* 0 width - change this with typescript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    color: rgb(181,15,34);
-    background-color: white; /* Antes red*/
+    color: rgb(181,15,34);/* Antes red*/
+    background-color: white; 
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 0px;
     transition: 0.5s; /*voor animation slide*/
     overflow: auto;
-    justify-content: center;
-    justify-items: center;
-    flex-basis: auto;
     border-right-width: 20px;
     border-right-color: rgb(181,15,34);
     border-right: solid;
+    
 }
 
 .sidebarbox {

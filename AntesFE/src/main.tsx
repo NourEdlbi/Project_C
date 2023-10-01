@@ -7,12 +7,13 @@ import Home from './routes/homepage.tsx';
 import Agenda from './routes/agenda.tsx'
 import Forum from './routes/forum.tsx';
 import Inst from './routes/instellingen.tsx';
-import Sidebar from './routes/sidebar.tsx';
+import Login from './routes/login.tsx';
+
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Sidebar />,
+        element: <Login />,
         errorElement: <ErrorPage />,
         children: [
             {

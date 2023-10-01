@@ -1,13 +1,21 @@
+
+import Sidebar from './sidebar.tsx';
+import "../agenda.css";
 export default function Agenda() {
+
+   
     return (
         <div>
-            <h1> AGENDAAAAAAAAAAAAAA</h1>
-            <p>
-                g
-                nsdkgnksd;gngkjdnfjgknsdkjgnsdkjngkjdsfkjdshfkjdsnkfdsfsjdnfjsdnfklds
+            <Sidebar />        
+            <div className = "container">
+            
+                <h1> AGENDAAAAAAAAAAAAAA</h1>
+                <p>
+                    g
+                    nsdkgnksd;gngkjdnfjgknsdkjgnsdkjngkjdsfkjdshfkjdsnkfdsfsjdnfjsdnfklds
 
-            </p>
+                </p>
         </div>
-
+        </div>
     )
 }

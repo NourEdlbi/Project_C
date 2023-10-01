@@ -7,7 +7,7 @@ export default function Sidebar() {
     //<img src="../assets/Anteslogo.png" > </img>
     return (
         <>
-            <div className="header">
+            <div className="sidebar">
                 
                 <h1> Menu</h1>
                 <div className="sidebarbox">
