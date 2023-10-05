@@ -1,13 +1,14 @@
 
 import Sidebar from './sidebar.tsx';
 import "../agenda.css";
+import "../App.css";
 export default function Agenda() {
 
    
     return (
         <div>
             <Sidebar />        
-            <div className = "container">
+            <div className = "inhoud">  doet niks nu
             
                 <h1> AGENDAAAAAAAAAAAAAA</h1>
                 <p>
@@ -15,7 +16,7 @@ export default function Agenda() {
                     nsdkgnksd;gngkjdnfjgknsdkjgnsdkjngkjdsfkjdshfkjdsnkfdsfsjdnfjsdnfklds
 
                 </p>
+            </div>
         </div>
-        </div>
-    )
+    )  
 }

@@ -8,12 +8,13 @@ import Agenda from './routes/agenda.tsx'
 import Forum from './routes/forum.tsx';
 import Inst from './routes/instellingen.tsx';
 import Login from './routes/login.tsx';
+import Sidebar from './routes/sidebar.tsx';
 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Login />,
+        element: <Sidebar />, //<Login />,
         errorElement: <ErrorPage />,
         children: [
             {

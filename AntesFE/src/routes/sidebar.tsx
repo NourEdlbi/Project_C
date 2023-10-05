@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 //import { useState } from 'react'
-import '../headeroverlay.css';
+import '../sidebar.css';
 export default function Sidebar() {
     //const [pixelamount, setpixelamount] = useState(0);
     //<!-- <button onClick={() => setpixelamount((pixelamount) => pixelamount + 200)}> test{pixelamount} </button> -->
