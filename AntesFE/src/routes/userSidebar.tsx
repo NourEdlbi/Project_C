@@ -8,7 +8,7 @@ export default function UserSidebar() {
 
   const handleManageProfile = () => {
     // Navigate to the "Profile" route
-    navigate('profiel');
+    navigate('profile');
   };
 
   const handleManageAgenda = () => {
@@ -42,7 +42,7 @@ export default function UserSidebar() {
             <a href={`/Informatie`}>Informatie</a>
         </div>
         <div className="sidebarbox">
-            <a href={`/Inst`}>Instellingen</a>
+            <a href={`/inst`}>Instellingen</a>
         </div>
       </div>
 

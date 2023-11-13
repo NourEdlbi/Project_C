@@ -7,8 +7,7 @@ import Login from './routes/Loginpage.tsx';
 import Agenda from './routes/agenda.tsx'
 import Info from './routes/Info.tsx';
 import Inst from './routes/instellingen.tsx';
-import Sidebar from './routes/sidebar.tsx';
-import ASidebar from './routes/adminSidebar.tsx';
+import ASidebar from './routes/Admin/adminSidebar.tsx';
 import USidebar from './routes/userSidebar.tsx';
 import Users from './routes/Admin/users.tsx';
 import AForum from  './routes/Admin/adminForum.tsx';
@@ -47,10 +46,15 @@ const router = createBrowserRouter([
                         path: "adminAgenda",
                         element: <Aagenda />,
                     },
-                    
-                    
+                    {
+                        path: "Informatie",
+                        element: <Info />
+                    },
+                    {
+                        path: "inst",
+                        element: <Inst />
+                    },
                 ],
-                
             },
             {
                 path: "userSidebar", // The path for userSidebar
