@@ -1,16 +1,50 @@
 /* Sidebar */
 .header {
-    width: 12rem; /* Adjust the width as needed */
+    width: 12rem;
+    /* Adjust the width as needed */
     height: 100%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: rgb(247, 237, 239);
-    overflow-y: auto; /* Allow vertical scrolling if needed */
+    overflow-y: auto;
+    /* Allow vertical scrolling if needed */
     padding-top: 0px;
     transition: 0.5s;
-    border-right: 5px solid rgb(181, 15, 34); /* Add a border on the right side */
+    border-right: 5px solid rgb(181, 15, 34);
+    /* Add a border on the right side */
+}
+
+/* Add this new class for the night-mode sidebar */
+.night-mode-sidebar {
+    background-color: hsl(0, 0%, 20%);
+    /* Dark background color */
+    color: #fff;
+    /* Light text color */
+}
+
+/* Ensure links in the sidebar also change color in night mode */
+/* Ensure links in the sidebar change color in night mode */
+.night-mode-sidebar .sidebarbox a {
+    color: #fff;
+    background-color: hsl(0, 0%, 20%);
+    ;
+    /* Light text color for links */
+}
+
+/* Update hover effects for night mode if needed */
+.night-mode-sidebar .sidebarbox a:hover {
+    background-color: #555;
+    /* Darker background for hover */
+    color: #fff;
+    /* Ensuring text color is still light on hover */
+}
+
+/* Update hover effects for night mode if needed */
+.night-mode-sidebar .sidebarbox:hover {
+    background-color: #555;
+    /* Darker background for hover */
 }
 
 /* Sidebar Box */
@@ -39,13 +73,17 @@
 /* Sidebar Links Hover Effect */
 .header a:hover {
     /* Adjust link hover styles as needed */
-    color: rgb(181, 15, 34); /* Your hover color here */
+    color: rgb(181, 15, 34);
+    /* Your hover color here */
 }
 
 /* Content Area */
 #detail {
-    margin-left: 12rem; /* Same as the width of the sidebar */
+    margin-left: 12rem;
+    /* Same as the width of the sidebar */
     padding: 1rem;
-    position: relative; /* Ensure relative positioning */
-    z-index: 2; /* Set a higher z-index to display the content above the sidebar */
+    position: relative;
+    /* Ensure relative positioning */
+    z-index: 2;
+    /* Set a higher z-index to display the content above the sidebar */
 }
