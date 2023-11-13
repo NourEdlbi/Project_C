@@ -1,73 +1,81 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: black;
-  background-color: white;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-
-  display: flex;
-  // how to fill entire page
+.App {
+  /* Day mode styles */
+  background-color: #fff;
+  color: #000;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.App.night-mode {
+  /* Night mode styles */
+  background-color: #000;
+  color: #fff;
 }
 
-body {
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, ol, li, figure, figcaption {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 620px; /* hier gaat iets fout*/
+  padding: 0;
+}
+
+/* Set a minimum height for the body to avoid content overlap */
+body {
   min-height: 100vh;
-  width: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7edef; /* Set your desired background color */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #213547; /* Default text color */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Sidebar styles (assuming it has a class of "header") */
+.header {
+  width: 12rem; /* Adjust the width as needed */
+  min-height: 100vh; /* Make sidebar at least as tall as the viewport */
+  background-color: #f7edef;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  border-right: 20px solid rgb(181, 15, 34); /* Add a border on the right side */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+/* Sidebar Box styles (assuming it has a class of "sidebarbox") */
+.sidebarbox {
+  background-color: #f7edef;
+  color: rgb(181, 15, 34);
+  border-bottom: 1px solid rgb(181, 15, 34);
+}
+
+/* Sidebar Box Hover Effect */
+.sidebarbox:hover {
+  background-color: rgba(181, 15, 34, 0.4);
+}
+
+/* Sidebar Links styles (assuming they are within ".header a") */
+.header a {
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  padding: 1rem 0;
+  transition: 0.3s;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Sidebar Links Hover Effect */
+.header a:hover {
+  color: #646cff; /* Adjust hover color as needed */
 }
+
+/* Close Button styles (assuming it has a class of "closebtn") */
+.header .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  /* Add any additional styles for the close button */
+}
+

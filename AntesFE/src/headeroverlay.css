@@ -1,35 +1,32 @@
+/* Sidebar */
 .header {
-    height: 100%; /* 100% Full-height */
-    width: 12rem; /* 0 width - change this with typescript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    width: 12rem; /* Adjust the width as needed */
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
     left: 0;
-    color: rgb(181,15,34);
-    background-color: white; /* Antes red*/
-    overflow-x: hidden; /* Disable horizontal scroll */
+    background-color: rgb(247, 237, 239);
+    overflow-y: auto; /* Allow vertical scrolling if needed */
     padding-top: 0px;
-    transition: 0.5s; /*voor animation slide*/
-    overflow: auto;
-    justify-content: center;
-    justify-items: center;
-    flex-basis: auto;
-    border-right-width: 20px;
-    border-right-color: rgb(181,15,34);
-    border-right: solid;
+    transition: 0.5s;
+    border-right: 5px solid rgb(181, 15, 34); /* Add a border on the right side */
 }
 
+/* Sidebar Box */
 .sidebarbox {
     height: fit-content;
-    color: rgb(181,15,34); /* kleur hier werkt niet*/
-    border-bottom: solid;
-    background-color: white; /* white; /* / on hover or select hier veranderen*/
+    background-color: rgb(247, 237, 239);
+    color: rgb(247, 237, 239);
+    border-bottom: 1px solid rgb(181, 15, 34);
 }
 
+/* Sidebar Box Hover Effect */
 .sidebarbox:hover {
-    background-color: rgba(181,15,34,0.4);
+    background-color: rgb(0, 54, 160);
 }
 
+/* Sidebar Links */
 .header a {
     padding: 1rem 0px;
     text-decoration: none;
@@ -37,20 +34,18 @@
     color: black;
     display: block;
     transition: 0.3s;
-    justify-content: center;
-    justify-items: center;
 }
 
-/* When you mouse over the navigation links, change their color */
+/* Sidebar Links Hover Effect */
 .header a:hover {
-    /*color: #f1f1f1; */
+    /* Adjust link hover styles as needed */
+    color: rgb(181, 15, 34); /* Your hover color here */
 }
 
-/* Position and style the close button (top right corner) */
-.header .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+/* Content Area */
+#detail {
+    margin-left: 12rem; /* Same as the width of the sidebar */
+    padding: 1rem;
+    position: relative; /* Ensure relative positioning */
+    z-index: 2; /* Set a higher z-index to display the content above the sidebar */
 }
