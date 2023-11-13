@@ -12,7 +12,16 @@
 
 
 /* Reset some default styles */
-body, h1, h2, h3, p, ul, ol, li, figure, figcaption {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption {
   margin: 0;
   padding: 0;
 }
@@ -24,21 +33,41 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white; /* Set your desired background color */
+  background-color: white;
+  /* Set your desired background color */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: #213547; /* Default text color */
+  color: #213547;
+  /* Default text color */
+}
+
+/* Dark mode styles for body */
+body.dark-mode {
+  background-color: hsl(0, 0%, 20%);
+  /* Dark background color */
+  color: #fff;
+  /* Light text color */
+}
+
+/* You might also want to adjust other elements in dark mode */
+body.dark-mode a {
+  color: #fff;
+  /* Light text color for links */
 }
 
 /* Sidebar styles (assuming it has a class of "header") */
 .header {
-  width: 12rem; /* Adjust the width as needed */
-  min-height: 100vh; /* Make sidebar at least as tall as the viewport */
+  width: 12rem;
+  /* Adjust the width as needed */
+  min-height: 100vh;
+  /* Make sidebar at least as tall as the viewport */
   background-color: white;
   position: fixed;
   top: 0;
   left: 0;
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
-  border-right: 20px solid rgb(181, 15, 34); /* Add a border on the right side */
+  overflow-y: auto;
+  /* Allow vertical scrolling if content overflows */
+  border-right: 5px solid rgb(181, 15, 34);
+  /* Add a border on the right side */
 }
 
 /* Sidebar Box styles (assuming it has a class of "sidebarbox") */
@@ -51,6 +80,36 @@ body {
 /* Sidebar Box Hover Effect */
 .sidebarbox:hover {
   background-color: rgba(181, 15, 34, 0.4);
+}
+
+.night-mode-sidebar {
+  background-color: hsl(0, 0%, 20%);
+  /* Dark background color */
+  color: #fff;
+  /* Light text color */
+}
+
+/* Ensure links in the sidebar also change color in night mode */
+/* Ensure links in the sidebar change color in night mode */
+.night-mode-sidebar .sidebarbox a {
+  color: #fff;
+  background-color: hsl(0, 0%, 20%);
+  ;
+  /* Light text color for links */
+}
+
+/* Update hover effects for night mode if needed */
+.night-mode-sidebar .sidebarbox a:hover {
+  background-color: #555;
+  /* Darker background for hover */
+  color: #fff;
+  /* Ensuring text color is still light on hover */
+}
+
+/* Update hover effects for night mode if needed */
+.night-mode-sidebar .sidebarbox:hover {
+  background-color: #555;
+  /* Darker background for hover */
 }
 
 /* Sidebar Links styles (assuming they are within ".header a") */
@@ -66,7 +125,8 @@ body {
 
 /* Sidebar Links Hover Effect */
 .header a:hover {
-  color: #646cff; /* Adjust hover color as needed */
+  color: #646cff;
+  /* Adjust hover color as needed */
 }
 
 /* Close Button styles (assuming it has a class of "closebtn") */
@@ -78,4 +138,3 @@ body {
   margin-left: 50px;
   /* Add any additional styles for the close button */
 }
-
