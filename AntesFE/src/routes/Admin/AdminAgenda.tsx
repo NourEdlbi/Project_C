@@ -1,4 +1,4 @@
-export default function Aagenda() {
+export default function AdminAgenda() {
         // quizzes ophalen van database
 
     return (

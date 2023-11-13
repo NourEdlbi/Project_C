@@ -17,9 +17,15 @@ export default function AdminSidebar() {
             <div className="header">
             <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
                 <div className="sidebarbox"></div>
+
+                <div className="sidebarbox">
+                    <a href={`/adminSidebar/Home`} >Home</a>
+                </div>
+
                 <div className="sidebarbox">
                     <a onClick={handleManageUsers}>Manage Users</a>
                 </div>
+                
                 <div className="sidebarbox">
                     <a href={`/adminSidebar/adminQuiz`}>Manage Quiz</a>
                 </div>

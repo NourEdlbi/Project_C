@@ -7,12 +7,11 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(247, 237, 239);
     overflow-y: auto;
     /* Allow vertical scrolling if needed */
     padding-top: 0px;
     transition: 0.5s;
-    border-right: 5px solid rgb(181, 15, 34);
+    border-right: 3px solid rgb(181, 15, 34);
     /* Add a border on the right side */
 }
 
@@ -36,12 +35,9 @@
 
 /* Sidebar Links */
 .header a {
-    padding: 1rem 0px;
-    text-decoration: none;
     font-size: 25px;
     color: black;
     display: block;
-    transition: 0.3s;
 }
 
 /* Sidebar Links Hover Effect */
