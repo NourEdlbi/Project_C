@@ -17,35 +17,6 @@
 }
 
 /* Add this new class for the night-mode sidebar */
-.night-mode-sidebar {
-    background-color: hsl(0, 0%, 20%);
-    /* Dark background color */
-    color: #fff;
-    /* Light text color */
-}
-
-/* Ensure links in the sidebar also change color in night mode */
-/* Ensure links in the sidebar change color in night mode */
-.night-mode-sidebar .sidebarbox a {
-    color: #fff;
-    background-color: hsl(0, 0%, 20%);
-    ;
-    /* Light text color for links */
-}
-
-/* Update hover effects for night mode if needed */
-.night-mode-sidebar .sidebarbox a:hover {
-    background-color: #555;
-    /* Darker background for hover */
-    color: #fff;
-    /* Ensuring text color is still light on hover */
-}
-
-/* Update hover effects for night mode if needed */
-.night-mode-sidebar .sidebarbox:hover {
-    background-color: #555;
-    /* Darker background for hover */
-}
 
 /* Sidebar Box */
 .sidebarbox {

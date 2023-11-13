@@ -1,11 +1,8 @@
-
-
-
 import React, { useState, useEffect } from 'react';
 import { Outlet } from "react-router-dom";
 import menuImage from '../assets/Anteslogo.png';
-import '../headeroverlay.css';
-
+// import '../headeroverlay.css';
+import '../index.css';
 export default function Sidebar() {
     const [isNightMode, setIsNightMode] = useState(() => {
         const savedMode = localStorage.getItem('isNightMode');
@@ -47,3 +44,6 @@ export default function Sidebar() {
         </>
     );
 }
+
+
+
