@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Inst() {
-  const [isNightMode, setIsNightMode] = useState(false);
+  const [isNightMode, setIsNightMode] = useState(() => {
+    const savedMode = localStorage.getItem('isNightMode');
+    return savedMode !== null ? JSON.parse(savedMode) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('isNightMode', JSON.stringify(isNightMode));
+  }, [isNightMode]);
 
   const toggleNightMode = () => {
     setIsNightMode(!isNightMode);
