@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import menuImage from '../../assets/Anteslogo.png';
-
+import menuImage from '../../../assets/Anteslogo.png';
+import '../../headeroverlay.css'
 
 export default function AdminSidebar() {
     const navigate = useNavigate();
@@ -14,10 +14,9 @@ export default function AdminSidebar() {
 
     return (
         <>
-            <div className="header">
+            <div className="sidebar">
             <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
-                <div className="sidebarbox"></div>
-
+                
                 <div className="sidebarbox">
                     <a href={`/adminSidebar/Home`} >Home</a>
                 </div>

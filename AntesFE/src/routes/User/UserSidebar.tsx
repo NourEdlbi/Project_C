@@ -48,7 +48,7 @@ export default function UserSidebar() {
                   <a onClick={handleManageLogout}>Logout</a>
               </div>
               <div className="sidebarbox">
-                  <a onClick={handleManageHome}>Home</a>
+                  <a onClick={handleManageHome}>Home</a>                  
               </div>
               <div className="sidebarbox"> 
                   <a onClick={handleManageProfile}>Profile</a>
@@ -56,12 +56,21 @@ export default function UserSidebar() {
               <div className="sidebarbox">
                   <a onClick={handleManageAgenda}>Agenda</a>
               </div>
+
               <div className="sidebarbox">
                   <a onClick={handleManageForum}>Forum</a>
               </div>
+
               <div className="sidebarbox">
                   <a onClick={handleManageInfo}>Informatie</a>
+
+                  <div className="dropdown-content">
+                      <a className= "border">Protocollen en Richtlijnen</a> <br />
+                      <a className= "border">cursussen</a> <br />
+                      <a className="border">test</a>
+                  </div>
               </div>
+
               <div className="sidebarbox">
                   <a onClick={handleManageSettings}>Instellingen</a>
               </div>
