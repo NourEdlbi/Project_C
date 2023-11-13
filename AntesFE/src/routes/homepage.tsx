@@ -2,7 +2,7 @@ import '../index.css';
 
 export default function Home() {
     return (
-        <div className = "pagecontent"> 
+        <div className="pagecontent">
             <h1> text</h1>
             <p>
                 gndgjsdgls
@@ -11,6 +11,6 @@ export default function Home() {
                 nsdkgnksd;gn
             </p>
         </div>
-        
+
     )
 }

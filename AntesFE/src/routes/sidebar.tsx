@@ -1,16 +1,30 @@
+import React, { useState, useEffect } from 'react';
 import { Outlet } from "react-router-dom";
-import menuImage from '../assets/Anteslogo.png'
-//import { useState } from 'react'
-import '../headeroverlay.css';
+import menuImage from '../assets/Anteslogo.png';
+// import '../headeroverlay.css';
+import '../index.css';
 export default function Sidebar() {
-    //const [pixelamount, setpixelamount] = useState(0);
-    //<!-- <button onClick={() => setpixelamount((pixelamount) => pixelamount + 200)}> test{pixelamount} </button> -->
-    //<img src="../assets/Anteslogo.png" > </img>
+    const [isNightMode, setIsNightMode] = useState(() => {
+        const savedMode = localStorage.getItem('isNightMode');
+        return savedMode !== null ? JSON.parse(savedMode) : false;
+    });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const savedMode = localStorage.getItem('isNightMode');
+            const currentMode = savedMode !== null ? JSON.parse(savedMode) : false;
+            if (currentMode !== isNightMode) {
+                setIsNightMode(currentMode);
+            }
+        }, 100); // Check every 100ms
+
+        return () => clearInterval(interval);
+    }, [isNightMode]);
+
     return (
         <>
-            <div className="header">
-                
-            <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
+            <div className={`header ${isNightMode ? 'night-mode-sidebar' : ''}`}>
+                <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} />
                 <div className="sidebarbox">
                     <a href={`/Logout`}>Logout</a>
                 </div>
@@ -30,3 +44,6 @@ export default function Sidebar() {
         </>
     );
 }
+
+
+
