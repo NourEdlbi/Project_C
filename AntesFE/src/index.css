@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 .App {
   /* Day mode styles */
   background-color: #fff;
@@ -24,7 +28,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f7edef; /* Set your desired background color */
+  background-color: #FFFFFF; /* Set your desired background color */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #213547; /* Default text color */
 }

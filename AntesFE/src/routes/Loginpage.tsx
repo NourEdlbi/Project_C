@@ -1,5 +1,11 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../routes/LoginPage.css';
+import menuImage from '../assets/Anteslogo.png'
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -29,10 +35,11 @@ export default function Login() {
 
   return (
     <div className="pagecontent">
+      <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '70px' }} />
       <h1>Login</h1>
       <form onSubmit={handleLogin}> {/* Use onSubmit event */}
         <div className="form-group">
-          <label>Email:</label>
+          <label>Email: </label>
           <input
             type="email"
             value={email}
@@ -41,7 +48,7 @@ export default function Login() {
           />
         </div>
         <div className="form-group">
-          <label>Password:</label>
+          <label>Password: </label>
           <input
             type="password"
             value={password}

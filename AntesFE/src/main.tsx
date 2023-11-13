@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider,} from "react-router-dom";
@@ -20,9 +24,13 @@ import Uforum from './routes/User/userForum.tsx';
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Sidebar />,
+        //element: <Sidebar />,
         errorElement: <ErrorPage />,
         children: [
+            {
+                path: "/",
+                element: <Login/>,
+            },
             {
                 path: "adminSidebar", // The path for adminSidebar
                 element: <ASidebar />, // Render the ASidebar component directly
