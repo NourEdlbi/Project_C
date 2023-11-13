@@ -15,14 +15,18 @@ import AForum from  './routes/Admin/adminForum.tsx';
 import Profiel from './routes/User/Profile.tsx';
 import Uagenda from './routes/User/userAgenda.tsx';
 import Uforum from './routes/User/userForum.tsx';
-
+import Aquiz from './routes/Admin/quiz.tsx';
+import Aagenda from './routes/Admin/Aagenda.tsx';
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Sidebar />,
         errorElement: <ErrorPage />,
         children: [
+            {
+                path: "/",
+                element: <Login />,
+            },
             {
                 path: "adminSidebar", // The path for adminSidebar
                 element: <ASidebar />, // Render the ASidebar component directly
@@ -34,7 +38,16 @@ const router = createBrowserRouter([
                     {
                         path: "adminForum",
                         element: <AForum/>,
+                    }, 
+                    {
+                        path: "adminQuiz",
+                        element: <Aquiz />,
                     },
+                    {
+                        path: "adminAgenda",
+                        element: <Aagenda />,
+                    },
+                    
                     
                 ],
                 
@@ -55,27 +68,17 @@ const router = createBrowserRouter([
                         path: "userForum",
                         element: <Uforum/>,
                     },
-                    
+                    {
+                        path: "Informatie",
+                        element: <Info />
+                    },
+                    {
+                        path: "inst",
+                        element: <Inst />
+                    },
                 ],
             },
-            {
-                path: "agenda",
-                element: <Agenda />,
-            },
-            {
-                path: "Login",
-                element: <Login />
-            },
-            {
-                path: "Informatie",
-                element: <Info />
-            },
-            {
-                path: "inst",
-                element: <Inst />
-            },
         ],
-
     },
 ]);
 

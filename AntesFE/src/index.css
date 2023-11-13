@@ -24,7 +24,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f7edef; /* Set your desired background color */
+  background-color: white; /* Set your desired background color */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #213547; /* Default text color */
 }
@@ -33,7 +33,7 @@ body {
 .header {
   width: 12rem; /* Adjust the width as needed */
   min-height: 100vh; /* Make sidebar at least as tall as the viewport */
-  background-color: #f7edef;
+  background-color: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -43,7 +43,7 @@ body {
 
 /* Sidebar Box styles (assuming it has a class of "sidebarbox") */
 .sidebarbox {
-  background-color: #f7edef;
+  background-color: white;
   color: rgb(181, 15, 34);
   border-bottom: 1px solid rgb(181, 15, 34);
 }

@@ -19,6 +19,12 @@ export default function AdminSidebar() {
                 <div className="sidebarbox">
                     <a onClick={handleManageUsers}>Manage Users</a>
                 </div>
+                <div className="sidebarbox">
+                    <a href={`/adminSidebar/adminQuiz`}>Manage Quiz</a>
+                </div>
+                <div className="sidebarbox">
+                    <a href={`/adminSidebar/adminAgenda`}>Manage Agenda</a>
+                </div>
             </div>
             <div id="detail">
                 <Outlet />

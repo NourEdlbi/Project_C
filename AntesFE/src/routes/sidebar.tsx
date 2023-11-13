@@ -12,7 +12,7 @@ export default function Sidebar() {
                 
             <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
                 <div className="sidebarbox">
-                    <a href={`/Login`}>Login</a>
+                    <a href={`/Logout`}>Logout</a>
                 </div>
                 <div className="sidebarbox">
                     <a href={`/Agenda`}>Agenda</a>

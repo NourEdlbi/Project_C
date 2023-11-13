@@ -1,13 +1,14 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import menuImage from '../assets/Anteslogo.png';
+import "../headeroverlay.css";
 
 export default function UserSidebar() {
   const navigate = useNavigate();
 
   const handleManageProfile = () => {
     // Navigate to the "Profile" route
-    navigate('profile');
+    navigate('profiel');
   };
 
   const handleManageAgenda = () => {
@@ -24,12 +25,27 @@ export default function UserSidebar() {
     <>
       <div className="header">
         <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} />
+
         <div className="sidebarbox">
-          <a onClick={handleManageProfile}>Profile</a>
-          <a onClick={handleManageAgenda}>Agenda</a>
-          <a onClick={handleManageForum}>Forum</a>
+            <a href={`/Logout`}>Logout</a>
+        </div>
+        <div className="sidebarbox">
+            <a onClick={handleManageProfile}>Profile</a>
+        </div>
+        <div className="sidebarbox">
+            <a onClick={handleManageAgenda}>Agenda</a>
+        </div>
+        <div className="sidebarbox">
+            <a onClick={handleManageForum}>Forum</a>
+        </div>
+        <div className="sidebarbox">
+            <a href={`/Informatie`}>Informatie</a>
+        </div>
+        <div className="sidebarbox">
+            <a href={`/Inst`}>Instellingen</a>
         </div>
       </div>
+
       <div id="detail">
         <Outlet />
       </div>
