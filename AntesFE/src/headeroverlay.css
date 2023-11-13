@@ -5,6 +5,7 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
+<<<<<<< Updated upstream
     color: rgb(181,15,34);
     background-color: white; /* Antes red*/
     overflow-x: hidden; /* Disable horizontal scroll */
@@ -17,17 +18,34 @@
     border-right-width: 20px;
     border-right-color: rgb(181,15,34);
     border-right: solid;
+=======
+    background-color: rgb(247, 237, 239);
+    overflow-y: auto; /* Allow vertical scrolling if needed */
+    padding-top: 0px;
+    transition: 0.5s;
+    border-right: 5px solid rgb(181, 15, 34); /* Add a border on the right side */
+>>>>>>> Stashed changes
 }
 
 .sidebarbox {
     height: fit-content;
+<<<<<<< Updated upstream
     color: rgb(181,15,34); /* kleur hier werkt niet*/
     border-bottom: solid;
     background-color: white; /* white; /* / on hover or select hier veranderen*/
+=======
+    background-color: rgb(247, 237, 239);
+    color: rgb(247, 237, 239);
+    border-bottom: 1px solid rgb(181, 15, 34);
+>>>>>>> Stashed changes
 }
 
 .sidebarbox:hover {
+<<<<<<< Updated upstream
     background-color: rgba(181,15,34,0.4);
+=======
+    background-color: rgb(0, 54, 160);
+>>>>>>> Stashed changes
 }
 
 .header a {
@@ -43,6 +61,7 @@
 
 /* When you mouse over the navigation links, change their color */
 .header a:hover {
+<<<<<<< Updated upstream
     /*color: #f1f1f1; */
 }
 
@@ -54,3 +73,16 @@
     font-size: 36px;
     margin-left: 50px;
 }
+=======
+    /* Adjust link hover styles as needed */
+    color: rgb(181, 15, 34); /* Your hover color here */
+}
+
+/* Content Area */
+#detail {
+    margin-left: 12rem; /* Same as the width of the sidebar */
+    padding: 1rem;
+    position: relative; /* Ensure relative positioning */
+    z-index: 2; /* Set a higher z-index to display the content above the sidebar */
+}
+>>>>>>> Stashed changes

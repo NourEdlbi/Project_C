@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.App {
+  /* Day mode styles */
+  background-color: #fff;
+  color: #000;
+}
+
+.App.night-mode {
+  /* Night mode styles */
+  background-color: #000;
+  color: #fff;
+}

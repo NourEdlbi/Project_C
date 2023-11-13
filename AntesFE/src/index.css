@@ -1,9 +1,70 @@
+<<<<<<< Updated upstream
 :root {
+=======
+.App {
+  /* Day mode styles */
+  background-color: #fff;
+  color: #000;
+}
+
+.App.night-mode {
+  /* Night mode styles */
+  background-color: #000;
+  color: #fff;
+}
+
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, ol, li, figure, figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a minimum height for the body to avoid content overlap */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7edef; /* Set your desired background color */
+>>>>>>> Stashed changes
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+<<<<<<< Updated upstream
   color-scheme: light dark;
+=======
+/* Sidebar styles (assuming it has a class of "header") */
+.header {
+  width: 12rem; /* Adjust the width as needed */
+  min-height: 100vh; /* Make sidebar at least as tall as the viewport */
+  background-color: #f7edef;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  border-right: 20px solid rgb(181, 15, 34); /* Add a border on the right side */
+}
+
+/* Sidebar Box styles (assuming it has a class of "sidebarbox") */
+.sidebarbox {
+  background-color: #f7edef;
+  color: rgb(181, 15, 34);
+  border-bottom: 1px solid rgb(181, 15, 34);
+}
+
+/* Sidebar Box Hover Effect */
+.sidebarbox:hover {
+  background-color: rgba(181, 15, 34, 0.4);
+}
+
+/* Sidebar Links styles (assuming they are within ".header a") */
+.header a {
+  text-decoration: none;
+  font-size: 25px;
+>>>>>>> Stashed changes
   color: black;
   background-color: white;
 
@@ -71,3 +132,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+

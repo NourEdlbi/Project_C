@@ -1,0 +1,28 @@
+import React from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import menuImage from '../assets/Anteslogo.png'
+
+
+export default function AdminSidebar() {
+    const navigate = useNavigate();
+
+
+    const handleManageUsers = () => {
+        // Navigate to the "Manage Users" route
+        navigate('users');
+    };
+
+    return (
+        <>
+            <div className="header">
+            <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
+                <div className="sidebarbox">
+                    <a onClick={handleManageUsers}>Manage Users</a>
+                </div>
+            </div>
+            <div id="detail">
+                <Outlet />
+            </div>
+        </>
+    );
+}

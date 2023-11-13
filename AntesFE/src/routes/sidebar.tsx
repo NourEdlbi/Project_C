@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import menuImage from '../assets/Anteslogo.png'
 //import { useState } from 'react'
 import '../headeroverlay.css';
 export default function Sidebar() {
@@ -9,15 +10,15 @@ export default function Sidebar() {
         <>
             <div className="header">
                 
-                <h1> Menu</h1>
+            <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
                 <div className="sidebarbox">
-                    <a href={`/Home`}>Home</a>
+                    <a href={`/Login`}>Login</a>
                 </div>
                 <div className="sidebarbox">
                     <a href={`/Agenda`}>Agenda</a>
                 </div>
                 <div className="sidebarbox">
-                    <a href={`/Forum`}>forum</a>
+                    <a href={`/Informatie`}>Informatie</a>
                 </div>
                 <div className="sidebarbox">
                     <a href={`/Inst`}>instellingen</a>

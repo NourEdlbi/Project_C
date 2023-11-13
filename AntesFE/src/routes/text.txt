@@ -1,0 +1,24 @@
+<div className="header">
+                <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} />
+                <div className="sidebarbox">
+                    <a href={`/userSidebar`}>Profiel</a>
+                </div>
+                <div className="sidebarbox">
+                    <a href={`/userSidebar/forum`}>Forum</a>
+                </div>
+                <div className="sidebarbox">
+                    <a href={`/userSidebar/Training`}>Forum</a>
+                </div>
+                <div className="sidebarbox">
+                    <a href={`/userSidebar/agenda`}>Agenda</a>
+                </div>
+                <div className="sidebarbox">
+                    <a href={`/userSidebar/quiz`}>Quiz</a>
+                </div>
+            </div>
+            <div id="detail">
+                <Outlet />
+            </div>
+        </>
+    );
+}
