@@ -1,13 +1,13 @@
-export default function Forum() {
+
+export default function Uhome() {
     return (
-        <div>
-            <h1> FORUM</h1>
+        <div className="pagecontent">
+            <h1> text</h1>
             <p>
                 gndgjsdgls
                 dklgnsdngs
                 sdlkgnksdng
                 nsdkgnksd;gn
-
             </p>
         </div>
 
