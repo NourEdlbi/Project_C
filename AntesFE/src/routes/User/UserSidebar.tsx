@@ -4,12 +4,22 @@ import menuImage from '../../assets/Anteslogo.png';
 import "../../headeroverlay.css";
 
 export default function UserSidebar() {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const handleManageProfile = () => {
+    const handleManageProfile = () => {
     // Navigate to the "Profile" route
     navigate('profile');
-  };
+    };
+
+    const handleManageLogout = () => {
+        // Navigate to the "Profile" route
+        navigate('logout');
+    };
+
+    const handleManageHome = () => {
+        // Navigate to the "Profile" route
+        navigate('Home');
+    };
 
   const handleManageAgenda = () => {
     // Navigate to the "Agenda" route
@@ -19,20 +29,28 @@ export default function UserSidebar() {
   const handleManageForum = () => {
     // Navigate to the "Profile" route
     navigate('userForum');
-  };
+    };
+    const handleManageSettings = () => {
+        // Navigate to the "Profile" route
+        navigate('inst');
+    };
+    const handleManageInfo = () => {
+        // Navigate to the "Profile" route
+        navigate('Informatie');
+    };
 
   return (
    <div>
-          <div className="header">
+          <div className="sidebar">
               <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} />
-              <div className="sidebarbox"></div>
+              
               <div className="sidebarbox">
-                  <a href={`/Logout`}>Logout</a>
+                  <a onClick={handleManageLogout}>Logout</a>
               </div>
               <div className="sidebarbox">
-                  <a href={`/Logout`}>Home</a>
+                  <a onClick={handleManageHome}>Home</a>
               </div>
-              <div className="sidebarbox">
+              <div className="sidebarbox"> 
                   <a onClick={handleManageProfile}>Profile</a>
               </div>
               <div className="sidebarbox">
@@ -42,10 +60,10 @@ export default function UserSidebar() {
                   <a onClick={handleManageForum}>Forum</a>
               </div>
               <div className="sidebarbox">
-                  <a href={`/userSidebar/Informatie`}>Informatie</a>
+                  <a onClick={handleManageInfo}>Informatie</a>
               </div>
               <div className="sidebarbox">
-                  <a href={`/userSidebar/inst`}>Instellingen</a>
+                  <a onClick={handleManageSettings}>Instellingen</a>
               </div>
           </div>
 

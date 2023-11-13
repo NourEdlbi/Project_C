@@ -1,5 +1,5 @@
 /* Sidebar */
-.header {
+.sidebar {
     width: 12rem;
     /* Adjust the width as needed */
     height: 100%;
@@ -19,13 +19,12 @@
 
 /* Sidebar Box */
 .sidebarbox {
+    padding: 1em;
     height: fit-content;
-    background-color: white;
-    color: rgb(247, 237, 239);
     border-bottom: 1px solid rgb(181, 15, 34);
     /* iets fixen voor top en bottom zodat t gelijk is */
     border-top: 1px solid rgb(181, 15, 34);
-    padding-left: 1em;
+    
 }
 
 /* Sidebar Box Hover Effect */
@@ -34,14 +33,13 @@
 }
 
 /* Sidebar Links */
-.header a {
+.sidebar a {
     font-size: 25px;
     color: black;
-    display: block;
 }
 
 /* Sidebar Links Hover Effect */
-.header a:hover {
+.sidebar a:hover {
     /* Adjust link hover styles as needed */
     color: rgb(181, 15, 34);
     /* Your hover color here */

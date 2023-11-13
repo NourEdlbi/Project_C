@@ -18,6 +18,7 @@ import USidebar from './routes/User/userSidebar.tsx';
 import Profiel from './routes/User/Profile.tsx';
 import Uagenda from './routes/User/userAgenda.tsx';
 import Uforum from './routes/User/userForum.tsx';
+import Uhome from './routes/User/UserHomepage.tsx';
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -103,6 +104,10 @@ function Main() {
                         {
                             path: "inst",
                             element: <Inst />
+                        },
+                        {
+                            path: "Home",
+                            element: <Uhome />
                         },
                     ],
                 },

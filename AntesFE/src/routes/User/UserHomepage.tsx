@@ -1,6 +1,5 @@
-import '../index.css';
 
-export default function Home() {
+export default function Uhome() {
     return (
         <div className="pagecontent">
             <h1> text</h1>

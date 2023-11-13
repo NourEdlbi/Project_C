@@ -7,8 +7,8 @@
 
 .App {
   /* Day mode styles */
-  background-color: #fff;
-  color: #000;
+  background-color: white;
+  color: black;
 }
 
 .App.night-mode {
@@ -40,6 +40,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1em;
   background-color: white;
   /* Set your desired background color */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -78,16 +79,6 @@ body.dark-mode a {
 }
 
 /* Sidebar Box styles (assuming it has a class of "sidebarbox") */
-.sidebarbox {
-  background-color: white;
-  color: rgb(181, 15, 34);
-  border-bottom: 1px solid rgb(181, 15, 34);
-}
-
-/* Sidebar Box Hover Effect */
-.sidebarbox:hover {
-  background-color: rgba(181, 15, 34, 0.4);
-}
 
 .night-mode-sidebar {
   background-color: hsl(0, 0%, 20%);
