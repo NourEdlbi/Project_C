@@ -19,6 +19,8 @@ export default function AdminSidebar() {
         y.style.marginLeft = "0px";
         const z = document.getElementById("open") as HTMLElement;
         z.style.left = "2rem";
+        const a = document.getElementById("open") as HTMLElement;
+        a.style.display = "block";
     }
 
     function openNav() {
@@ -28,6 +30,8 @@ export default function AdminSidebar() {
         y.style.marginLeft = "12rem";
         const z = document.getElementById("open") as HTMLElement;
         z.style.left = "13rem";
+        const a = document.getElementById("open") as HTMLElement;
+        a.style.display = "none";
 
     }
 
