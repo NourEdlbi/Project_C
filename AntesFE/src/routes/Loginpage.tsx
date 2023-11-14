@@ -27,10 +27,15 @@ export default function Login() {
     }
   };
 
+  const handleResetPassword = () => {
+    // Navigate to the PasswordReset page
+    navigate('/password-reset'); // Update this path to match your route for PasswordReset
+  };
+
   return (
     <div className="pagecontent">
       <h1>Login</h1>
-      <form onSubmit={handleLogin}> {/* Use onSubmit event */}
+      <form onSubmit={handleLogin}>
         <div className="form-group">
           <label>Email:</label>
           <input
@@ -50,7 +55,8 @@ export default function Login() {
           />
         </div>
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-        <button type="submit">Log In</button> {/* Use type="submit" */}
+        <button type="submit">Log In</button>
+        <button type="button" onClick={handleResetPassword}>Reset Password</button>
       </form>
     </div>
   );

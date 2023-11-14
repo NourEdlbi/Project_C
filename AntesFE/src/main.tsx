@@ -7,6 +7,7 @@ import ErrorPage from "./error-page";
 import Login from './routes/Loginpage.tsx';
 import Info from './routes/Info.tsx';
 import Inst from './routes/Instellingen.tsx';
+import PasswordReset from './routes/PasswordReset.tsx';
 
 import ASidebar from './routes/Admin/adminSidebar.tsx';
 import Users from './routes/Admin/AdminUsers.tsx';
@@ -50,6 +51,10 @@ function Main() {
                 {
                     path: "/",
                     element: <Login />,
+                },
+                {
+                    path: "password-reset", // Define the route for password reset
+                    element: <PasswordReset />, // Specify the component to render
                 },
                 {
                     path: "adminSidebar", // The path for adminSidebar
