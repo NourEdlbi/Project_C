@@ -44,6 +44,29 @@
     color: rgb(181, 15, 34);
     /* Your hover color here */
 }
+.border {
+    border: solid rgb(181, 15, 34);
+    width: 12rem;
+    font-size: 12px;
+    margin: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: auto;
+    border-top: solid 3px rgb(181, 15, 34);
+    border-bottom: solid 3px rgb(181, 15, 34);
+    border-left: solid 3px rgb(181, 15, 34);
+    font-size: 10px;
+    left: -0.2em;
+    z-index: 1;
+}
+
+.sidebarbox:hover .dropdown-content {
+    display: block;
+}
 
 /* Content Area */
 #detail {

@@ -15,10 +15,10 @@ import AForum from './routes/Admin/AdminForum.tsx';
 import Aquiz from './routes/Admin/AdminQuiz.tsx';
 import AdminAgenda from './routes/Admin/AdminAgenda.tsx';
 
-import USidebar from './routes/User/userSidebar.tsx';
+import USidebar from './routes/User/UserSidebar.tsx';
 import Profiel from './routes/User/Profile.tsx';
-import Uagenda from './routes/User/userAgenda.tsx';
-import Uforum from './routes/User/userForum.tsx';
+import Uagenda from './routes/User/UserAgenda.tsx';
+import Uforum from './routes/User/UserForum.tsx';
 import Uhome from './routes/User/UserHomepage.tsx';
 
 function Main() {
