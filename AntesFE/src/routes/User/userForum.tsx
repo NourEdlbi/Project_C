@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
+import { TextField, Button, Card, CardContent, Typography, CardActions } from '@mui/material';
 
-export default function userForum() {
-  const centerText = {
-    textAlign: 'center',
-  };
-
+export default function UserForum() {
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({ id: 1, text: '', date: new Date() });
   const [selectedPost, setSelectedPost] = useState(null);
 
   const handlePostChange = (e) => {
-    const { name, value } = e.target;
     setNewPost({
       ...newPost,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
 
   const handlePostSubmit = () => {
     if (newPost.text) {
-      setPosts([...posts, { ...newPost }]);
+      setPosts([...posts, { ...newPost, date: new Date() }]);
       setNewPost({ id: newPost.id + 1, text: '', date: new Date() });
     }
   };
@@ -34,33 +30,59 @@ export default function userForum() {
   };
 
   return (
-    <div style={centerText}>
-      <h2>Forum</h2>
+    <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
+      <Typography variant="h2" component="h1" gutterBottom>
+        Forum
+      </Typography>
       {selectedPost ? (
-        <div>
-          <button onClick={closePost}>Back to Forum</button>
-          <h3>{selectedPost.text}</h3>
-          <p>{selectedPost.date.toString()}</p>
-        </div>
+        <Card variant="outlined">
+          <CardContent>
+            <Typography variant="h5" component="h2">
+              {selectedPost.text}
+            </Typography>
+            <Typography color="textSecondary">
+              {selectedPost.date.toLocaleString()}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small" onClick={closePost}>
+              Back to Forum
+            </Button>
+          </CardActions>
+        </Card>
       ) : (
         <div>
-          <input
-            type="text"
+          <TextField
+            label="Write a post"
+            variant="outlined"
             name="text"
             value={newPost.text}
             onChange={handlePostChange}
-            placeholder="Write a post"
+            fullWidth
+            margin="normal"
           />
-          <button onClick={handlePostSubmit}>Post</button>
+          <Button variant="contained" color="primary" onClick={handlePostSubmit} style={{ marginTop: '20px' }}>
+            Post
+          </Button>
         </div>
       )}
-      <div>
+      <div style={{ marginTop: '20px' }}>
         {posts.map((post) => (
-          <div key={post.id}>
-            <p>{post.text}</p>
-            <p>{post.date.toString()}</p>
-            <button onClick={() => openPost(post.id)}>Open Post</button>
-          </div>
+          <Card key={post.id} variant="outlined" style={{ marginBottom: '10px' }}>
+            <CardContent>
+              <Typography variant="body2" component="p">
+                {post.text}
+              </Typography>
+              <Typography color="textSecondary">
+                {post.date.toLocaleString()}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small" onClick={() => openPost(post.id)}>
+                Open Post
+              </Button>
+            </CardActions>
+          </Card>
         ))}
       </div>
     </div>
