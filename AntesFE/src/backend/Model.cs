@@ -68,6 +68,20 @@ namespace YourNamespace
                 .HasForeignKey(a => a.QuizResultID)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // Configuring the one-to-many
+            modelBuilder.Entity<Account>()
+                .HasMany(a => a.Forums)
+                .WithOne(f => f.ForumPoster)
+                .HasForeignKey(f => f.ForumPosterID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configuring the one-to-many 
+            modelBuilder.Entity<Account>()
+                .HasMany(a => a.Comments)
+                .WithOne(c => c.Commenter)
+                .HasForeignKey(c => c.CommenterID)
+                .OnDelete(DeleteBehavior.Cascade);
+
             //Logic with quiz:
             //A quiz has multiple Questions
             //A quiz has multiple quizresults (by people)
@@ -93,10 +107,14 @@ namespace YourNamespace
         public string Email { get; set; }
         public bool Admin { get; set; }
 
+
         public Profile Profile { get; set; }
         public ICollection<Agenda> Agendas { get; set; }
+        public ICollection<Forum> Forums { get; set; }
+        public ICollection<Comment> Comments { get; set; }
         public ICollection<QuizResult> QuizResults { get; set; }
     }
+
 
     public class Profile
     {
@@ -133,8 +151,8 @@ namespace YourNamespace
         public DateTime PostTime { get; set; }
 
         public Forum Forum { get; set; }
+        public Account Commenter { get; set; }
     }
-
     public class Forum
     {
         [Key]
@@ -144,8 +162,10 @@ namespace YourNamespace
         public string Content { get; set; }
         public DateTime PostTime { get; set; }
 
+        public Account ForumPoster { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }
+
     public class Question
     {
         [Key]
