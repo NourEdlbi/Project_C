@@ -3,7 +3,7 @@ export default function Info() {
    
 
     return (
-        <div >
+        <div id="cn" className="pagecontent">
             <div className="titel">
                 <h1 >Protocollen en richtlijnen</h1>
             </div>
