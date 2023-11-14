@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Card, CardContent, Typography, CardActions } from '@mui/material';
-
+import axios from 'axios';
 export default function UserForum() {
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({ id: 1, text: '', date: new Date() });
@@ -13,13 +13,34 @@ export default function UserForum() {
     });
   };
 
+  // const handlePostSubmit = () => {
+  //   if (newPost.text) {
+  //     setPosts([...posts, { ...newPost, date: new Date() }]);
+  //     setNewPost({ id: newPost.id + 1, text: '', date: new Date() });
+  //   }
+  // };
+
+
   const handlePostSubmit = () => {
     if (newPost.text) {
-      setPosts([...posts, { ...newPost, date: new Date() }]);
-      setNewPost({ id: newPost.id + 1, text: '', date: new Date() });
+      // Make an API call to save the post
+      axios.post('/api/posts', {
+        text: newPost.text,
+        userId: 1, // Replace with the actual user ID
+        name: 'test', // Replace with the actual user name
+      })
+        .then((response) => {
+          // Handle the success response
+          console.log('Post saved successfully:', response.data);
+          setPosts([...posts, { ...newPost, date: new Date() }]);
+          setNewPost({ id: newPost.id + 1, text: '', date: new Date() });
+        })
+        .catch((error) => {
+          // Handle the error response
+          console.error('Error saving post:', error);
+        });
     }
   };
-
   const openPost = (postId) => {
     const post = posts.find((p) => p.id === postId);
     setSelectedPost(post);
