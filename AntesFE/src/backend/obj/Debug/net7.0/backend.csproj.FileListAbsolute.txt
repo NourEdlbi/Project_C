@@ -33,3 +33,38 @@ C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\Project_C\AntesFE\src\backend\bin\De
 C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\Project_C\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\Project_C\AntesFE\src\backend\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\Project_C\AntesFE\src\backend\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\backend.exe
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\backend.deps.json
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\backend.runtimeconfig.json
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\backend.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\backend.pdb
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Humanizer.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Npgsql.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.csproj.AssemblyReference.cache
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.AssemblyInfoInputs.cache
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.AssemblyInfo.cs
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.csproj.CoreCompileInputs.cache
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.csproj.CopyComplete
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\refint\backend.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.pdb
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\backend.genruntimeconfig.cache
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesFE\src\backend\obj\Debug\net7.0\ref\backend.dll

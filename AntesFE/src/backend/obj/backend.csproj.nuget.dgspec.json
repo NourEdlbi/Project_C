@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\src\\backend\\backend.csproj": {}
+    "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesFE\\src\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\src\\backend\\backend.csproj": {
+    "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesFE\\src\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\src\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesFE\\src\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\src\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\Barrie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\src\\backend\\obj\\",
+        "projectPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesFE\\src\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\Noure\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesFE\\src\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\NuGet.Config",
-          "C:\\Users\\Barrie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesFE\\NuGet.Config",
+          "C:\\Users\\Noure\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,7 +40,17 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
