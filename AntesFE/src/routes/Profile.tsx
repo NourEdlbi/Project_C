@@ -1,4 +1,9 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useState } from 'react';
+import '../routes/Profile.css'
 
 export default function Profile() {
   const [name, setName] = useState('John Doe');
@@ -19,21 +24,25 @@ export default function Profile() {
 
   return (
     <div>
-      <h1>Profiel</h1>
+      <div className='titel'>
+        <h1>Profiel</h1>
+      </div>
+      <div className='labels'>
       <label>
-        Name:
+        Name: 
         <input type="text" value={name} onChange={handleNameChange} />
       </label>
       <br />
       <label>
-        Email:
+        Email: 
         <input type="email" value={email} onChange={handleEmailChange} />
       </label>
       <br />
       <label>
-        Bio:
+        Bio: 
         <textarea value={bio} onChange={handleBioChange} />
-      </label>
+      </label></div>
+      
     </div>
   );
 }

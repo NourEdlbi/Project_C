@@ -1,7 +1,12 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import '../User/userAgenda.css';
 
 const localizer = momentLocalizer(moment);
 
@@ -49,23 +54,36 @@ export default function userAgenda() {
 
   return (
     <div>
-      <h1>AGENDA</h1>
-      <h1>Add Event</h1>
+      <div className="titel">
+        <h1 >Agenda</h1>
+      </div>
+      {/* <h1>Add Event</h1>
       <form>
         <input type="text" name="title" value={newEvent.title} onChange={handleEventChange} placeholder="Event Title" />
         <input type="datetime-local" name="start" value={moment(newEvent.start).format('YYYY-MM-DDTHH:mm')} onChange={handleEventChange} />
         <input type="datetime-local" name="end" value={moment(newEvent.end).format('YYYY-MM-DDTHH:mm')} onChange={handleEventChange} />
         <button type="button" onClick={addEvent}>Add Event</button>
-      </form>
-      <h1>Calendar</h1>
-      <Calendar
+      </form> */}
+      <div className='calendar'>
+        <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 500 }}
+        style={{ height: 700, width: 950, backgroundColor: '#F8EEF0', border: '1px', borderStyle: 'solid', borderColor: '#A2102C'}}
       />
-      <button onClick={exportEventsToJSON}>Export to JSON</button>
+      {/* <button className='export_button' onClick={exportEventsToJSON}>Export to JSON</button></div> */}
+      </div>
+
+      <div className='events'>
+        <h1>Events</h1>
+        <ul>
+          <li>Event</li>
+          <li>Event</li>
+          <li>Event</li>
+        </ul>
+      </div>
+
     </div>
   );
 }

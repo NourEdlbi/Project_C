@@ -33,9 +33,7 @@ export default function Uhome() {
             </div >
 
             <div className="forum_posts">
-                <p>Hier komen forum posts die wij nog niet hebben.</p>
-               
-
+                Hier komen forum posts die wij nog niet hebben.
             </div>
             
             <div className='agenda'>
@@ -52,7 +50,7 @@ export default function Uhome() {
             
             <div className='quizzen'>
                 <h1>Quiz</h1>
-                <p>Maak verschillende quizzen om je kennis te testen!</p>
+                Maak verschillende quizzen om je kennis te testen!
             </div>
         </div>
     );

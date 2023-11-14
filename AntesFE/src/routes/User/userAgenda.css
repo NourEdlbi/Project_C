@@ -1,0 +1,22 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
+.calendar{
+    position: absolute;
+    right: -130px;
+    top: -330px;
+}
+
+.events{
+    position: absolute;
+    left: 300px;
+    top: -330px;
+    width: 400px;
+    height: 690px;
+    border: 1px;
+    border-style: solid;
+    border-color: brown;
+    padding: 20%;
+    overflow: auto;
+}
