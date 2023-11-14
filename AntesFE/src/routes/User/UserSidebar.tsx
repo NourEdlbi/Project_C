@@ -40,6 +40,10 @@ export default function UserSidebar() {
         // Navigate to the "Profile" route
         navigate('Informatie');
     };
+    const handleManageQuiz = () => {
+        // Navigate to the "Profile" route
+        navigate('Quizzes');
+    };
 
     function closeNav() {
         const x = document.getElementById("sbar") as HTMLElement;
@@ -66,16 +70,19 @@ export default function UserSidebar() {
                 <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} />
                 <button className="closebtn" onClick={closeNav}> X </button>
                 <div className="sidebarbox">
-                    <a onClick={handleManageLogout}>Logout</a>
+                    <a onClick={handleManageLogout}>Uitloggen</a>
                 </div>
                 <div className="sidebarbox">
                     <a onClick={handleManageHome}>Home</a>                  
                 </div>
                 <div className="sidebarbox"> 
-                    <a onClick={handleManageProfile}>Profile</a>
+                    <a onClick={handleManageProfile}>Profiel</a>
                 </div>
                 <div className="sidebarbox">
                     <a onClick={handleManageAgenda}>Agenda</a>
+                </div>
+                <div className="sidebarbox">
+                    <a onClick={handleManageQuiz}>Quiz</a>
                 </div>
 
                 <div className="sidebarbox">
