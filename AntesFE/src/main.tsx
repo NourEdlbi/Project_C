@@ -18,6 +18,8 @@ import ErrorPage from "./error-page";
 import Login from './routes/Loginpage.tsx';
 import Info from './routes/Info.tsx';
 import Inst from './routes/Instellingen.tsx';
+import PasswordReset from './routes/PasswordReset.tsx';
+import Profiel from './routes/Profile.tsx';
 
 import ASidebar from './routes/Admin/adminSidebar.tsx';
 import Users from './routes/Admin/AdminUsers.tsx';
@@ -25,11 +27,11 @@ import AForum from './routes/Admin/AdminForum.tsx';
 import Aquiz from './routes/Admin/AdminQuiz.tsx';
 import AdminAgenda from './routes/Admin/AdminAgenda.tsx';
 
-import USidebar from './routes/User/userSidebar.tsx';
-import Profiel from './routes/User/Profile.tsx';
-import Uagenda from './routes/User/userAgenda.tsx';
-import Uforum from './routes/User/userForum.tsx';
+import USidebar from './routes/User/UserSidebar.tsx';
+import Uagenda from './routes/User/UserAgenda.tsx';
+import Uforum from './routes/User/UserForum.tsx';
 import Uhome from './routes/User/UserHomepage.tsx';
+import Uquiz from './routes/User/UserQuiz.tsx';
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -127,6 +129,10 @@ const router = createBrowserRouter([
                     element: <Login />,
                 },
                 {
+                    path: "password-reset", // Define the route for password reset
+                    element: <PasswordReset />, // Specify the component to render
+                },
+                {
                     path: "adminSidebar", // The path for adminSidebar
                     element: <ASidebar />, // Render the ASidebar component directly
                     children: [
@@ -183,6 +189,10 @@ const router = createBrowserRouter([
                         {
                             path: "Home",
                             element: <Uhome />
+                        },
+                        {
+                            path: "Quizzes",
+                            element: <Uquiz />
                         },
                     ],
                 },

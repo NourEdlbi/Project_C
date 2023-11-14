@@ -1,0 +1,11 @@
+.info{
+    position:fixed;
+    column-count:3;
+    max-height: 10rem;
+    top: 5rem;
+    column-gap: 40px;
+    text-align:left;
+    left: 16rem;
+}
+
+

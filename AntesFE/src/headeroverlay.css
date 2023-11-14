@@ -10,7 +10,6 @@
     overflow-y: auto;
     /* Allow vertical scrolling if needed */
     padding-top: 0px;
-    transition: 0.5s;
     border-right: 3px solid rgb(181, 15, 34);
     /* Add a border on the right side */
 }
@@ -43,6 +42,51 @@
     /* Adjust link hover styles as needed */
     color: rgb(181, 15, 34);
     /* Your hover color here */
+}
+.border {
+    border: solid rgb(181, 15, 34);
+    width: 12rem;
+    font-size: 12px;
+    margin: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: auto;
+    border-top: solid 3px rgb(181, 15, 34);
+    border-bottom: solid 3px rgb(181, 15, 34);
+    border-left: solid 3px rgb(181, 15, 34);
+    font-size: 10px;
+    left: -0.2em;
+    z-index: 1;
+}
+
+.sidebarbox:hover .dropdown-content {
+    display: block;
+}
+
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(181, 15, 34, 0.4);
+}
+
+.closebtn:hover {
+    background-color: rgba(181, 15, 34, 0.8);
+}
+
+.openbtn {
+    position: absolute;
+    top: 10px;
+    left: 13rem;
+    background-color: rgba(181, 15, 34, 0.4);
+}
+
+.openbtn:hover {
+    background-color: rgba(181, 15, 34, 0.8);
 }
 
 /* Content Area */

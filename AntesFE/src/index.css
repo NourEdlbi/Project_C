@@ -17,7 +17,6 @@
   color: #fff;
 }
 
-
 /* Reset some default styles */
 body,
 h1,
@@ -90,7 +89,6 @@ body.dark-mode a {
 .night-mode-sidebar .sidebarbox a {
   color: #fff;
   background-color: hsl(0, 0%, 20%);
-  ;
   /* Light text color for links */
 }
 
@@ -121,7 +119,7 @@ body.dark-mode a {
 
 /* Sidebar Links Hover Effect */
 .header a:hover {
-  color: #646cff;
+  color: green;
   /* Adjust hover color as needed */
 }
 
@@ -133,4 +131,11 @@ body.dark-mode a {
   font-size: 36px;
   margin-left: 50px;
   /* Add any additional styles for the close button */
+}
+
+.titel {
+    position: fixed;
+    top: 1rem;
+    color: rgb(181, 15, 34);
+    left: 16rem;
 }
