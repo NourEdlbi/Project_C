@@ -21,72 +21,92 @@ export default function UserSidebar() {
         navigate('Home');
     };
 
-  const handleManageAgenda = () => {
-    // Navigate to the "Agenda" route
-    navigate('Agenda');
-  };
-
-  const handleManageForum = () => {
-    // Navigate to the "Profile" route
-    navigate('userForum');
+    const handleManageAgenda = () => {
+        // Navigate to the "Agenda" route
+        navigate('Agenda');
     };
+
+    const handleManageForum = () => {
+        // Navigate to the "Profile" route
+        navigate('userForum');
+    };
+
     const handleManageSettings = () => {
         // Navigate to the "Profile" route
         navigate('inst');
     };
+
     const handleManageInfo = () => {
         // Navigate to the "Profile" route
         navigate('Informatie');
     };
 
-  return (
-   <div>
-          <div className="sidebar">
-              <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} />
-              
-              <div className="sidebarbox">
-                  <a onClick={handleManageLogout}>Logout</a>
-              </div>
-              <div className="sidebarbox">
-                  <a onClick={handleManageHome}>Home</a>                  
-              </div>
-              <div className="sidebarbox"> 
-                  <a onClick={handleManageProfile}>Profile</a>
-              </div>
-              <div className="sidebarbox">
-                  <a onClick={handleManageAgenda}>Agenda</a>
-              </div>
+    function closeNav() {
+        const x = document.getElementById("sbar") as HTMLElement;
+        x.style.width = "0px";
+        const y = document.getElementById("detail") as HTMLElement;
+        y.style.marginLeft = "0px";
+        const z = document.getElementById("open") as HTMLElement;
+        z.style.left = "2rem";
+    }
 
-              <div className="sidebarbox">
-                  <a onClick={handleManageForum}>Forum</a>
-              </div>
+    function openNav() {
+        const x = document.getElementById("sbar") as HTMLElement;
+        x.style.width = "12rem";
+        const y = document.getElementById("detail") as HTMLElement;
+        y.style.marginLeft = "12rem";
+        const z = document.getElementById("open") as HTMLElement;
+        z.style.left = "13rem";
 
-              <div className="sidebarbox">
-                  <a onClick={handleManageInfo}>Informatie</a>
+    }
+     
+    return (
+        <div>
+            <div id="sbar" className="sidebar">
+                <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} />
+                <button className="closebtn" onClick={closeNav}> X </button>
+                <div className="sidebarbox">
+                    <a onClick={handleManageLogout}>Logout</a>
+                </div>
+                <div className="sidebarbox">
+                    <a onClick={handleManageHome}>Home</a>                  
+                </div>
+                <div className="sidebarbox"> 
+                    <a onClick={handleManageProfile}>Profile</a>
+                </div>
+                <div className="sidebarbox">
+                    <a onClick={handleManageAgenda}>Agenda</a>
+                </div>
+
+                <div className="sidebarbox">
+                    <a onClick={handleManageForum}>Forum</a>
+                </div>
+
+                <div className="sidebarbox">
+                    <a onClick={handleManageInfo}>Informatie</a>
                   
-                  <div className="dropdown-content">
-                      <div className="sidebarbox">
-                          <a >Protocollen en Richtlijnen</a> <br />
-                      </div>
-                      <div className="sidebarbox">
-                          <a >cursussen</a> <br />
-                      </div>
-                      <div className="sidebarbox">
-                          <a> test</a>
-                      </div>
-                  </div>
-              </div>
+                    <div className="dropdown-content">
+                        <div className="sidebarbox">
+                            <a >Protocollen en Richtlijnen</a> <br />
+                        </div>
+                        <div className="sidebarbox">
+                            <a >cursussen</a> <br />
+                        </div>
+                        <div className="sidebarbox">
+                            <a> test</a>
+                        </div>
+                    </div>
+                </div>
 
-              <div className="sidebarbox">
-                  <a onClick={handleManageSettings}>Instellingen</a>
-              </div>
-          </div>
+                <div className="sidebarbox">
+                    <a onClick={handleManageSettings}>Instellingen</a>
+                </div>
+            </div>
 
-          <div id="detail">
-              <Outlet />
-          </div>
-   </div>
-      
-   
-  );
+            <button id= "open" className="openbtn" onClick={openNav}> Open Sidebar</button> 
+            <div id="detail">
+                <Outlet />
+            </div>
+        </div>
+    );
 }
