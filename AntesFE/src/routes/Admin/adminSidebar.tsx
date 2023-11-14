@@ -12,11 +12,31 @@ export default function AdminSidebar() {
         navigate('users');
     };
 
+    function closeNav() {
+        const x = document.getElementById("sbar") as HTMLElement;
+        x.style.width = "0px";
+        const y = document.getElementById("detail") as HTMLElement;
+        y.style.marginLeft = "0px";
+        const z = document.getElementById("open") as HTMLElement;
+        z.style.left = "2rem";
+    }
+
+    function openNav() {
+        const x = document.getElementById("sbar") as HTMLElement;
+        x.style.width = "12rem";
+        const y = document.getElementById("detail") as HTMLElement;
+        y.style.marginLeft = "12rem";
+        const z = document.getElementById("open") as HTMLElement;
+        z.style.left = "13rem";
+
+    }
+
     return (
         <>
-            <div className="sidebar">
-            <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
-                
+            <div id="sbar" className="sidebar">
+                <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
+                <button className="closebtn" onClick={closeNav}> X </button>
+
                 <div className="sidebarbox">
                     <a href={`/adminSidebar/Home`} >Home</a>
                 </div>
@@ -40,8 +60,9 @@ export default function AdminSidebar() {
                 <div className="sidebarbox">
                     <a href={`/adminSidebar/inst`}>Instellingen</a>
                 </div>
-                <div className="sidebarbox"></div>
             </div>
+            <button id="open" className="openbtn" onClick={openNav}> Open Sidebar</button>
+
             <div id="detail">
                 <Outlet />
             </div>
