@@ -135,9 +135,9 @@ body.dark-mode a {
   /* Add any additional styles for the close button */
 }
 
-.titel{
-    position:fixed;
+.titel {
+    position: fixed;
     top: 1rem;
-    color:red;
-    left:16rem;
+    color: rgb(181, 15, 34);
+    left: 16rem;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import menuImage from '../../../assets/Anteslogo.png';
+import menuImage from '../../assets/Anteslogo.png';
 import '../../headeroverlay.css'
 
 export default function AdminSidebar() {

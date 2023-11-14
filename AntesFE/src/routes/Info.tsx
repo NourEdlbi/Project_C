@@ -10,8 +10,15 @@ export default function Info() {
         
             <div className="info">
                 <ul>
-                    <li> djsldhlasdgfxgdfgdfgdfgdfgdf</li>
-                    <li> djsldhlas</li>
+                    <li>
+                        <a href="https://www.anteszorg.nl/" target="_blank" rel="noopener noreferrer"> Antes Homepage</a>
+                    </li>
+                    <li>
+                        <a href="https://www.anteszorg.nl/" target="_blank"> Antes Homepage</a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.nl/" target="_blank" rel="noopener noreferrer"> Google test</a>
+                    </li>
                     <li> djsldhlas</li>
                     <li> djsldhlas</li>
                     <li> djsldhlas</li>

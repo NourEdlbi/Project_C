@@ -63,11 +63,17 @@ export default function UserSidebar() {
 
               <div className="sidebarbox">
                   <a onClick={handleManageInfo}>Informatie</a>
-
+                  
                   <div className="dropdown-content">
-                      <a className= "border">Protocollen en Richtlijnen</a> <br />
-                      <a className= "border">cursussen</a> <br />
-                      <a className="border">test</a>
+                      <div className="sidebarbox">
+                          <a >Protocollen en Richtlijnen</a> <br />
+                      </div>
+                      <div className="sidebarbox">
+                          <a >cursussen</a> <br />
+                      </div>
+                      <div className="sidebarbox">
+                          <a> test</a>
+                      </div>
                   </div>
               </div>
 
