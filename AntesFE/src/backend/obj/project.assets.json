@@ -989,21 +989,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Barrie\\.nuget\\packages\\": {}
+    "C:\\Users\\Gebruiker\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\src\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\antesfe\\src\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\src\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\Barrie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\src\\backend\\obj\\",
+      "projectPath": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\antesfe\\src\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\antesfe\\src\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\Project_C\\AntesFE\\NuGet.Config",
-        "C:\\Users\\Barrie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\antesfe\\NuGet.Config",
+        "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -1054,7 +1053,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

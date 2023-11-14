@@ -62,7 +62,7 @@ export default function Login() {
           />
         </div>
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-        <button type="submit">Log In</button>
+        <button type="submit" style={{marginRight: '15px'}}>Log In</button>
         <button type="button" onClick={handleResetPassword}>Reset Password</button>
       </form>
     </div>
