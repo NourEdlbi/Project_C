@@ -13,8 +13,8 @@ namespace backend
         public static void Seedaccount(ForumContext db)
         {
             Account acc  = new Account();
-            acc.ID = 1;
-            acc.Name = "tesje";
+            acc.ID = 2;
+            acc.Name = "tessssssje";
             acc.Email = "tes@tes.nl";
            
             db.Accounts.Add(acc);
@@ -23,9 +23,9 @@ namespace backend
         public static void Seedagenda(ForumContext db)
         {
             Agenda agenda = new Agenda();
-            agenda.AccountID = 1;
+            agenda.AccountID = 2;
             agenda.Start_Date = DateTime.UtcNow;
-            agenda.Subject = "testje";
+            agenda.Subject = "tesssssstje";
             db.Agendas.Add(agenda);
             db.SaveChanges();
         }

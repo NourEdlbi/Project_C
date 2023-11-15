@@ -1,3 +1,6 @@
+using backend;
+using YourNamespace;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +11,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+var db = new ForumContext();
+SeedAgenda.Seedaccount(db);
+SeedAgenda.Seedagenda(db);
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
