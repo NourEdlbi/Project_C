@@ -9,3 +9,10 @@ AntesBE/obj/Debug/net7.0/AntesBE.AssemblyInfo.cs
 *.editorconfig
 *.pdb
 AntesBE/obj/project.assets.json
+AntesBE/bin/Debug/net7.0/AntesBE.dll
+AntesBE/bin/Debug/net7.0/AntesBE.exe
+AntesBE/obj/Debug/net7.0/AntesBE.AssemblyInfo.cs
+AntesBE/obj/Debug/net7.0/AntesBE.AssemblyInfoInputs.cache
+AntesBE/obj/Debug/net7.0/AntesBE.assets.cache
+AntesBE/obj/Debug/net7.0/AntesBE.GeneratedMSBuildEditorConfig.editorconfig
+AntesBE/obj/Debug/net7.0/apphost.exe
