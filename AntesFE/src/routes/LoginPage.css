@@ -10,7 +10,7 @@
     height: 100vh;
   }
   
-  h1 {
+  .login h1 {
     font-size: 1.5em;
     margin-bottom: 10px;
     position: absolute;
