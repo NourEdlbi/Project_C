@@ -94,6 +94,7 @@ namespace YourNamespace
             optionsBuilder.UseNpgsql("User ID = postgres; Password = 666; Host = localhost; port = 5432; Database = Antes; Pooling = true");
             //optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
             //optionsBuilder.EnableSensitiveDataLogging();
+            optionsBuilder.EnableSensitiveDataLogging();
 
             // Apply migrations
         }
@@ -106,6 +107,7 @@ namespace YourNamespace
         public string Name { get; set; }
         public string Email { get; set; }
         public bool Admin { get; set; }
+        public string Password { get; set; }
 
 
         public Profile Profile { get; set; }

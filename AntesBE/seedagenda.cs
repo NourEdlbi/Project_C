@@ -41,21 +41,25 @@ namespace backend
             acc.ID = 1;
             acc.Name = "tessssssje";
             acc.Email = "tes@te.nl";
+            acc.Password = "password";  
 
             Account acc1 = new Account();
             acc1.ID = 2;
             acc1.Name = "tessje";
             acc1.Email = "te@tes.nl";
+            acc1.Password = "password";
 
             Account acc2 = new Account();
             acc2.ID = 3;
             acc2.Name = "tessssje";
             acc2.Email = "ts@tes.nl";
+            acc2.Password = "password";
 
             Account acc3 = new Account();
             acc3.ID = 4;
             acc3.Name = "sje";
             acc3.Email = "tes@ts.nl";
+            acc3.Password = "password";
 
             db.Accounts.AddRange(acc, acc1, acc2, acc3);
             db.SaveChanges();

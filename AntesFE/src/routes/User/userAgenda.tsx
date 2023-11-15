@@ -13,7 +13,7 @@ const localizer = momentLocalizer(moment);
 
 export default function userAgenda() {
 
-    const [events, setEvents] = useState([
+   const [events, setEvents] = useState([
     {
         id: 1,
         title: 'Event 1',
