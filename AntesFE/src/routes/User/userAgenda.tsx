@@ -82,7 +82,7 @@ export default function userAgenda() {
         style={{ height: 570, width: 850, backgroundColor: '#F8EEF0', border: '1px', borderStyle: 'solid', borderColor: '#A2102C'}}
           />
           
-          <button onClick={werk}>Export to </button>
+          {/* <button onClick={werk}>Export to </button> */}
           <button onClick={werk}> test</button>
         
       </div>
