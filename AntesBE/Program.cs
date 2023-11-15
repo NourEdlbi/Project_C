@@ -13,8 +13,9 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 var db = new ForumContext();
-SeedAgenda.Seedaccount(db);
-SeedAgenda.Seedagenda(db);
+SeedDB.cleardb(db);
+SeedDB.Seedaccount(db);
+SeedDB.Seedagenda(db);
 
 
 // Configure the HTTP request pipeline.
