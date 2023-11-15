@@ -1,8 +1,35 @@
-.quizbanner {
-    border: solid 5px rgb(181, 15, 34);
+    .quizbanner {
+        border: solid 5px rgb(181, 15, 34);
+        margin: 1em 1em;
+        border-radius: 1em;
+        width: 100%;
+        background:white;
+        color:black
+
+    }
+
+    .quizbanner:hover {
+        background-color: rgba(181, 15, 34,0.2)
+    }
+
+.quizdescription {
+    display: none;
+    border: solid 2px rgb(181, 15, 34);
+    border-radius: 1em;
+    padding: 1em;
+    margin: 0em 1em;
+
+}
+.Gotoquizbutton {
+    border: solid 2px rgb(181, 15, 34);
     margin: 1em 1em;
     border-radius: 1em;
+    background: white;
+    color: black;
+    
 }
-    .quizbanner:hover {
+
+
+    .Gotoquizbutton:hover {
         background-color: rgba(181, 15, 34,0.2)
     }
