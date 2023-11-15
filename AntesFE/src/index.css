@@ -1,13 +1,17 @@
 #root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.pagecontent {
 }
 
 .App {
+
   /* Day mode styles */
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: black;
 }
 
@@ -40,7 +44,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1em;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   /* Set your desired background color */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #213547;
@@ -112,7 +116,7 @@ body.dark-mode a {
 .header a {
   text-decoration: none;
   font-size: 25px;
-  color: black;
+  color: rgb(0, 0, 0);
   display: block;
   padding: 1rem 0;
   transition: 0.3s;
@@ -136,8 +140,9 @@ body.dark-mode a {
 }
 
 .titel {
-    position: fixed;
-    top: 1rem;
-    color: rgb(181, 15, 34);
-    left: 16rem;
+  position: fixed;
+  top: 1rem;
+  color: rgb(181, 15, 34);
+  left: 16rem;
 }
+
