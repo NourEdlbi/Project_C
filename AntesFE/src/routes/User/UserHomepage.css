@@ -2,42 +2,54 @@
  *   Copyright (c) 2023 
  *   All rights reserved.
  */
+
+.container .titel{
+    position: relative;
+    right: 45%;
+    top: -2rem;
+}
+
+.agenda_name{
+    position: relative;
+    top: 1rem;
+}
 .agenda{
-    width: 400px;
-    height: 450px;
-    box-sizing: border-box;
+    width: 26%;
+    height: 25rem;
+    box-sizing:border-box;
     border: 1px solid #A2102C;
-    position: absolute;
-    bottom: 0;
-    left: 450px;
-    padding: 40px
+    position: relative;
+    bottom: 45.5rem;
+    left: 67%;
+    padding: 40px;
 }
 
 .posts{
-    position: absolute;
-    bottom: 325px;
-    right: 750px;
+    position: relative;
+    top: -1rem;
+    right: 46%;
 }
 
 .forum_posts{
-    width: 1100px;
-    height: 700px;
-    position: absolute;
-    top: -310px;
-    right: -330px;
+    width: 60%;
+    height: 39rem;
+    position: relative;
+    bottom: 2rem;
+    left: 1%;
     border: 1px solid #A2102C; 
     padding: 20px;
     margin: 30px 0;
-    background-color: #FFF; 
+    background-color: #FFF;
+    flex: 1 0 50rem;
 }
 
 .quizzen{
-    width: 400px;
-    height: 400px;
+    width: 26%;
+    height: 13.5rem;
     box-sizing: border-box;
     border: 1px solid #A2102C;
-    position: absolute;
-    top: 60px;
-    left: 450px;
+    position: relative;
+    bottom: 43rem;
+    left: 67%;
     padding: 40px
 }

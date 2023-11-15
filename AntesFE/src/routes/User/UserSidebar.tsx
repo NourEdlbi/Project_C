@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import menuImage from '../../assets/Anteslogo.png';
@@ -67,7 +71,7 @@ export default function UserSidebar() {
     return (
         <div>
             <div id="sbar" className="sidebar">
-                <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} />
+                <img src={menuImage} alt="Menu" style={{ width: '120px', height: 'auto', padding: '30px'}} />
                 <button className="closebtn" onClick={closeNav}> X </button>
                 <div className="sidebarbox">
                     <a onClick={handleManageLogout}>Uitloggen</a>

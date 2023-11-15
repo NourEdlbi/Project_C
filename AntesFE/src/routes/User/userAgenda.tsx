@@ -21,62 +21,24 @@ export default function userAgenda() {
     // ... (existing events)
   ]);
 
-  const [newEvent, setNewEvent] = useState({
-    id: null,
-    title: '',
-    start: new Date(),
-    end: new Date(),
-  });
-
-  const handleEventChange = (e) => {
-    const { name, value } = e.target;
-    setNewEvent({
-      ...newEvent,
-      [name]: name === 'start' || name === 'end' ? new Date(value) : value,
-    });
-  };
-
-  const addEvent = () => {
-    setNewEvent({ ...newEvent, id: events.length + 1 });
-    setEvents([...events, newEvent]);
-  };
-
-  const exportEventsToJSON = () => {
-    const data = JSON.stringify(events, null, 2);
-    const blob = new Blob([data], { type: 'application/json' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'events.json';
-    a.click();
-    window.URL.revokeObjectURL(url);
-  };
 
   return (
-    <div>
+    <div className='agenda_pagina'>
       <div className="titel">
         <h1 >Agenda</h1>
       </div>
-      {/* <h1>Add Event</h1>
-      <form>
-        <input type="text" name="title" value={newEvent.title} onChange={handleEventChange} placeholder="Event Title" />
-        <input type="datetime-local" name="start" value={moment(newEvent.start).format('YYYY-MM-DDTHH:mm')} onChange={handleEventChange} />
-        <input type="datetime-local" name="end" value={moment(newEvent.end).format('YYYY-MM-DDTHH:mm')} onChange={handleEventChange} />
-        <button type="button" onClick={addEvent}>Add Event</button>
-      </form> */}
       <div className='calendar'>
         <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 700, width: 950, backgroundColor: '#F8EEF0', border: '1px', borderStyle: 'solid', borderColor: '#A2102C'}}
+        style={{ height: 570, width: 850, backgroundColor: '#F8EEF0', border: '1px', borderStyle: 'solid', borderColor: '#A2102C'}}
       />
-      {/* <button className='export_button' onClick={exportEventsToJSON}>Export to JSON</button></div> */}
       </div>
 
       <div className='events'>
-        <h1>Events</h1>
+        <h1 style={{padding: 2, position: 'relative', right: '70%'}}>Events</h1>
         <ul>
           <li>Event</li>
           <li>Event</li>

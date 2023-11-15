@@ -39,8 +39,8 @@ export default function Login() {
   };
 
   return (
-    <div className="pagecontent">
-      <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '70px' }} />
+    <div className="login">
+      <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '10rem' }} />
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <div className="form-group">

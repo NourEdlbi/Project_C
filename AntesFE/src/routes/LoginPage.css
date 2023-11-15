@@ -13,11 +13,16 @@
   h1 {
     font-size: 1.5em;
     margin-bottom: 10px;
+    position: absolute;
+    top: 18rem;
+    right: 46.5rem;
   }
   
   form {
     background-color: #F8EEF0;
-    width: 300px;
+    width: 22rem;
+    position: absolute;
+    top: 22rem;
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 8px;
@@ -28,12 +33,12 @@
     margin-bottom: 15px;
   }
   
-  label {
+  .form_group label {
     display: block;
     margin-bottom: 7px;
   }
   
-  input {
+  .form-group input {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -41,8 +46,10 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+
+
   
-  button {
+ button {
     background-color: #A2102C;
     color: white;
     padding: 10px;

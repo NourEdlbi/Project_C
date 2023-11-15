@@ -31,8 +31,11 @@
 
   .labels{
     background-color: #F8EEF0;
-    width: 1000px;
-    height: 600px;
+    position: absolute;
+    top: -12rem;
+    right: 17%;
+    width: 65rem;
+    height: 33rem;
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 8px;

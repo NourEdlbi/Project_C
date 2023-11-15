@@ -32,19 +32,20 @@ export default function Uhome() {
                 <h1>Posts</h1>
             </div >
 
-            <div className="forum_posts">
+            <div className="forum_posts" >
                 Hier komen forum posts die wij nog niet hebben.
             </div>
             
             <div className='agenda'>
                 <h1>Agenda</h1>
+                <p>.</p>
 
                 <Calendar
                     localizer={localizer}
                     events={events}
                     startAccessor="start"
                     endAccessor="end"
-                    style={{ height: 300, width: 300, backgroundColor: '#F8EEF0'}}
+                    style={{ height: '40vh', width: '112%', backgroundColor: '#F8EEF0', margin: -12}}
                 />
                 </div>
             

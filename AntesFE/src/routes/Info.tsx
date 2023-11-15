@@ -1,9 +1,13 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import '../info.css';
 export default function Info() {
    
 
     return (
-        <div >
+        <div className='info_pagina'>
             <div className="titel">
                 <h1 >Protocollen en richtlijnen</h1>
             </div>
