@@ -14,15 +14,16 @@
     font-size: 1.5em;
     margin-bottom: 10px;
     position: absolute;
-    top: 18rem;
-    right: 46.5rem;
+    top: 16rem;
+    right: 45rem;
   }
   
-  form {
+  .login form {
     background-color: #F8EEF0;
     width: 22rem;
-    position: absolute;
-    top: 22rem;
+    position: relative;
+    top: 3rem;
+    left: 36%;
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 8px;

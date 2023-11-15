@@ -4,13 +4,13 @@
  */
 .calendar{
     position: relative;
-    right: -5%;
+    right: -1%;
     top: 0rem;
 }
 
 .events{
     position: relative;
-    left: 74%;
+    left: 70%;
     top: -35.5rem;
     width: 3%;
     height: 35.5rem;
@@ -25,5 +25,5 @@
 .agenda_pagina .titel{
     position: relative;
     top: -2rem;
-    right: 38%;
+    right: 44%;
 }
