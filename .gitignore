@@ -7,3 +7,5 @@ AntesBE/.vs/AntesBE/DesignTimeBuild/.dtbcache.v2
 AntesBE/obj/Debug/net7.0/AntesBE.AssemblyInfo.cs
 *.cache
 *.editorconfig
+*.pdb
+AntesBE/obj/project.assets.json

@@ -1,10 +1,25 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using YourNamespace;
 
 namespace AntesBE.Controllers
 {
     public class AgendaController : Controller
     {
+        [Route("Getagenda/{maand}")]
+        [HttpGet]
+        public IActionResult Getagenda( int maand)
+        {
+            ForumContext db = new ForumContext();   
+            var x = db.Agendas.ToList(); // later hier agendas nemen tot ainde maand
+            
+
+            return Ok(x);
+        }
+
+
+
         // GET: AgendaController
         public ActionResult Index()
         {
