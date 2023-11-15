@@ -40,7 +40,7 @@ export default function AdminSidebar() {
             <div id="sbar" className="sidebar">
                 <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
                 <button className="closebtn" onClick={closeNav}> X </button>
-
+                <div className="border"></div>
                 <div className="sidebarbox">
                     <a href={`/adminSidebar/Home`} >Home</a>
                 </div>
@@ -64,6 +64,7 @@ export default function AdminSidebar() {
                 <div className="sidebarbox">
                     <a href={`/adminSidebar/inst`}>Instellingen</a>
                 </div>
+                <div className="border"></div>
             </div>
             <button id="open" className="openbtn" onClick={openNav}> Open Sidebar</button>
 

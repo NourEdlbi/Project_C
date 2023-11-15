@@ -77,6 +77,7 @@ export default function UserSidebar() {
             <div id="sbar" className="sidebar">
                 <img src={menuImage} alt="Menu" style={{ width: '120px', height: 'auto', padding: '30px'}} />
                 <button className="closebtn" onClick={closeNav}> X </button>
+                <div className="border"></div>
                 <div className="sidebarbox">
                     <a onClick={handleManageLogout}>Uitloggen</a>
                 </div>
@@ -116,6 +117,7 @@ export default function UserSidebar() {
                 <div className="sidebarbox">
                     <a onClick={handleManageSettings}>Instellingen</a>
                 </div>
+                <div className="border"></div>
             </div>
 
             <button id= "open" className="openbtn" onClick={openNav}> Open Sidebar</button> 

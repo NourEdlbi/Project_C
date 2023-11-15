@@ -1,0 +1,8 @@
+.quizbanner {
+    border: solid 5px rgb(181, 15, 34);
+    margin: 1em 1em;
+    border-radius: 1em;
+}
+    .quizbanner:hover {
+        background-color: rgba(181, 15, 34,0.2)
+    }

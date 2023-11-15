@@ -48,10 +48,7 @@
     /* Your hover color here */
 }
 .border {
-    border: solid rgb(181, 15, 34);
-    width: 12rem;
-    font-size: 12px;
-    margin: 20px;
+    border: solid 1px rgb(181, 15, 34);
 }
 
 .dropdown-content {
