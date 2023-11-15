@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AntesFE", "AntesFE", "{C7CFA60D-9E59-44CE-B8C4-9EF0C54534B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BCFFAC16-4FF0-40C4-BB7C-46E85BCFD507}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend", "AntesFE\src\backend\backend.csproj", "{B070493C-7234-46E9-929A-057B505BF373}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B070493C-7234-46E9-929A-057B505BF373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B070493C-7234-46E9-929A-057B505BF373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B070493C-7234-46E9-929A-057B505BF373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B070493C-7234-46E9-929A-057B505BF373}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BCFFAC16-4FF0-40C4-BB7C-46E85BCFD507} = {C7CFA60D-9E59-44CE-B8C4-9EF0C54534B3}
+		{B070493C-7234-46E9-929A-057B505BF373} = {BCFFAC16-4FF0-40C4-BB7C-46E85BCFD507}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A3A9E61-720A-4705-908D-ECFB3FE37FCB}
+	EndGlobalSection
+EndGlobal

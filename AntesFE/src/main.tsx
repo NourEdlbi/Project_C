@@ -1,8 +1,19 @@
+<<<<<<< HEAD
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider,} from "react-router-dom";
+import './index.css'
+=======
 
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css';
+>>>>>>> main
 import ErrorPage from "./error-page";
 import Login from './routes/Loginpage.tsx';
 import Info from './routes/Info.tsx';
@@ -41,6 +52,70 @@ function Main() {
         }, 100); // Check every 100ms
 
 
+<<<<<<< HEAD
+const router = createBrowserRouter([
+    {
+        path: "/",
+        //element: <Sidebar />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "/",
+                element: <Login/>,
+            },
+            {
+                path: "adminSidebar", // The path for adminSidebar
+                element: <ASidebar />, // Render the ASidebar component directly
+                children: [
+                    {
+                        path: "users",
+                        element: <Users/>,
+                    },
+                    {
+                        path: "adminForum",
+                        element: <AForum/>,
+                    },
+                    
+                ],
+                
+            },
+            {
+                path: "userSidebar", // The path for userSidebar
+                element: <USidebar />, // Render the USidebar component directly
+                children: [
+                    {
+                        path: "Profile",
+                        element: <Profiel/>,
+                    },
+                    {
+                        path: "agenda",
+                        element: <Uagenda/>,
+                    },
+                    {
+                        path: "userForum",
+                        element: <Uforum/>,
+                    },
+                    
+                ],
+            },
+            {
+                path: "agenda",
+                element: <Agenda />,
+            },
+            {
+                path: "Login",
+                element: <Login />
+            },
+            {
+                path: "Informatie",
+                element: <Info />
+            },
+            {
+                path: "inst",
+                element: <Inst />
+            },
+        ],
+=======
         return () => clearInterval(interval);
     }, [isNightMode]);
     
@@ -124,6 +199,7 @@ function Main() {
             ],
         },
     ]);
+>>>>>>> main
 
 
     return (

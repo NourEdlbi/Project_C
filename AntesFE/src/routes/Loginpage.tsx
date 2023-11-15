@@ -1,5 +1,11 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../routes/LoginPage.css';
+import menuImage from '../assets/Anteslogo.png'
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -33,11 +39,12 @@ export default function Login() {
   };
 
   return (
-    <div className="pagecontent">
+    <div className="login">
+      <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '5rem' }} />
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <div className="form-group">
-          <label>Email:</label>
+          <label>Email: </label>
           <input
             type="email"
             value={email}
@@ -46,7 +53,7 @@ export default function Login() {
           />
         </div>
         <div className="form-group">
-          <label>Password:</label>
+          <label>Password: </label>
           <input
             type="password"
             value={password}
@@ -55,7 +62,7 @@ export default function Login() {
           />
         </div>
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-        <button type="submit">Log In</button>
+        <button type="submit" style={{marginRight: '15px'}}>Log In</button>
         <button type="button" onClick={handleResetPassword}>Reset Password</button>
       </form>
     </div>

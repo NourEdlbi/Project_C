@@ -1,11 +1,18 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 .info{
-    position:fixed;
+    position:absolute;
     column-count:3;
     max-height: 10rem;
-    top: 5rem;
+    bottom: 8rem;
     column-gap: 40px;
     text-align:left;
-    left: 16rem;
+    left: 2rem;
 }
 
-
+.info_pagina .titel{
+    position: relative;
+    right: 28%;
+}

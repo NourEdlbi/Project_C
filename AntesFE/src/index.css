@@ -1,11 +1,13 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.pagecontent {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 .App {
@@ -43,9 +45,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1em;
-  background-color: rgb(255, 255, 255);
-  /* Set your desired background color */
+  background-color: #FFFFFF; /* Set your desired background color */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #213547;
   /* Default text color */
@@ -140,9 +140,9 @@ body.dark-mode a {
 }
 
 .titel {
-  position: fixed;
-  top: 1rem;
-  color: rgb(181, 15, 34);
-  left: 16rem;
+  font-size: 25px;
+    position: relative;
+    bottom: 19rem;
+    color: rgb(181, 15, 34);
+    right: 35rem;
 }
-

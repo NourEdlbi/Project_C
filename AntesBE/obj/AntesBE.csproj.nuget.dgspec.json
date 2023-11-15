@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj": {}
+    "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesFE\\src\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj": {
+    "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesFE\\src\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
-        "projectName": "AntesBE",
-        "projectPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
-        "packagesPath": "C:\\Users\\Noure\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\obj\\",
+        "projectUniqueName": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesFE\\src\\backend\\backend.csproj",
+        "projectName": "backend",
+        "projectPath": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesFE\\src\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesFE\\src\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Noure\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesFE\\NuGet.Config",
+          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
