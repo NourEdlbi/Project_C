@@ -12,9 +12,7 @@ namespace AntesBE.Controllers
         public IActionResult Getagenda( int maand)
         {
             ForumContext db = new ForumContext();   
-            var x = db.Agendas.ToList(); // later hier agendas nemen tot ainde maand
-            
-
+            var x = db.Agendas.Where(x=>x.Start_Date.Month.Equals(maand)).ToList(); // agenda van de maand
             return Ok(x);
         }
 
