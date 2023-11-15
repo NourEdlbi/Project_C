@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios';
 
-const localizer = momentLocalizer(moment);
+const localizer = momentLocalizer(moment);*/
 
 export default function userAgenda() {
 
-    const [events, setEvents] = useState([
+   /* const [events, setEvents] = useState([
     {
         id: 1,
         title: 'Event 1',
@@ -60,7 +60,7 @@ export default function userAgenda() {
             console.log(response);
         })
     }
-    
+    */
 
     
 
@@ -68,7 +68,7 @@ export default function userAgenda() {
   return (
     <div>
       <h1>AGENDA</h1>
-      <h1>Add Event</h1>
+      {/*<h1>Add Event</h1>
       <form>
         <input type="text" name="title" value={newEvent.title} onChange={handleEventChange} placeholder="Event Title" />
         <input type="datetime-local" name="start" value={moment(newEvent.start).format('YYYY-MM-DDTHH:mm')} onChange={handleEventChange} />
@@ -85,7 +85,7 @@ export default function userAgenda() {
           />
           
           <button onClick={werk}>Export to </button>
-          <button onClick={werk}> test</button>
+          <button onClick={werk}> test</button>*/}
     </div>
   );
 }

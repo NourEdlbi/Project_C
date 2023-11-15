@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import HttpService from '../httpservice.ts';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +30,12 @@ export default function Login() {
   const handleResetPassword = () => {
     // Navigate to the PasswordReset page
     navigate('/password-reset'); // Update this path to match your route for PasswordReset
-  };
+    };
+
+    const Login = () => {
+        const httpservice = new HttpService();
+        httpservice.post('https://localhost:7109/', "Login", { email: { email }, wachtwoord: {password}  } )
+    }
 
   return (
     <div className="pagecontent">
@@ -55,7 +60,7 @@ export default function Login() {
           />
         </div>
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-        <button type="submit">Log In</button>
+              <button type="submit" onClick={Login }>Log In</button>
         <button type="button" onClick={handleResetPassword}>Reset Password</button>
       </form>
     </div>
