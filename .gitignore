@@ -4,3 +4,6 @@ AntesBE/obj/Debug/net8.0/AntesBE.AssemblyInfoInputs.cache
 AntesBE/.vs/AntesBE/DesignTimeBuild/.dtbcache.v2
 *.dll
 *.cache
+AntesBE/obj/Debug/net7.0/AntesBE.AssemblyInfo.cs
+*.cache
+*.editorconfig
