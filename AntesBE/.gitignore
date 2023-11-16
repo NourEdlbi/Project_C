@@ -1,0 +1,16 @@
+*.vsidx
+AntesBE/obj/Debug/net8.0/AntesBE.AssemblyInfoInputs.cache
+AntesBE/.vs/AntesBE/DesignTimeBuild/.dtbcache.v2
+*.dll
+*.cache
+AntesBE/obj/Debug/net7.0/AntesBE.AssemblyInfo.cs
+*.cache
+*.editorconfig
+*.pdb
+AntesBE/obj/project.assets.json
+AntesBE/bin/Debug/net7.0/AntesBE.exe
+AntesBE/bin/Debug/net7.0/AntesBE.dll
+AntesBE/bin/Debug/net7.0/AntesBE.exe
+AntesBE/bin/Debug/net7.0/AntesBE.dll
+AntesBE/bin/Debug/net7.0/AntesBE.exe
+AntesBE/bin/Debug/net7.0/AntesBE.dll
