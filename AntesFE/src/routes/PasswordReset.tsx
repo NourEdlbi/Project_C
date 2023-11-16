@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
+import { useNavigate } from 'react-router-dom';
 
 export default function PasswordReset() {
-  const [emailSent, setEmailSent] = useState(false); // State to track email sending status
-  const [emailSendingError, setEmailSendingError] = useState(""); // State to track email sending errors
-
+    const [emailSent, setEmailSent] = useState(false); // State to track email sending status
+    const [emailSendingError, setEmailSendingError] = useState(""); // State to track email sending errors
+    const navigate = useNavigate();
+    const tologin = () => {
+        navigate('/');
+    }
   // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +20,8 @@ export default function PasswordReset() {
     const templateParams = {
       email_to: email, // Update the property to match the template variable
       // Add other parameters if needed
-    };
+      };
+      
 
     // Send the email
     emailjs.send(
@@ -51,10 +56,11 @@ export default function PasswordReset() {
             required
           />
         </div>
-        <button type="submit">Wachtwoord aanvragen</button>
+              <button type="submit">Wachtwoord aanvragen</button>
       </form>
       {emailSent && <p>Mail is verzonden!</p>}
-      {emailSendingError && <p className="error-message">{emailSendingError}</p>}
+          {emailSendingError && <p className="error-message">{emailSendingError}</p>}
+          <button onClick={tologin}> To Login page</button>
     </div>
   );
 }
