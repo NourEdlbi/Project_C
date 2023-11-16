@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import menuImage from '../assets/Anteslogo.png';
 import '../routes/LoginPage.css';
+import {  useNavigate } from 'react-router-dom';
 
 const formStyle = {
   display: 'flex',
@@ -47,7 +48,11 @@ export default function AddUser() {
 
     alert('User registered successfully!');
     console.log('Form submitted', formData);
-  };
+    };
+    const navigate = useNavigate();
+    const tologin = () => {
+        navigate('/');
+    }
 
   return (
     <div style={formStyle}>
@@ -91,7 +96,7 @@ export default function AddUser() {
               required
             />
           </div>
-          <button type="submit">Register</button>
+                  <button onClick={ tologin} type="submit">Register</button>
         </form>
       </div>
     </div>
