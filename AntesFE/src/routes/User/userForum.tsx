@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Card, CardContent, Typography, CardActions } from '@mui/material';
 
@@ -37,7 +41,7 @@ export default function UserForum() {
 
   return (
     <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
-      <Typography variant="h2" component="h1" gutterBottom>
+        <Typography variant="h2" component="h1" gutterBottom style={{position: 'relative', color: '#A2102C', bottom: '100%', left: '1%'}}>
         Forum
       </Typography>
       {selectedPost ? (

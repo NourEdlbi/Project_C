@@ -33,13 +33,13 @@
 .forum_posts{
     width: 60%;
     height: 39rem;
+    background-color: #F8EEF0;
     position: relative;
     bottom: 2rem;
     left: 1%;
     border: 1px solid #A2102C; 
     padding: 20px;
     margin: 30px 0;
-    background-color: #FFF;
     flex: 1 0 50rem;
 }
 
@@ -52,4 +52,44 @@
     bottom: 43rem;
     left: 67%;
     padding: 40px
+}
+
+.fake_post{
+    background-color: #FFF;
+    width: 95%;
+    border: 1px solid #A2102C;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.picture{
+    width: 10%;
+    height: 4rem;
+    background-color: #ee9fae;
+}
+
+.name{
+    font-weight: bold;
+    position: relative;
+    bottom: 4rem;
+    right: 32%;
+}
+
+.date{
+    position: relative;
+    bottom: 5.3rem;
+    right: 18%;
+}
+
+.content1{
+    position: relative;
+    bottom: 4rem;
+    left: 5%;
+    text-align: wrap;
+}
+.content2{
+    position: relative;
+    bottom: 3.5rem;
+    left: 5%;
+    text-align: wrap;
 }

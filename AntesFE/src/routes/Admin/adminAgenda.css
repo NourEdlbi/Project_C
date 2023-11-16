@@ -32,12 +32,47 @@
   }
 
 
-.events{
+.admin_events{
     position: relative;
-    left: 70%;
+    left: 71.5%;
     top: -35.5rem;
-    width: 3%;
-    height: 35.5rem;
+    width: 6%;
+    height: 17rem;
+    border: 1px;
+    border-style: solid;
+    border-color: brown;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.admin_agenda .titel{
+    position: relative;
+    top: -2rem;
+    right: 37%;
+}
+
+
+.admin_events h1{
+  position: relative;
+  right: 50%;
+  top: 3%;
+}
+
+.admin_events ul{
+  position: relative;
+  top: 8%;
+  right: 4%;
+  list-style-position: inside;
+}
+
+.add_event{
+  position: relative;
+    left: 71.5%;
+    top: -34rem;
+    width: 6%;
+    height: 17rem;
     border: 1px;
     border-style: solid;
     border-color: brown;
@@ -46,8 +81,20 @@
     text-align: center;
 }
 
-.agenda_pagina .titel{
-    position: relative;
-    top: -2rem;
-    right: 44%;
+.add_event h1{
+  white-space: nowrap;
+  position: relative;
+  right: 45%;
+  top: 3%;
+}
+
+.add_event input{
+  position: relative;
+  top: 15%;
+  right: 50%;
+}
+
+.add_event .add_button{
+  position: relative;
+  top: 20%;
 }

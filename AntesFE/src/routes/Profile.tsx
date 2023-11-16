@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useState, useEffect } from 'react';
 import '../routes/Profile.css';
 
@@ -66,7 +70,7 @@ export default function Profile() {
           <button onClick={saveProfile}>Opslaan</button> {/* Save button */}
         </div>
       ) : (
-        <div className='info'>
+        <div className='info_page'>
           <p>
             <strong>Name:</strong> {name}
           </p>

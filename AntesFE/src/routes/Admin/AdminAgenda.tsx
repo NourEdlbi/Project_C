@@ -51,7 +51,7 @@ export default function AdminAgenda() {
     };
 
     return (
-        <div className='agenda_pagina'>
+        <div className='admin_agenda'>
             <div className="titel">
                 <h1>Admin Agenda</h1>
             </div>
@@ -65,19 +65,22 @@ export default function AdminAgenda() {
                 />
             </div>
 
-            <div className='events'>
+            <div className='admin_events'>
                 <h1 style={{ padding: 2, position: 'relative', right: '70%' }}>Admin Events</h1>
                 <ul>
                     {events.map((event, index) => (
                         <li key={index}>{event.title}</li>
                     ))}
                 </ul>
-                <div>
-                    <h2>Add Event</h2>
+            </div>
+
+            <div className='add_event'>
+                    <h1>Add Event</h1>
                     <input type="text" name="title" placeholder="Title" value={newEvent.title} onChange={handleEventChange} />
                     <input type="text" name="description" placeholder="Description" value={newEvent.description} onChange={handleEventChange} />
                     <input type="datetime-local" name="start" value={newEvent.start} onChange={handleEventChange} />
                     <input type="datetime-local" name="end" value={newEvent.end} onChange={handleEventChange} />
+                <div className='add_button'>
                     <button onClick={addEvent}>Add</button>
                 </div>
             </div>

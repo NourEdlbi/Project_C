@@ -33,7 +33,60 @@ export default function Uhome() {
             </div >
 
             <div className="forum_posts" >
-                Hier komen forum posts die wij nog niet hebben.
+                <div className='fake_post'>
+                    <div className='picture'>
+                        .
+                    </div>
+                    <div className='name'>
+                        Wiktoria C.
+                    </div>
+                    <div className='date'>
+                        13-11-2023
+                    </div>
+                    <div className='content1'>
+                        Dit is de forum post content. Hier komt een text in. De content van de post is er nog niet
+                    </div>
+                    <div className='content2'>
+                        Dit is de forum post content. Hier komt een text in. De content van de post is er nog niet
+                    </div>
+                </div>
+
+                <div className='fake_post'>
+                    <div className='picture'>
+                        .
+                    </div>
+                    <div className='name'>
+                        Appie A.
+                    </div>
+                    <div className='date'>
+                        14-11-2023
+                    </div>
+                    <div className='content1'>
+                        Dit is de forum post content. Hier komt een text in. De content van de post is er nog niet
+                    </div>
+                    <div className='content2'>
+                        Dit is de forum post content. Hier komt een text in. De content van de post is er nog niet
+                    </div>
+                </div>
+
+                <div className='fake_post'>
+                    <div className='picture'>
+                        .
+                    </div>
+                    <div className='name'>
+                        Nour E.
+                    </div>
+                    <div className='date'>
+                        14-11-2023
+                    </div>
+                    <div className='content1'>
+                        Dit is de forum post content. Hier komt een text in. De content van de post is er nog niet
+                    </div>
+                    <div className='content2'>
+                        Dit is de forum post content. Hier komt een text in. De content van de post is er nog niet
+                    </div>
+                </div>
+
             </div>
             
             <div className='agenda'>

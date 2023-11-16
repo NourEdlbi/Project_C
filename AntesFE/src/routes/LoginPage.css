@@ -3,66 +3,66 @@
  *   All rights reserved.
  */
  .pagecontent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .login h1 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    position: absolute;
-    top: 16rem;
-    right: 45rem;
-  }
-  
-  .login form {
-    background-color: #F8EEF0;
-    width: 22rem;
-    position: relative;
-    top: 3rem;
-    left: 36%;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form_group label {
-    display: block;
-    margin-bottom: 7px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login h1 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  position: absolute;
+  top: 16rem;
+  right: 45rem;
+}
+
+.login form {
+  background-color: #F8EEF0;
+  width: 22rem;
+  position: relative;
+  top: 3rem;
+  left: 36%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form_group label {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
 
-  
- button {
-    background-color: #A2102C;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #020b64;
-  }
-  
-  .error-message {
-    color: red;
-  }
+
+button {
+  background-color: #A2102C;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f34c6d;
+}
+
+.error-message {
+  color: red;
+}
