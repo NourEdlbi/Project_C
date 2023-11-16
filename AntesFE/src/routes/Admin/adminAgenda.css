@@ -1,0 +1,53 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
+ .title h1 {
+    text-align: right; /* Aligns text to the right */
+    padding-right: 20px; /* Adds some space on the right */
+  }
+  
+  /* Centers the "Admin Events" section */
+  .admin-events h2 {
+    text-align: center; /* Aligns text to the center */
+  }
+  
+  /* Styles for the "Add Event" form to make sure it is also centered */
+  .admin-events > div {
+    text-align: center; /* Centers the content */
+    margin: auto; /* Applies automatic margins on all sides */
+  }
+  
+  /* Additional styles to ensure that input and button elements inside .admin-events are centered */
+  .admin-events input,
+  .admin-events button {
+    display: block; /* Makes these elements block-level so they can be centered */
+    margin: 10px auto; /* Adds margin to the top and bottom, and auto to the left and right */
+  }
+  
+  /* Make sure the calendar takes up the maximum available width */
+  .calendar {
+    flex-grow: 1; /* Allows the calendar to grow and occupy available space */
+    width: 100%; /* Calendar takes full width of its container */
+  }
+
+
+.events{
+    position: relative;
+    left: 70%;
+    top: -35.5rem;
+    width: 3%;
+    height: 35.5rem;
+    border: 1px;
+    border-style: solid;
+    border-color: brown;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+}
+
+.agenda_pagina .titel{
+    position: relative;
+    top: -2rem;
+    right: 44%;
+}

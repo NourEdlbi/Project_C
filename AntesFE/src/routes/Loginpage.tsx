@@ -1,16 +1,39 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import menuImage from '../assets/Anteslogo.png';
 import '../routes/LoginPage.css';
-import menuImage from '../assets/Anteslogo.png'
+
+const loginFormStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '100vh',
+};
+
+const logoStyle = {
+  width: '300px',
+  height: 'auto',
+  position: 'relative',
+  bottom: '5rem',
+};
+
+const formContainerStyle = {
+  backgroundColor: '#ffffff',
+  padding: '20px',
+  borderRadius: '8px',
+  boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
+};
+
+const errorStyle = {
+  color: 'red',
+  marginBottom: '10px',
+};
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // State for error message
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
@@ -21,50 +44,54 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault(); // Prevent default form submission
-    if (email === 'user@antes.nl' && password === 'Welkom0') {
-      navigate('/userSidebar');
-    } else if (email === 'admin@antes.nl' && password === 'Welkom1') {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    // Check for the hardcoded admin user
+    if (email === 'admin@antes.nl' && password === 'Welkom1') {
       navigate('/adminSidebar');
+      return; // Exit the function early
+    }
+  
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find((user) => user.email === email && user.password === password);
+  
+    if (user) {
+      navigate('/userSidebar');
     } else {
-      // Set an error message
       setErrorMessage('Incorrect email or password');
     }
   };
-
-  const handleResetPassword = () => {
-    // Navigate to the PasswordReset page
-    navigate('/password-reset'); // Update this path to match your route for PasswordReset
-  };
+  
 
   return (
-    <div className="login">
-      <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '5rem' }} />
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label>Email: </label>
-          <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            placeholder="Email"
-          />
-        </div>
-        <div className="form-group">
-          <label>Password: </label>
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="Password"
-          />
-        </div>
-        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-        <button type="submit" style={{marginRight: '15px'}}>Log In</button>
-        <button type="button" onClick={handleResetPassword}>Reset Password</button>
-      </form>
+    <div style={loginFormStyle}>
+      <img src={menuImage} alt="Logo" style={logoStyle} />
+      <div style={formContainerStyle}>
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+              placeholder="Email"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder="Password"
+            />
+          </div>
+          {errorMessage && <div style={errorStyle}>{errorMessage}</div>}
+          <button type="submit">Log In</button>
+        </form>
+      </div>
     </div>
   );
 }

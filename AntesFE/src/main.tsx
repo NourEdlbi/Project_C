@@ -25,6 +25,7 @@ import Uagenda from './routes/User/userAgenda.tsx';
 import Uforum from './routes/User/userForum.tsx';
 import Uhome from './routes/User/UserHomepage.tsx';
 import Uquiz from './routes/User/UserQuiz.tsx';
+import AddUser from './routes/adduser.tsx';
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -56,6 +57,10 @@ function Main() {
                 {
                     path: "/",
                     element: <Login />,
+                },
+                {
+                    path: "register", // <-- Add this route for registration
+                    element: <AddUser />, // <-- Associate it with the AddUser component
                 },
                 {
                     path: "password-reset", // Define the route for password reset

@@ -1,29 +1,24 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
-.calendar{
-    position: relative;
-    right: -1%;
-    top: 0rem;
-}
-
-.events{
-    position: relative;
-    left: 70%;
-    top: -35.5rem;
-    width: 3%;
-    height: 35.5rem;
-    border: 1px;
-    border-style: solid;
-    border-color: brown;
-    padding-left: 10%;
-    padding-right: 10%;
-    text-align: center;
-}
-
-.agenda_pagina .titel{
-    position: relative;
-    top: -2rem;
-    right: 44%;
-}
+.agenda-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the start of the flex container */
+  }
+  
+  .calendar-container {
+    /* Assuming .calendar-container wraps the .calendar */
+    flex-grow: 2; /* Takes twice the space of .events if needed */
+    /* Remove any margin or padding that may push the calendar to the right */
+  }
+  
+  .events {
+    flex-grow: 1; /* Allow the events list to grow but only take necessary space */
+    margin-left: 20px; /* Space between the calendar and the events list */
+    /* Ensure there's no excessive margin or padding on the right pushing it too far */
+    margin-right: 0;
+    padding: 0 1rem; /* Adjust padding inside the events list */
+    /* Adjust width or max-width as necessary */
+    width: auto; /* Allow it to auto-adjust based on the content */
+    max-width: 300px; /* Example max width, adjust as needed */
+  }
+  

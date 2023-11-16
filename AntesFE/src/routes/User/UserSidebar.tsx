@@ -17,7 +17,7 @@ export default function UserSidebar() {
 
     const handleManageLogout = () => {
         // Navigate to the "Profile" route
-        navigate('logout');
+        navigate('/');
     };
 
     const handleManageHome = () => {

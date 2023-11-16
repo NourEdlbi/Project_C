@@ -64,6 +64,9 @@ export default function AdminSidebar() {
                 <div className="sidebarbox">
                     <a href={`/adminSidebar/inst`}>Instellingen</a>
                 </div>
+                <div className="sidebarbox">
+                    <a href={`/`}>Uitloggen</a>
+                </div>
             </div>
             <button id="open" className="openbtn" onClick={openNav}> Open Sidebar</button>
 
