@@ -62,6 +62,10 @@ export default function Login() {
       setErrorMessage('Incorrect email or password');
     }
   };
+
+  const handleForgotPassword = () => {
+    navigate('/password-reset');
+  };
   
 
   return (
@@ -77,6 +81,7 @@ export default function Login() {
               value={email}
               onChange={handleEmailChange}
               placeholder="Email"
+              required
             />
           </div>
           <div className="form-group">
@@ -86,10 +91,14 @@ export default function Login() {
               value={password}
               onChange={handlePasswordChange}
               placeholder="Password"
+              required
             />
           </div>
           {errorMessage && <div style={errorStyle}>{errorMessage}</div>}
           <button type="submit">Log In</button>
+          <button type="button" onClick={handleForgotPassword} style={{ marginTop: '10px' }}>
+            Wachtwoord Vergeten
+          </button>
         </form>
       </div>
     </div>
