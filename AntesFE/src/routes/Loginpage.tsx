@@ -33,38 +33,44 @@ export default function Login() {
     }
   };
 
-  const handleResetPassword = () => {
-    // Navigate to the PasswordReset page
-    navigate('/password-reset'); // Update this path to match your route for PasswordReset
+  const handleForgotPassword = () => {
+    navigate('/password-reset');
   };
+  
 
   return (
-    <div className="login">
-      <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '5rem' }} />
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label>Email: </label>
-          <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            placeholder="Email"
-          />
-        </div>
-        <div className="form-group">
-          <label>Password: </label>
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="Password"
-          />
-        </div>
-        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-        <button type="submit" style={{marginRight: '15px'}}>Log In</button>
-        <button type="button" onClick={handleResetPassword}>Reset Password</button>
-      </form>
+    <div style={loginFormStyle}>
+      <img src={menuImage} alt="Logo" style={logoStyle} />
+      <div style={formContainerStyle}>
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder="Password"
+              required
+            />
+          </div>
+          {errorMessage && <div style={errorStyle}>{errorMessage}</div>}
+          <button type="submit">Log In</button>
+          <button type="button" onClick={handleForgotPassword} style={{ marginTop: '10px' }}>
+            Wachtwoord Vergeten
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

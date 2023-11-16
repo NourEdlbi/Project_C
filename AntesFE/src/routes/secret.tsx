@@ -1,21 +1,11 @@
 import React, { useState } from 'react';
-import menuImage from '../assets/Anteslogo.png';
-import '../routes/LoginPage.css';
-import {  useNavigate } from 'react-router-dom';
 
-const formStyle = {
+const updateFormStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   height: '100vh',
-};
-
-const logoStyle = {
-  width: '300px',
-  height: 'auto',
-  position: 'relative',
-  bottom: '5rem',
 };
 
 const formContainerStyle = {
@@ -25,8 +15,8 @@ const formContainerStyle = {
   boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
 };
 
-export default function AddUser() {
-  const [formData, setFormData] = useState({ email: '', password: '', confirmPassword: '' });
+export default function UpdatePassword() {
+  const [formData, setFormData] = useState({ email: '', newPassword: '', confirmPassword: '' });
 
   const handleChange = (e) => {
     setFormData({
@@ -37,66 +27,65 @@ export default function AddUser() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
+    if (formData.newPassword !== formData.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    users.push({ email: formData.email, password: formData.password });
-    localStorage.setItem('users', JSON.stringify(users));
+    // Get existing users from localStorage
+    let users = JSON.parse(localStorage.getItem('users') || '[]');
+    const userIndex = users.findIndex((user) => user.email === formData.email);
 
-    alert('User registered successfully!');
-    console.log('Form submitted', formData);
-    };
-    const navigate = useNavigate();
-    const tologin = () => {
-        navigate('/');
+    if (userIndex !== -1) {
+      // User exists, update password
+      users[userIndex].password = formData.newPassword;
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Password updated successfully!');
+    } else {
+      // User does not exist
+      alert('No user found with that email');
     }
+  };
 
   return (
-    <div style={formStyle}>
-      <img src={menuImage} alt="Logo" style={logoStyle} />
+    <div style={updateFormStyle}>
       <div style={formContainerStyle}>
-        <h1>Register</h1>
+        <h1>Update Password</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Email:</label>
             <input
               type="email"
-              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Email"
+              placeholder="Enter your email"
               required
             />
           </div>
           <div className="form-group">
-            <label>Password:</label>
+            <label>New Password:</label>
             <input
               type="password"
-              id="password"
-              name="password"
-              value={formData.password}
+              name="newPassword"
+              value={formData.newPassword}
               onChange={handleChange}
-              placeholder="Password"
+              placeholder="New Password"
               required
             />
           </div>
           <div className="form-group">
-            <label>Confirm Password:</label>
+            <label>Confirm New Password:</label>
             <input
               type="password"
-              id="confirmPassword"
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              placeholder="Confirm Password"
+              placeholder="Confirm New Password"
               required
             />
           </div>
-                  <button onClick={ tologin} type="submit">Register</button>
+          <button type="submit">Update Password</button>
         </form>
       </div>
     </div>
