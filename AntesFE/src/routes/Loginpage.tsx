@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -31,6 +32,11 @@ export default function Login() {
     // Navigate to the PasswordReset page
     navigate('/password-reset'); // Update this path to match your route for PasswordReset
   };
+    const submitlogin = () => {
+        fetch("https://localhost:7109/WeatherForecast", {
+            method: "GET"
+        }).then((res) => console.log(res));
+    }
 
   return (
     <div className="pagecontent">
@@ -55,9 +61,12 @@ export default function Login() {
           />
         </div>
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-        <button type="submit">Log In</button>
+              <button onClick={submitlogin} type="submit">Log In</button>
+
+              
         <button type="button" onClick={handleResetPassword}>Reset Password</button>
-      </form>
-    </div>
+          </form>
+          <button onClick={submitlogin} >g In</button>
+    </div> 
   );
 }

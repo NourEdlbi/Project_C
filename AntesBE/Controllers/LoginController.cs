@@ -3,9 +3,10 @@ using YourNamespace;
 
 namespace AntesBE.Controllers
 {
+    
     public class LoginController : Controller
     {
-        [Route("Login/{email}")]
+        [Route("Login")]
         [HttpGet]
         public IActionResult Login(string email, string wachtwoord) 
         {
