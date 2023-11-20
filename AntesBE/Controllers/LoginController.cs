@@ -3,11 +3,9 @@ using YourNamespace;
 
 namespace AntesBE.Controllers
 {
-    
-    public class LoginController : Controller
+    public class LoginController : Mycontrollerbase
     {
-        [Route("Login")]
-        [HttpGet]
+        [HttpPost]
         public IActionResult Login(string email, string wachtwoord) 
         {
             ForumContext db = new ForumContext();
@@ -19,9 +17,9 @@ namespace AntesBE.Controllers
             return BadRequest();
             
         }
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             return View();
-        }
+        }*/
     }
 }

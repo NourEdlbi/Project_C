@@ -461,3 +461,5 @@ C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\runtimes\
 C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\obj\Debug\net7.0\AntesBE.RazorAssemblyInfo.cache
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\obj\Debug\net7.0\AntesBE.RazorAssemblyInfo.cs

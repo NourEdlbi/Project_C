@@ -4,19 +4,19 @@ namespace AntesBE.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class Mycontrollerbase : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        /*private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        *//*private readonly ILogger<Mycontrollerbase> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public Mycontrollerbase(ILogger<Mycontrollerbase> logger)
         {
             _logger = logger;
-        }
+        }*//*
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
@@ -28,6 +28,6 @@ namespace AntesBE.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
-        }
+        }*/
     }
 }
