@@ -33,3 +33,15 @@
     .Gotoquizbutton:hover {
         background-color: rgba(181, 15, 34,0.2)
     }
+
+.question {
+    background-color: rgba(181, 15, 34,0.2);
+    border: solid 2px;
+    margin: 1em 1em;
+}
+
+.answers {
+    background-color: rgba(181, 15, 34,0.2);
+    border: solid 2px;
+    margin: 1em 1em;
+}

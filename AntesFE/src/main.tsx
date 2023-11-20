@@ -25,6 +25,7 @@ import Uagenda from './routes/User/userAgenda.tsx';
 import Uforum from './routes/User/userForum.tsx';
 import Uhome from './routes/User/UserHomepage.tsx';
 import Uquiz from './routes/User/UserQuiz.tsx';
+import Uquizzes from './routes/User/UserQuizzes.tsx';
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -121,7 +122,12 @@ function Main() {
                         },
                         {
                             path: "Quizzes",
-                            element: <Uquiz />
+                            element: <Uquizzes />,
+                        },
+                        {
+                            path: "Quizzes/:id",
+                            element: <Uquiz />,
+
                         },
                     ],
                 },
