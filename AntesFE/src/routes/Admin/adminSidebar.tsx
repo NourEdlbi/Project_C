@@ -11,6 +11,44 @@ export default function AdminSidebar() {
         // Navigate to the "Manage Users" route
         navigate('users');
     };
+    const handleManageProfile = () => {
+        // Navigate to the "Profile" route
+        navigate('profile');
+    };
+
+    const handleManageLogout = () => {
+        // Navigate to the "Profile" route
+        navigate('logout');
+    };
+
+    const handleManageHome = () => {
+        // Navigate to the "Profile" route
+        navigate('Home');
+    };
+
+    const handleManageAgenda = () => {
+        // Navigate to the "Agenda" route
+        navigate('adminAgenda');
+    };
+
+    const handleManageForum = () => {
+        // Navigate to the "Profile" route
+        navigate('adminForum');
+    };
+
+    const handleManageSettings = () => {
+        // Navigate to the "Profile" route
+        navigate('inst');
+    };
+
+    const handleManageInfo = () => {
+        // Navigate to the "Profile" route
+        navigate('Informatie');
+    };
+    const handleManageQuiz = () => {
+        // Navigate to the "Profile" route
+        navigate('adminQuiz');
+    };
 
     function closeNav() {
         const x = document.getElementById("sbar") as HTMLElement;
@@ -41,8 +79,17 @@ export default function AdminSidebar() {
                 <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
                 <button className="closebtn" onClick={closeNav}> X </button>
                 <div className="border"></div>
+
                 <div className="sidebarbox">
-                    <a href={`/adminSidebar/Home`} >Home</a>
+                    <a onClick={handleManageLogout}>Uitloggen</a>
+                </div>
+
+                <div className="sidebarbox">
+                    <a onClick={handleManageHome}>Home</a>
+                </div>
+
+                <div className="sidebarbox">
+                    <a onClick={handleManageProfile}>Profiel</a>
                 </div>
 
                 <div className="sidebarbox">
@@ -50,20 +97,25 @@ export default function AdminSidebar() {
                 </div>
                 
                 <div className="sidebarbox">
-                    <a href={`/adminSidebar/adminQuiz`}>Manage Quiz</a>
+                    <a onClick={handleManageQuiz}>Manage Quiz</a>
                 </div>
+
                 <div className="sidebarbox">
-                    <a href={`/adminSidebar/adminAgenda`}>Manage Agenda</a>
+                    <a onClick={handleManageAgenda }>Manage Agenda</a>
                 </div>
+
                 <div className="sidebarbox">
-                    <a href={`/adminSidebar/adminForum`}>Forum</a>
+                    <a onClick={ handleManageForum}>Forum</a>
                 </div>
+
                 <div className="sidebarbox">
-                    <a href={`/adminSidebar/Informatie`}>Informatie</a>
+                    <a onClick={ handleManageInfo}>Informatie</a>
                 </div>
+
                 <div className="sidebarbox">
-                    <a href={`/adminSidebar/inst`}>Instellingen</a>
+                    <a onClick={handleManageSettings }>Instellingen</a>
                 </div>
+
                 <div className="border"></div>
             </div>
             <button id="open" className="openbtn" onClick={openNav}> Open Sidebar</button>
