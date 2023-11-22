@@ -35,12 +35,12 @@ export default function Aquiz() {
 
     }
     const Makequiz = (e) => {
-       navigate("/userSidebar/Quizzes/MakeQuiz")
+       navigate("/adminSidebar/Quizzes/MakeQuiz")
     }
 
     function navigateToQuiz(id) {
-        const route = "/userSidebar/Quizzes/" + { id };
-        navigate("/userSidebar/Quizzes/1");
+        const route = "/adminSidebar/Quizzes/" + { id };
+        navigate("/adminSidebar/Quizzes/1");
     }
 
     return (

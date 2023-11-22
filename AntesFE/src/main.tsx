@@ -80,6 +80,14 @@ function Main() {
                             element: <Aquiz />,
                         },
                         {
+                            path: "Quizzes/MakeQuiz",
+                            element: <Addquiz />,
+                        },
+                        {
+                            path: "Quizzes/:id",
+                            element: <Aquiz />,
+                        },
+                        {
                             path: "adminAgenda",
                             element: <AdminAgenda />,
                         },
@@ -124,11 +132,7 @@ function Main() {
                         {
                             path: "Quizzes",
                             element: <Uquizzes />,
-                        },
-                        {
-                            path: "Quizzes/MakeQuiz",
-                            element: <Addquiz />,
-                        },
+                        },                        
                         {
                             path: "Quizzes/:id",
                             element: <Uquiz />,
