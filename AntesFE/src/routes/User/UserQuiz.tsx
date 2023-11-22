@@ -1,4 +1,4 @@
-import "./UserQuiz.css";
+import "../Quiz.css";
 import { useParams } from 'react-router-dom';
 
 export default function Uquiz() {

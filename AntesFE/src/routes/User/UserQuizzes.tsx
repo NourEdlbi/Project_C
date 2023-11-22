@@ -1,4 +1,4 @@
-import "./UserQuiz.css";
+import "../Quiz.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function Uquizzes() {
@@ -41,6 +41,7 @@ export default function Uquizzes() {
 
     return (
         <div>
+
             <div className="titel">
                 <h1> Quiz</h1>
             </div>
