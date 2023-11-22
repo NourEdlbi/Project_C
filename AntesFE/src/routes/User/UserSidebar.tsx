@@ -6,6 +6,8 @@ import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import menuImage from '../../assets/Anteslogo.png';
 import "../../headeroverlay.css";
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';import { SvgIcon } from '@mui/material';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function UserSidebar() {
     const navigate = useNavigate();
@@ -75,8 +77,8 @@ export default function UserSidebar() {
     return (
         <div>
             <div id="sbar" className="sidebar">
-                <img src={menuImage} alt="Menu" style={{ width: '120px', height: 'auto', padding: '30px'}} />
-                <button className="closebtn" onClick={closeNav}> X </button>
+                <img src={menuImage} alt="Menu" style={{ width: '75%', height: 'auto', margin: '15%'}} />
+                <button className="closebtn" onClick={closeNav}>X</button>
                 <div className="border"></div>
                 <div className="sidebarbox">
                     <a onClick={handleManageLogout}>Uitloggen</a>
@@ -119,8 +121,9 @@ export default function UserSidebar() {
                 </div>
                 <div className="border"></div>
             </div>
-
-            <button id= "open" className="openbtn" onClick={openNav}> Open Sidebar</button> 
+            <button id= "open" className="openbtn" onClick={openNav}> 
+            <KeyboardDoubleArrowRightIcon style={{padding: '0', width: '23px'}}></KeyboardDoubleArrowRightIcon> 
+            </button> 
             <div id="detail">
                 <Outlet />
             </div>
