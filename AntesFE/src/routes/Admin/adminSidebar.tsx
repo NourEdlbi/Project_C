@@ -76,7 +76,7 @@ export default function AdminSidebar() {
     return (
         <>
             <div id="sbar" className="sidebar">
-                <img src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
+                <img className="image" src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
                 <button className="closebtn" onClick={closeNav}> X </button>
                 <div className="border"></div>
 

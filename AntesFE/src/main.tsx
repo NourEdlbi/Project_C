@@ -68,6 +68,14 @@ function Main() {
                     element: <ASidebar />, // Render the ASidebar component directly
                     children: [
                         {
+                            path: "Profile",
+                            element: <Profiel />,
+                        },
+                        {
+                            path: "Home",
+                            element: <Uhome />
+                        },
+                        {
                             path: "users",
                             element: <Users/>,
                         },
