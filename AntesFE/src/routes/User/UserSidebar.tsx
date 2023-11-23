@@ -97,7 +97,7 @@ export default function UserSidebar() {
                 <div className="sidebarbox">
                     <a onClick={handleManageInfo}>Informatie</a>
                   
-                    <div className="dropdown-content">
+                   {/* <div className="dropdown-content">
                         <div className="sidebarbox">
                             <a >Protocollen en Richtlijnen</a> <br />
                         </div>
@@ -107,7 +107,7 @@ export default function UserSidebar() {
                         <div className="sidebarbox">
                             <a> test</a>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
 
                 <div className="sidebarbox">
