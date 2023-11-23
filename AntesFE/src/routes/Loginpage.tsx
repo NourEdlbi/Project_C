@@ -8,35 +8,52 @@ import '../routes/LoginPage.css';
 import menuImage from '../assets/Anteslogo.png'
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // State for error message
-  const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState(''); // State for error message
+    const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
 
-  const handleLogin = (e) => {
-    e.preventDefault(); // Prevent default form submission
-    if (email === 'user@antes.nl' && password === 'Welkom0') {
-      navigate('/userSidebar');
-    } else if (email === 'admin@antes.nl' && password === 'Welkom1') {
-      navigate('/adminSidebar');
-    } else {
-      // Set an error message
-      setErrorMessage('Incorrect email or password');
-    }
-  };
+    const handleLogin = (e) => {
+        e.preventDefault(); // Prevent default form submission
+        if (email === 'user@antes.nl' && password === 'Welkom0') {
+            navigate('/userSidebar');
+        }
+        else if (email === 'admin@antes.nl' && password === 'Welkom1') {
+            navigate('/adminSidebar');
+        }
+        else { // Set an error message
+        setErrorMessage('Incorrect email or password');
+        }
+    };
 
-  const handleResetPassword = () => {
+    const handleResetPassword = () => {
     // Navigate to the PasswordReset page
-    navigate('/password-reset'); // Update this path to match your route for PasswordReset
-  };
+navigate('/password-reset'); // Update this path to match your route for PasswordReset
+    };
+    const update = {
+        email: "tes@te.nl",
+        wachtwoord: "password",
+    };
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(update),
+    };
+
+    const submitlogin = () => {
+        fetch("https://localhost:7109/Login", options).then((res) => console.log(res)).catch((res) => console.log(res));
+    }
 
   return (
     <div className="login">
@@ -63,8 +80,10 @@ export default function Login() {
         </div>
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         <button type="submit" style={{marginRight: '15px'}}>Log In</button>
-        <button type="button" onClick={handleResetPassword}>Reset Password</button>
-      </form>
+              <button type="button" onClick={handleResetPassword}>Reset Password</button> <br></br><br></br>
+              <button type="button" onClick={submitlogin}>Rtest</button>
+
+          </form>
     </div>
   );
 }
