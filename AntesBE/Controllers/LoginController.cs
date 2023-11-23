@@ -5,22 +5,24 @@ namespace AntesBE.Controllers
 {
     public class LoginController : Controller
     {
-        [Route("Login/{email}")]
-        [HttpGet]
+        [Route("Login")]
+        [HttpPost]
         public IActionResult Login(string email, string wachtwoord) 
         {
             ForumContext db = new ForumContext();
-            var x = db.Accounts.Where(x => x.Email.ToLower().Equals(email.ToLower())).FirstOrDefault(); // later hier agendas nemen tot ainde maand
+            var x = db.Accounts.Where(x => x.Email.ToLower().Equals(email.ToLower())).FirstOrDefault(); 
             if (x != null)
             {
-                return Ok(x);
+                if (x.Password == wachtwoord)
+                {
+                    return Ok(x);
+                }                 
             }
             return BadRequest();
-            
         }
-        public IActionResult Index()
+       /* public IActionResult Index()
         {
             return View();
-        }
+        }*/
     }
 }

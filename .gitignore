@@ -40,3 +40,5 @@ AntesBE/bin/Debug/net7.0/AntesBE.exe
 AntesBE/bin/Debug/net7.0/AntesBE.dll
 AntesBE/.vs/slnx.sqlite
 AntesBE/.vs/AntesBE/v17/.wsuo
+AntesBE/obj/project.assets.json
+*.cache
