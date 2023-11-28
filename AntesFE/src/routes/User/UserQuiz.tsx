@@ -6,7 +6,7 @@
  *   Copyright (c) 2023 
  *   All rights reserved.
  */
-import "./UserQuiz.css";
+import "../Quiz.css";
 
 const getquizzes = [
     { id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
