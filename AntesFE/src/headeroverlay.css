@@ -2,19 +2,23 @@
  *   Copyright (c) 2023 
  *   All rights reserved.
  */
+
+
 /* Sidebar */
 .sidebar {
-    width: 12rem;
+    width: 13%;
     /* Adjust the width as needed */
     height: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     top: 0;
     left: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     /* Allow vertical scrolling if needed */
     padding-top: 0px;
-    border-right: 3px solid rgb(181, 15, 34);
+    border-right: 2px solid rgb(181, 15, 34);
+    background-color: #FFFFFF;
     /* Add a border on the right side */
 }
 
@@ -27,7 +31,6 @@
     border-bottom: 1px solid rgb(181, 15, 34);
     /* iets fixen voor top en bottom zodat t gelijk is */
     border-top: 1px solid rgb(181, 15, 34);
-    
 }
 
 /* Sidebar Box Hover Effect */
@@ -39,6 +42,7 @@
 .sidebar a {
     font-size: 25px;
     color: black;
+    cursor: pointer;
 }
 
 /* Sidebar Links Hover Effect */
@@ -69,9 +73,16 @@
 }
 
 .closebtn {
+    width: 10px;
+    height: 20px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0px;
+    right: 1px;
+    padding-right: 17px;
+    padding-bottom: 20px;
+    padding-top: 7px;
+    padding-left: 9px;
+    border-radius: 10%;
     background-color: rgba(181, 15, 34, 0.4);
 }
 
@@ -81,9 +92,15 @@
 
 .openbtn {
     display:none;
-    position: absolute;
+    z-index: 100;
+    position: fixed;
+    left: 0;
     top: 10px;
-    left: 13rem;
+    width: 40px;
+    height: 40px;
+    margin-left: -25px;
+    padding-top: 5px;
+    padding-bottom: 0px;
     background-color: rgba(181, 15, 34, 0.4);
 }
 

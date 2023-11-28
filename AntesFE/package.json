@@ -12,9 +12,11 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.2",
+    "boxicons": "^2.1.4",
     "emailjs-com": "^3.2.0",
     "googleapis": "^128.0.0",
     "localforage": "^1.10.0",

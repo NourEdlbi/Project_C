@@ -3,7 +3,7 @@
  *   All rights reserved.
  */
 #root {
-    width: 100%;
+    width: 95%;
     height: 100%;
     margin: 0 auto;
     padding: 2rem;
@@ -141,8 +141,6 @@ body.dark-mode a {
 
 .titel {
   font-size: 25px;
-    position: relative;
-    bottom: 19rem;
     color: rgb(181, 15, 34);
     right: 35rem;
 }
