@@ -3,6 +3,7 @@
  *   All rights reserved.
  */
 
+
 .container .titel{
     position: relative;
     right: 45%;
@@ -52,4 +53,12 @@
     bottom: 43rem;
     left: 67%;
     padding: 40px
+}
+
+@media screen and (max-width: 768px) {
+    /* Apply styles for screens larger than 768px width */
+    .agenda, .quizzen {
+        width: 48%; /* Adjust as needed */
+        margin: 20px; /* Add some margin between the sections */
+    }
 }

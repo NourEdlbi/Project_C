@@ -23,7 +23,7 @@ export default function Profile() {
   };
 
   return (
-    <div>
+    <div className='container'>
       <div className='titel'>
         <h1>Profiel</h1>
       </div>

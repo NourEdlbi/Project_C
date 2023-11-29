@@ -1,7 +1,13 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import menuImage from '../../assets/Anteslogo.png';
 import "../../headeroverlay.css";
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+
 
 export default function UserSidebar() {
     const navigate = useNavigate();
@@ -115,8 +121,9 @@ export default function UserSidebar() {
                 </div>
                 <div className="border"></div>
             </div>
-
-            <button id= "open" className="openbtn" onClick={openNav}> Open Sidebar</button> 
+            <button id= "open" className="openbtn" onClick={openNav}> 
+            <KeyboardDoubleArrowRightIcon style={{padding: '0', width: '23px'}}></KeyboardDoubleArrowRightIcon> 
+            </button> 
             <div id="detail">
                 <Outlet />
             </div>
