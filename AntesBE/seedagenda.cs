@@ -60,8 +60,21 @@ namespace backend
             acc3.Name = "sje";
             acc3.Email = "tes@ts.nl";
             acc3.Password = "password";
-            
-            db.Accounts.AddRange(acc, acc1, acc2, acc3);
+
+            Account acc4 = new Account();
+            acc4.ID = 5;
+            acc4.Name = "User";
+            acc4.Email = "user@antes.nl";
+            acc4.Password = "Welkom0";
+
+            Account acc5 = new Account();
+            acc5.ID = 6;
+            acc5.Name = "Admin";
+            acc5.Email = "admin@antes.nl";
+            acc5.Password = "Welkom1";
+            acc5.Admin = true;  
+
+            db.Accounts.AddRange(acc, acc1, acc2, acc3, acc4, acc5);
             db.SaveChanges();
         }
 

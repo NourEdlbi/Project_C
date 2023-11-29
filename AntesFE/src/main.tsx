@@ -1,11 +1,8 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
-
+import AuthProvider from "./context/AuthContext";
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import './index.css';
 import ErrorPage from "./error-page";
 import Login from './routes/Loginpage.tsx';
@@ -154,7 +151,9 @@ function Main() {
 
 
     return (
+        <AuthProvider>
         <RouterProvider router={router} />
+        </AuthProvider>
     );
 }
 
