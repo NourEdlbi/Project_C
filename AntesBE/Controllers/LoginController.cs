@@ -5,6 +5,7 @@ using YourNamespace;
 
 namespace AntesBE.Controllers
 {
+    public record Personregister(string name, string email, string wachtwoord);
     public record Person(string email, string wachtwoord);
     public record Email(string email);
     public class LoginController : Controller
@@ -62,9 +63,9 @@ namespace AntesBE.Controllers
             return Ok();
         }
 
-        [Route("Reset_Password")]
+        [Route("Register")]
         [HttpPost]
-        public IActionResult ResetPassword(string email, string wachtwoord)
+        public IActionResult Register(string email, string wachtwoord)
         {
 
             var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
@@ -74,19 +75,21 @@ namespace AntesBE.Controllers
                 using (var reader = new StreamReader(HttpContext.Request.Body))
                 {
                     var postData = reader.ReadToEnd();
-                    var newdata = JsonSerializer.Deserialize<Person>(postData);
+                    var newdata = JsonSerializer.Deserialize<Personregister>(postData);
+                    
                     ForumContext db = new ForumContext();
-                    var x = db.Accounts.Where(x => x.Email.ToLower().Equals(newdata.email.ToLower())).FirstOrDefault();
-                    if (x != null)
-                    {                     
-                        x.Password = newdata.wachtwoord;
-                        db.SaveChanges();
-                        return Ok(x);                        
-                    }
-                    return BadRequest();
+                    Account newaccount = new Account();    
+                    newaccount.Email = newdata.email;
+                    newaccount.Password = newdata.wachtwoord;
+                    newaccount.ID = db.Accounts.Count() + 1;
+                    newaccount.Admin = false;
+                    newaccount.Name = newdata.name;
+                    db.Accounts.Add(newaccount);
+                    db.SaveChanges();
+                    return Ok();    
                 }
             }
-            return Ok();
+            return BadRequest();
         }
     }
 }

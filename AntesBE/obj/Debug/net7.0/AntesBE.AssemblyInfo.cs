@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AntesBE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc3ef735c52c12d7f455c97cb9c780f6eff4a295")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39c9b1f2423bbaa3b9751299943ca06cf9c289c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AntesBE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AntesBE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
