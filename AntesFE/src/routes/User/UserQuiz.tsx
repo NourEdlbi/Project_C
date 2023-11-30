@@ -1,11 +1,5 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
+
+import { useParams } from "react-router-dom";
 import "../Quiz.css";
 
 const getquizzes = [

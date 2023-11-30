@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 using backend;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using YourNamespace;
@@ -23,7 +27,7 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
         });
 });
-    
+
 var app = builder.Build();
 
 var db = new ForumContext();

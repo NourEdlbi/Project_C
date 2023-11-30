@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import "../Quiz.css";
 import { useNavigate } from 'react-router-dom';
 export default function Aquiz() {

@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -106,7 +110,7 @@ namespace YourNamespace
         public string Name { get; set; }
         public string Email { get; set; }
         public bool Admin { get; set; }
-        public string Password { get; set; }    
+        public string Password { get; set; }
 
         public Profile Profile { get; set; }
         public ICollection<Agenda> Agendas { get; set; }
@@ -182,6 +186,8 @@ namespace YourNamespace
         [Key]
         public int ID { get; set; }
         public int QuizCreatorID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         public ICollection<Question> Questions { get; set; }
         public ICollection<QuizResult> QuizResults { get; set; }
