@@ -2,13 +2,13 @@
  *   Copyright (c) 2023 
  *   All rights reserved.
  */
-.calendar{
+.calendar {
     position: relative;
     right: -1%;
     top: 0rem;
 }
 
-.events{
+.events {
     position: relative;
     left: 70%;
     top: -38rem;
@@ -22,13 +22,13 @@
     text-align: center;
 }
 
-.agenda_pagina .titel{
+.agenda_pagina .titel {
     position: relative;
     top: -2rem;
     right: 44%;
 }
 
-.agenda_pagina .titel{
+.agenda_pagina .titel {
     position: relative;
     right: 42%;
     top: -2rem;
