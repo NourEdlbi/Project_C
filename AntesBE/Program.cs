@@ -27,9 +27,9 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 var db = new ForumContext();
-SeedDB.cleardb(db);
+/*SeedDB.cleardb(db);
 SeedDB.Seedaccount(db);
-SeedDB.Seedagenda(db);
+SeedDB.Seedagenda(db);*/
 
 
 // Configure the HTTP request pipeline.

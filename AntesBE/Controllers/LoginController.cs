@@ -7,7 +7,6 @@ namespace AntesBE.Controllers
 {
     public record Personregister(string name, string email, string wachtwoord);
     public record Person(string email, string wachtwoord);
-    public record Email(string email);
     public class LoginController : Controller
     {
         [Route("Login")]
@@ -32,17 +31,15 @@ namespace AntesBE.Controllers
                             return Ok(x);
                         }
                     }
-                    return BadRequest();
                 }
             }
-            return Ok();
+            return BadRequest();
         }
 
-        [Route("Request_Password_Reset")]
+        [Route("Password_Reset")]
         [HttpPost]
-        public IActionResult ResetPassword(string email)
+        public IActionResult ResetPassword()
         {
-
             var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
             if (syncIOFeature != null)
             {
@@ -50,22 +47,23 @@ namespace AntesBE.Controllers
                 using (var reader = new StreamReader(HttpContext.Request.Body))
                 {
                     var postData = reader.ReadToEnd();
-                    var logindata = JsonSerializer.Deserialize<Email>(postData);
+                    var logindata = JsonSerializer.Deserialize<Person>(postData);
                     ForumContext db = new ForumContext();
                     var x = db.Accounts.Where(x => x.Email.ToLower().Equals(logindata.email.ToLower())).FirstOrDefault();
                     if (x != null)
                     {
-                        // send email with link to [Route("Reset_Password")]
+                        x.Password = logindata.wachtwoord;
+                        db.SaveChanges();
+                        return Ok(); 
                     }
-                    return BadRequest();
                 }
-            }
-            return Ok();
+            }  
+            return BadRequest();
         }
 
         [Route("Register")]
         [HttpPost]
-        public IActionResult Register(string email, string wachtwoord)
+        public IActionResult Register()
         {
 
             var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
