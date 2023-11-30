@@ -8,6 +8,7 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios';
 import '../User/userAgenda.css';
+import { BASE_URL } from '../../consts';
 
 const localizer = momentLocalizer(moment);
 
@@ -56,7 +57,7 @@ export default function userAgenda() {
 
     const werk = () => {
 
-        axios.get('https://localhost:7109/Getagenda/11', {
+        axios.get(`${BASE_URL}/Getagenda/11`, {
         params: {
             ID: 12345
         }

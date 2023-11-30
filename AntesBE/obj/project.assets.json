@@ -10884,26 +10884,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Noure\\.nuget\\packages\\": {}
+    "C:\\Users\\Gebruiker\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
+      "projectUniqueName": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesBE\\AntesBE.csproj",
       "projectName": "AntesBE",
-      "projectPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
-      "packagesPath": "C:\\Users\\Noure\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\obj\\",
+      "projectPath": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesBE\\AntesBE.csproj",
+      "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gebruiker\\OneDrive\\Documenten\\GitHub\\Project_C\\AntesBE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Noure\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -10974,7 +10972,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
