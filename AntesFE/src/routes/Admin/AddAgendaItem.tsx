@@ -15,12 +15,18 @@ const formContainerStyle = {
   boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
 };
 
+const labelStyle = {
+  display: 'block',
+  marginBottom: '5px',
+};
+
 export default function AddAgendaItem() {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     date: '',
-    time: '',
+    begintime: '',
+    endtime: '',
   });
 
   const handleChange = (e) => {
@@ -33,6 +39,11 @@ export default function AddAgendaItem() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (formData.endtime < formData.begintime) {
+      alert('Eindtijd kan niet eerder zijn dan begintijd.');
+      return;
+    }
+
     // Handle form submission logic here
     console.log('Form submitted', formData);
   };
@@ -40,33 +51,35 @@ export default function AddAgendaItem() {
   return (
     <div style={formStyle}>
       <div style={formContainerStyle}>
-        <h1>Add Agenda Item</h1>
+        <h1>Agendapunt toevoegen</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Title:</label>
+            <label htmlFor="title">Titel:</label>
             <input
               type="text"
               id="title"
               name="title"
               value={formData.title}
               onChange={handleChange}
-              placeholder="Title"
+              placeholder="Titel"
               required
             />
           </div>
           <div className="form-group">
-            <label>Description:</label>
+            <label htmlFor="description" style={labelStyle}>Beschrijving:</label>
             <textarea
               id="description"
               name="description"
               value={formData.description}
               onChange={handleChange}
-              placeholder="Description"
+              placeholder="Beschrijving"
               required
+              rows="4"
+              cols="50"
             />
           </div>
           <div className="form-group">
-            <label>Date:</label>
+            <label htmlFor="date">Datum:</label>
             <input
               type="date"
               id="date"
@@ -77,17 +90,28 @@ export default function AddAgendaItem() {
             />
           </div>
           <div className="form-group">
-            <label>Time:</label>
+            <label htmlFor="begintime">Begintijd:</label>
             <input
               type="time"
-              id="time"
-              name="time"
-              value={formData.time}
+              id="begintime"
+              name="begintime"
+              value={formData.begintime}
               onChange={handleChange}
               required
             />
           </div>
-          <button type="submit">Add Item</button>
+          <div className="form-group">
+            <label htmlFor="endtime">Eindtijd:</label>
+            <input
+              type="time"
+              id="endtime"
+              name="endtime"
+              value={formData.endtime}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">Toevoegen</button>
         </form>
       </div>
     </div>

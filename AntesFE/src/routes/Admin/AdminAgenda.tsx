@@ -88,7 +88,7 @@ export default function AdminAgenda() {
                 />
 
                 {/* <button onClick={werk}>Export to </button> */}
-                <button onClick={navigateAddAfspraak}> test</button>
+                <button onClick={navigateAddAfspraak}> Agendapunt toevoegen</button>
 
             </div>
 
