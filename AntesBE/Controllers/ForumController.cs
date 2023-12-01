@@ -89,6 +89,81 @@ namespace AntesBE.Controllers
             }
         }
 
+        [Route("CreateComment")]
+        [HttpPost]
+        public IActionResult CreateComment([FromBody] Comment commentData)
+        {
+            try
+            {
+                using (var db = new ForumContext())
+                {
+                    commentData.PostTime = DateTime.UtcNow;
+
+                    db.Comments.Add(commentData);
+                    db.SaveChanges();
+
+
+                    var commenterName = db.Accounts
+                                          .Where(a => a.ID == commentData.CommenterID)
+                                          .Select(a => a.Name)
+                                          .FirstOrDefault();
+
+
+                    var response = new
+                    {
+                        ID = commentData.ID,
+                        ForumID = commentData.ForumID,
+                        CommenterID = commentData.CommenterID,
+                        Content = commentData.Content,
+                        PostTime = commentData.PostTime,
+                        CommenterName = commenterName
+                    };
+
+                    return Ok(response);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
+
+
+        [Route("GetComments/{forumId}")]
+        [HttpGet]
+        public IActionResult GetComments(int forumId)
+        {
+            try
+            {
+                using (var db = new ForumContext())
+                {
+                    var commentsWithNames = db.Comments
+                        .Where(c => c.ForumID == forumId)
+                        .Select(c => new
+                        {
+                            ID = c.ID,
+                            ForumID = c.ForumID,
+                            CommenterID = c.CommenterID,
+                            Content = c.Content,
+                            PostTime = c.PostTime,
+                            CommenterName = c.Commenter.Name
+                        })
+                        .ToList();
+
+                    return Ok(commentsWithNames);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
+
+
 
 
 
