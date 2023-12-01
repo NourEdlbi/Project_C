@@ -1,47 +1,56 @@
-// Uforum.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../consts';
 
-export default function Uforum() {
+export default function UserForm() {
+    const [posts, setPosts] = useState([]);
     const [postData, setPostData] = useState({ postName: '', content: '' });
     const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        setPostData({
-            ...postData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postData),
-        };
-
-        fetch(`${BASE_URL}/ForumPost`, options)
-            .then((response) => {
+    // Fetch posts from the backend when the component mounts
+    useEffect(() => {
+        fetch(`${BASE_URL}/GetForumPosts`)
+            .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
-            .then((data) => {
-                console.log('Post created:', data);
-                // Handle post creation success
+            .then(data => {
+                setPosts(data);
             })
-            .catch((error) => {
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+            });
+    }, []);
+
+    const handleChange = (e) => {
+        setPostData({ ...postData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(postData),
+        };
+
+        fetch(`${BASE_URL}/ForumPost`, options)
+            .then(response => response.json())
+            .then(data => {
+                setPosts([...posts, data]);
+                setPostData({ postName: '', content: '' });
+            })
+            .catch(error => {
                 console.error('Error:', error);
-                // Handle errors
             });
     };
 
+    // Navigate to the post detail view
+    const handlePostClick = (postId) => {
+        navigate(`/userSidebar/userForum/${postId}`);
+    };
 
     return (
         <div>
@@ -68,7 +77,15 @@ export default function Uforum() {
                 </div>
                 <button type="submit">Post</button>
             </form>
-            {/* Rest of the forum component */}
+
+            {/* Render the fetched posts */}
+            {posts.map(post => (
+                <div key={post.id}>
+                    <h3>{post.postName}</h3>
+                    <p>{post.content}</p>
+                    <button onClick={() => handlePostClick(post.id)}>Details</button>
+                </div>
+            ))}
         </div>
     );
 }
