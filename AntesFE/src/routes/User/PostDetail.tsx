@@ -4,10 +4,10 @@ import { BASE_URL } from '../../consts';
 
 export default function PostDetail() {
     const [forumDetail, setForumDetail] = useState({
-        postName: '',   // Use 'postName' instead of 'Name'
-        content: '',    // Use 'content' instead of 'Content'
-        postTime: '',   // Use 'postTime' instead of 'PostTime'
-        forumPosterName: '', // Use 'forumPosterName' instead of 'ForumPosterName'
+        postName: '',
+        content: '',
+        postTime: '',
+        forumPosterName: '',
     });
 
     const { id } = useParams();
@@ -22,7 +22,7 @@ export default function PostDetail() {
                 return response.json();
             })
             .then(data => {
-                setForumDetail(data); // Update the state with fetched data
+                setForumDetail(data);
             })
             .catch(error => {
                 console.error('Error fetching forum detail:', error);
@@ -32,12 +32,12 @@ export default function PostDetail() {
     return (
         <div>
             <h1>Forum Post Detail</h1>
-            {forumDetail.postName ? ( // Use 'postName' instead of 'Name'
+            {forumDetail.postName ? (
                 <div>
-                    <h3>{forumDetail.postName}</h3>  {/* Use 'postName' instead of 'Name' */}
-                    <p>{forumDetail.content}</p>      {/* Use 'content' instead of 'Content' */}
-                    <p>Date Posted: {new Date(forumDetail.postTime).toLocaleString()}</p> {/* Use 'postTime' instead of 'PostTime' */}
-                    <p>Posted By: {forumDetail.forumPosterName}</p> {/* Use 'forumPosterName' instead of 'ForumPosterName' */}
+                    <h3>{forumDetail.postName}</h3>
+                    <p>{forumDetail.content}</p>
+                    <p>Date Posted: {new Date(forumDetail.postTime).toLocaleString()}</p>
+                    <p>Posted By: {forumDetail.forumPosterName}</p>
                 </div>
             ) : (
                 <p>Loading...</p>

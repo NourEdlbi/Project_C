@@ -28,13 +28,11 @@ namespace AntesBE.Controllers
 
                     db.Forums.Add(post);
                     db.SaveChanges();
-                    return Ok(post); // Return the saved post, including the ID
+                    return Ok(post);
                 }
             }
             catch (Exception ex)
             {
-                // Log or return the detailed exception
-                // Adjust based on how you handle logging in your application
                 Console.WriteLine($"Error: {ex}");
                 return StatusCode(500, $"Internal server error: {ex}");
             }
@@ -54,7 +52,6 @@ namespace AntesBE.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception here
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -67,7 +64,7 @@ namespace AntesBE.Controllers
                 using (var db = new ForumContext())
                 {
                     var post = db.Forums
-                        .Include(p => p.ForumPoster) // Include the ForumPoster relationship
+                        .Include(p => p.ForumPoster)
                         .FirstOrDefault(p => p.ID == id);
 
                     if (post == null)
@@ -77,10 +74,10 @@ namespace AntesBE.Controllers
 
                     var forumDetail = new
                     {
-                        postName = post.Name,               // Use 'postName' instead of 'Name'
-                        content = post.Content,            // Use 'content' instead of 'Content'
-                        postTime = post.PostTime,          // Use 'postTime' instead of 'PostTime'
-                        forumPosterName = post.ForumPoster.Name // Use 'forumPosterName' instead of 'ForumPosterName'
+                        postName = post.Name,
+                        content = post.Content,
+                        postTime = post.PostTime,
+                        forumPosterName = post.ForumPoster.Name
                     };
 
                     return Ok(forumDetail);
@@ -88,7 +85,6 @@ namespace AntesBE.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception here
                 return StatusCode(500, "Internal server error");
             }
         }
