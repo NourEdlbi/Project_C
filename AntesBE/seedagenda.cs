@@ -78,6 +78,19 @@ namespace backend
             db.SaveChanges();
         }
 
+        public static void SeedProfiles(ForumContext db)
+        {
+            Profile prof1 = new Profile();
+            prof1.ID = 1;
+            prof1.AccountID = 1;
+            prof1.Bio = "";
+            prof1.Contact = "tes@te.nl";
+            
+            db.Profiles.Add(prof1); 
+            db.SaveChanges();
+
+        }
+
         public static void Seedagenda(ForumContext db)
         {
             Agenda agenda = new Agenda();
