@@ -45,3 +45,4 @@ AntesBE/obj/project.assets.json
 *.dll
 *.exe
 *.pdb
+AntesFE/src/consts.ts
