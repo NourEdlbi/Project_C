@@ -34,8 +34,8 @@ export default function PostDetail() {
 
             {forumDetail.postName ? (
                 <div>
-                    <p>Posted By: {forumDetail.forumPosterName}</p>
-                    <p>Date Posted: {new Date(forumDetail.postTime).toLocaleString()}</p>
+                    <p>Geplaatst door: {forumDetail.forumPosterName}</p>
+                    <p>Post datum/tijd: {new Date(forumDetail.postTime).toLocaleString()}</p>
                     <h1>{forumDetail.postName}</h1>
 
                     <p>{forumDetail.content}</p>
@@ -43,9 +43,9 @@ export default function PostDetail() {
 
                 </div>
             ) : (
-                <p>Loading...</p>
+                <p>Geen bestaande post.</p>
             )}
-            <button onClick={() => navigate(`/userSidebar/userForum`)}>Go Back</button>
+            <button onClick={() => navigate(`/userSidebar/userForum`)}>Terug</button>
         </div>
     );
 }

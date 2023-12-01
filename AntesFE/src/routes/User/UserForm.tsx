@@ -57,7 +57,7 @@ export default function UserForm() {
             <h1>Forum</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Post Title:</label>
+                    <label>Titel post:</label>
                     <input
                         type="text"
                         name="postName"
@@ -67,7 +67,7 @@ export default function UserForm() {
                     />
                 </div>
                 <div>
-                    <label>Content:</label>
+                    <label>Bericht:</label>
                     <textarea
                         name="content"
                         value={postData.content}
@@ -75,7 +75,7 @@ export default function UserForm() {
                         required
                     />
                 </div>
-                <button type="submit">Post</button>
+                <button type="submit">Plaatsen</button>
             </form>
 
             {posts.map(post => (
