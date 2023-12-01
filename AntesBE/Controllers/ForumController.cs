@@ -10,7 +10,7 @@ using YourNamespace;
 
 namespace AntesBE.Controllers
 {
-    public record ForumData(string forumName, string description);
+    public record ForumData(string postName, string Content);
 
     public class ForumController : Controller
     {
@@ -26,36 +26,42 @@ namespace AntesBE.Controllers
                 {
                     var postData = reader.ReadToEnd();
                     var forumDatas = JsonSerializer.Deserialize<ForumData>(postData);
+
                     ForumContext db = new ForumContext();
 
-                    Forum forum = new();
-                    forum.ForumCreatorID = 1;
-                    forum.ID = 2;
-                    forum.Name = "test";
-                    forum.Description = "test";
-                    db.Forums.Add(forum);
-                    db.SaveChanges();
-                    return Ok(forumDatas);
+                    Forum post = new Forum
+                    {
+                        "ID": 1,
+                        "ForumPosterID": 2,
+                        "Name":"test",
+                        "Content": "test",
+                        "PostTime": DateTime.Now
+
+                    };
+
+                db.Forums.Add(post);
+                db.SaveChanges();
+                return Ok(forumDatas);
 
 
 
-                }
             }
+        }
 
             try
             {
                 ForumContext db = new ForumContext();
-                var forum = new Forum() { ID = 1, ForumCreatorID = 2, Name = formData.forumName, Description = forumData.description };
+        var post = new Forum() { ID = 1, ForumPosterID = 2, Name = forumData.postName, Content = forumData.Content };
 
-                db.forums.Add(forum);
+        db.Forums.Add(post);
                 db.SaveChanges();
 
                 return Ok(forumData);
-            }
+    }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
+}
 
 
         }

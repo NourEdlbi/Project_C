@@ -13,13 +13,15 @@ import Profiel from './routes/Profile.tsx';
 
 import ASidebar from './routes/Admin/adminSidebar.tsx';
 import Users from './routes/Admin/AdminUsers.tsx';
-import AForum from './routes/Admin/adminForum.tsx';
+// import Aforum from './routes/Admin/adminForum.tsx';
 import Aquiz from './routes/Admin/AdminQuiz.tsx';
 import AdminAgenda from './routes/Admin/AdminAgenda.tsx';
 
 import USidebar from './routes/User/UserSidebar.tsx';
 import Uagenda from './routes/User/userAgenda.tsx';
 import Uforum from './routes/User/userForum.tsx';
+// import UPost from './routes/User/Post.tsx';
+// import AddPost from './routes/Admin/AdminAddQuiz.tsx';
 import Uhome from './routes/User/UserHomepage.tsx';
 import Uquiz from './routes/User/UserQuiz.tsx';
 import Uquizzes from './routes/User/UserQuizzes.tsx';
@@ -82,9 +84,17 @@ function Main() {
                             path: "users",
                             element: <Users />,
                         },
+                        // {
+                        //     path: "adminForum",
+                        //     element: <Uforum />,
+                        // },
+                        // {
+                        //     path: "Forum/MakePost",
+                        //     element: <Addpost />,
+                        // },
                         {
-                            path: "adminForum",
-                            element: <AForum />,
+                            path: "Quizzes/:id",
+                            element: <Aquiz />,
                         },
                         {
                             path: "adminQuiz",
@@ -130,6 +140,10 @@ function Main() {
                         },
                         {
                             path: "userForum",
+                            element: <Uforum />,
+                        },
+                        {
+                            path: "userForum/:id",
                             element: <Uforum />,
                         },
                         {
