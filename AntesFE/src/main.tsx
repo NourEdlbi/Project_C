@@ -19,7 +19,8 @@ import AdminAgenda from './routes/Admin/AdminAgenda.tsx';
 
 import USidebar from './routes/User/UserSidebar.tsx';
 import Uagenda from './routes/User/userAgenda.tsx';
-import Uforum from './routes/User/userForum.tsx';
+import Uforum from './routes/User/UserForm.tsx';
+import PostDetail from './routes/User/PostDetail.tsx';
 // import UPost from './routes/User/Post.tsx';
 // import AddPost from './routes/Admin/AdminAddQuiz.tsx';
 import Uhome from './routes/User/UserHomepage.tsx';
@@ -144,7 +145,7 @@ function Main() {
                         },
                         {
                             path: "userForum/:id",
-                            element: <Uforum />,
+                            element: <PostDetail />,
                         },
                         {
                             path: "Informatie",
