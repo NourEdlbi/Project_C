@@ -78,11 +78,9 @@ export default function UserForm() {
                 <button type="submit">Post</button>
             </form>
 
-            {/* Render the fetched posts */}
             {posts.map(post => (
                 <div key={post.id}>
-                    <h3>{post.postName}</h3>
-                    <p>{post.content}</p>
+                    <p>{post.name}</p>
                     <button onClick={() => handlePostClick(post.id)}>Details</button>
                 </div>
             ))}
