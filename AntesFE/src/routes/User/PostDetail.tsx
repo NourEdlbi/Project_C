@@ -107,8 +107,8 @@ export default function PostDetail() {
             <ul>
                 {comments.map(comment => (
                     <li key={comment.id}>
-                        <p>Geplaatst door: {comment.commenterName}</p>
-                        <p>Geplaatst op: {new Date(comment.postTime).toLocaleString()}</p>
+                        <p>Comment van: {comment.commenterName}</p>
+                        <p>Comment datum/tijd: {new Date(comment.postTime).toLocaleString()}</p>
                         <h3>{comment.content}</h3>
 
                     </li>
