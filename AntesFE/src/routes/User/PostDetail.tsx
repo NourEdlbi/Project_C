@@ -84,12 +84,12 @@ export default function PostDetail() {
                     <p>Geplaatst door: {forumDetail.forumPosterName}</p>
                     <p>Post datum/tijd: {new Date(forumDetail.postTime).toLocaleString()}</p>
                     <h1>{forumDetail.postName}</h1>
-                    <p>{forumDetail.content}</p>
+                    <h2>{forumDetail.content}</h2>
                 </div>
             ) : (
                 <p>Geen bestaande post.</p>
             )}
-            <h2>Voeg een reactie toe:</h2>
+            <h3>Voeg een reactie toe:</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <textarea
@@ -107,9 +107,10 @@ export default function PostDetail() {
             <ul>
                 {comments.map(comment => (
                     <li key={comment.id}>
-                        <p>{comment.content}</p>
                         <p>Geplaatst door: {comment.commenterName}</p>
                         <p>Geplaatst op: {new Date(comment.postTime).toLocaleString()}</p>
+                        <h3>{comment.content}</h3>
+
                     </li>
                 ))}
             </ul>
