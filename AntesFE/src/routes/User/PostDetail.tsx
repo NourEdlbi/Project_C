@@ -31,13 +31,16 @@ export default function PostDetail() {
 
     return (
         <div>
-            <h1>Forum Post Detail</h1>
+
             {forumDetail.postName ? (
                 <div>
-                    <h3>{forumDetail.postName}</h3>
-                    <p>{forumDetail.content}</p>
-                    <p>Date Posted: {new Date(forumDetail.postTime).toLocaleString()}</p>
                     <p>Posted By: {forumDetail.forumPosterName}</p>
+                    <p>Date Posted: {new Date(forumDetail.postTime).toLocaleString()}</p>
+                    <h1>{forumDetail.postName}</h1>
+
+                    <p>{forumDetail.content}</p>
+
+
                 </div>
             ) : (
                 <p>Loading...</p>
