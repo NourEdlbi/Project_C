@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../routes/LoginPage.css';
 import menuImage from '../assets/Anteslogo.png'
-import jwt_decode from "jwt-decode";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import { AuthContext } from "../context/AuthContext"; 
 
 
@@ -13,18 +14,6 @@ export default function Login() {
     const navigate = useNavigate();
     const { setAuthTokens, setLoading, setUser } = useContext(AuthContext);
 
-    /*const handleLogin = (e: React.FormEvent) => {
-        .then((response) => {
-            console.log(response.data)
-            setAuthTokens(response.data);
-            localStorage.setItem("authTokens", JSON.stringify(response.data)); setUser(jwt_decode(response.data.access));
-            setLoading(true);
-            navigate("/");
-        })
-       
-        )
-    };*/
-
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
@@ -33,7 +22,7 @@ export default function Login() {
         setPassword(e.target.value);
     };
 
-    const handleLogin = (e) => {
+    const handleLogin2 = (e) => {
         e.preventDefault(); // Prevent default form submission
         if (email === 'user@antes.nl' && password === 'Welkom0') {
             navigate('/userSidebar');
@@ -66,8 +55,32 @@ export default function Login() {
         body: JSON.stringify(update),
     };
 
-    const submitlogin = () => {       
-        fetch("https://localhost:7109/Login", options).then(res => console.log(res)).catch(error => console.log(error));
+    const handleLogin = (e: React.FormEvent) => {
+        axios
+            .post("https://localhost:7109/Login", { email, password })
+            .then((response) => {
+                setAuthTokens(response.data);
+                setUser(jwtDecode(response.data.access));
+                localStorage.setItem("authTokens", JSON.stringify(response.data));
+                navigate("/");
+                //setLoading(true);
+            })
+            .catch((error) => {
+                console.log(error.message);
+                /*if (error.message) {
+                    setError(true);
+                }*/
+            })
+
+        /*const response = fetch("https://localhost:7109/Login", options)
+            .then(res => {
+                console.log(res),
+                    res.json()
+            })
+            .then((data) => {
+                setAuthTokens(data)
+            } )*/
+       
     };
 
     return (
@@ -96,7 +109,7 @@ export default function Login() {
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
             <button type="submit" style={{marginRight: '15px'}}>Log In</button>
             <button type="button" onClick={handleResetPassword}>Reset Password</button> <br></br><br></br>
-            <button type="button" onClick={submitlogin}>Rtest</button>
+            <button type="button" onClick={handleLogin}>Rtest</button>
         </form>
     </div>
     );
