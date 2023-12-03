@@ -42,3 +42,7 @@ AntesBE/.vs/slnx.sqlite
 AntesBE/.vs/AntesBE/v17/.wsuo
 AntesBE/obj/project.assets.json
 *.cache
+*.dll
+*.exe
+*.pdb
+AntesFE/src/consts.ts

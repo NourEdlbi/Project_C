@@ -4,7 +4,9 @@
  */
 using backend;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using System.Text.Json.Serialization;
 using YourNamespace;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        });
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
@@ -29,11 +36,17 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+app.Use(async (context, next) =>
+{
+    context.Request.EnableBuffering();
+    await next();
+});
 
 var db = new ForumContext();
-SeedDB.cleardb(db);
+/*SeedDB.cleardb(db);
 SeedDB.Seedaccount(db);
-SeedDB.Seedagenda(db);
+SeedDB.Seedagenda(db);*/
+//SeedDB.SeedProfiles(db);
 
 
 // Configure the HTTP request pipeline.

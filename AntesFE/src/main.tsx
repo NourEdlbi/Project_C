@@ -25,6 +25,7 @@ import Uquiz from './routes/User/UserQuiz.tsx';
 import Uquizzes from './routes/User/UserQuizzes.tsx';
 import Addquiz from './routes/Admin/AdminAddQuiz.tsx';
 import AddUser from './routes/adduser.tsx';
+import AddAgendaItem from "./routes/Admin/AddAgendaItem.tsx";
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -47,7 +48,7 @@ function Main() {
 
         return () => clearInterval(interval);
     }, [isNightMode]);
-    
+
     const router = createBrowserRouter([
         {
             path: "/",
@@ -79,12 +80,12 @@ function Main() {
                         },
                         {
                             path: "users",
-                            element: <Users/>,
+                            element: <Users />,
                         },
                         {
                             path: "adminForum",
-                            element: <AForum/>,
-                        }, 
+                            element: <AForum />,
+                        },
                         {
                             path: "adminQuiz",
                             element: <Aquiz />,
@@ -102,6 +103,10 @@ function Main() {
                             element: <AdminAgenda />,
                         },
                         {
+                            path: "adminAgenda/AddAgendaItem",
+                            element: <AddAgendaItem />,
+                        },
+                        {
                             path: "Informatie",
                             element: <Info />
                         },
@@ -117,15 +122,15 @@ function Main() {
                     children: [
                         {
                             path: "Profile",
-                            element: <Profiel/>,
+                            element: <Profiel />,
                         },
                         {
                             path: "agenda",
-                            element: <Uagenda/>,
+                            element: <Uagenda />,
                         },
                         {
                             path: "userForum",
-                            element: <Uforum/>,
+                            element: <Uforum />,
                         },
                         {
                             path: "Informatie",
@@ -142,7 +147,7 @@ function Main() {
                         {
                             path: "Quizzes",
                             element: <Uquizzes />,
-                        },                        
+                        },
                         {
                             path: "Quizzes/:id",
                             element: <Uquiz />,
@@ -157,7 +162,7 @@ function Main() {
 
     return (
         <AuthProvider>
-        <RouterProvider router={router} />
+            <RouterProvider router={router} />
         </AuthProvider>
     );
 }

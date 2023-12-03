@@ -144,3 +144,7 @@ body.dark-mode a {
     color: rgb(181, 15, 34);
     right: 35rem;
 }
+
+.settingButton{
+    display:none;
+}

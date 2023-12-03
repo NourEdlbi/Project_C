@@ -1,7 +1,12 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useState } from 'react';
 import menuImage from '../assets/Anteslogo.png';
 import '../routes/LoginPage.css';
 import {  useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../consts';
 
 const formStyle = {
   display: 'flex',
@@ -66,7 +71,7 @@ export default function AddUser() {
     };
 
     const Register = () => {
-        fetch("https://localhost:7109/Register", options).then(res => console.log(res)).catch(error => console.log(error));
+        fetch(`${BASE_URL}/Register`, options).then(res => console.log(res)).catch(error => console.log(error));
         navigate('/');
     };
 

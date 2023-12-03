@@ -1,9 +1,14 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../routes/LoginPage.css';
 import menuImage from '../assets/Anteslogo.png'
 import jwt_decode from "jwt-decode";
 import { AuthContext } from "../context/AuthContext"; 
+import { BASE_URL } from '../consts';
 
 
 export default function Login() {
@@ -67,7 +72,7 @@ export default function Login() {
     };
 
     const submitlogin = () => {       
-        fetch("https://localhost:7109/Login", options).then(res => console.log(res)).catch(error => console.log(error));
+        fetch(`${BASE_URL}/Login`, options).then(res => console.log(res)).catch(error => console.log(error));
     };
 
     return (
