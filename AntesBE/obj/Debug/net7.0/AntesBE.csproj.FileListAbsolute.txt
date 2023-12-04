@@ -923,3 +923,5 @@ C:\Users\Gebruiker\OneDrive\Documenten\GitHub\Project_C\AntesBE\obj\Debug\net7.0
 C:\Users\Gebruiker\OneDrive\Documenten\GitHub\Project_C\AntesBE\obj\Debug\net7.0\AntesBE.pdb
 C:\Users\Gebruiker\OneDrive\Documenten\GitHub\Project_C\AntesBE\obj\Debug\net7.0\AntesBE.genruntimeconfig.cache
 C:\Users\Gebruiker\OneDrive\Documenten\GitHub\Project_C\AntesBE\obj\Debug\net7.0\ref\AntesBE.dll
+C:\Users\Abdel\Documents\GitHub\ProjectC\AntesBE\bin\Debug\net7.0\Konscious.Security.Cryptography.Argon2.dll
+C:\Users\Abdel\Documents\GitHub\ProjectC\AntesBE\bin\Debug\net7.0\Konscious.Security.Cryptography.Blake2.dll
