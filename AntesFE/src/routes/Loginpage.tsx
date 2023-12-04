@@ -22,7 +22,7 @@ export default function Login() {
         setPassword(e.target.value);
     };
 
-    const handleLogin2 = (e) => {
+    /*const handleLogin2 = (e) => {
         e.preventDefault(); // Prevent default form submission
         if (email === 'user@antes.nl' && password === 'Welkom0') {
             navigate('/userSidebar');
@@ -35,14 +35,14 @@ export default function Login() {
         else { // Set an error message
                 setErrorMessage('Incorrect email or password');
              }
-    };
+    };*/
 
     const handleResetPassword = () => {
     // Navigate to the PasswordReset page
     navigate('/password-reset'); // Update this path to match your route for PasswordReset
     };
 
-    const update = {
+/*    const update = {
         email: email,
         wachtwoord: password,
     };
@@ -53,7 +53,7 @@ export default function Login() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(update),
-    };
+    };*/
 
     const handleLogin = (e: React.FormEvent) => {
         axios
