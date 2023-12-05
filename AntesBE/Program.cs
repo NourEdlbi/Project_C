@@ -39,9 +39,10 @@ app.Use(async (context, next) =>
 });
 
 var db = new ForumContext();
-/*SeedDB.cleardb(db);
-SeedDB.Seedaccount(db);
-SeedDB.Seedagenda(db);*/
+//SeedDB.Seedadmin(db);
+//SeedDB.cleardb(db);
+//SeedDB.Seedaccount(db);
+// SeedDB.Seedagenda(db);
 //SeedDB.SeedProfiles(db);
 
 

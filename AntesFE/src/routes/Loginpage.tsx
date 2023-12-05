@@ -6,9 +6,8 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../routes/LoginPage.css';
 import menuImage from '../assets/Anteslogo.png'
-import jwt_decode from "jwt-decode";
-import { AuthContext } from "../context/AuthContext"; 
-import { BASE_URL } from '../consts';
+import { BASE_URL } from '../consts.ts';
+import axios from "axios";
 
 
 export default function Login() {
@@ -16,20 +15,15 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // State for error message
     const navigate = useNavigate();
-    const { setAuthTokens, setLoading, setUser } = useContext(AuthContext);
+   interface userinfoInterface {
+        id: number;
+        name: string;
+        email: string;
+        admin: boolean;
+    }
 
-    /*const handleLogin = (e: React.FormEvent) => {
-        .then((response) => {
-            console.log(response.data)
-            setAuthTokens(response.data);
-            localStorage.setItem("authTokens", JSON.stringify(response.data)); setUser(jwt_decode(response.data.access));
-            setLoading(true);
-            navigate("/");
-        })
-       
-        )
-    };*/
-
+    const [userInfos, setUserInfos] = useState<userinfoInterface>();
+    const [test, settest] = useState('');
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
@@ -38,7 +32,7 @@ export default function Login() {
         setPassword(e.target.value);
     };
 
-    const handleLogin = (e) => {
+    const handleLogin2 = (e) => {
         e.preventDefault(); // Prevent default form submission
         if (email === 'user@antes.nl' && password === 'Welkom0') {
             navigate('/userSidebar');
@@ -51,6 +45,25 @@ export default function Login() {
         else { // Set an error message
                 setErrorMessage('Incorrect email or password');
              }
+    };
+
+    const handleLogin = () => {
+        axios.post("https://localhost:7109/Login", { email, password })
+            .then((response) => {
+                /*setAuthTokens(response.data);
+                localStorage.setItem("authTokens", JSON.stringify(response.data)); setUser(jwtDecode(response.data.access));*/
+                // setLoading(true);
+                setUserInfos(response.data)
+                if (userInfos?.admin == true) {
+                    navigate("/adminSidebar");
+                }
+                navigate("/userSidebar")
+            })
+            .catch((error) => {
+                console.log(error.message);
+
+            }
+            )
     };
 
     const handleResetPassword = () => {
@@ -70,16 +83,32 @@ export default function Login() {
         },
         body: JSON.stringify(update),
     };
-
-    const submitlogin = () => {       
-        fetch(`${BASE_URL}/Login`, options).then(res => console.log(res)).catch(error => console.log(error));
-    };
+    async function submitlogin()
+    {       
+        fetch(`${BASE_URL}/Login`, options)
+            .then(response => (response.json())
+                .then(response => {
+                    localStorage.setItem(JSON.stringify("Userinfo"),response)
+                    setUserInfos(response)
+                    if (userInfos?.admin == true) {
+                        navigate("/adminSidebar");
+                    }
+                    else if (userInfos?.admin == false){
+                        navigate("/userSidebar")
+                    }
+                    else { // Set an error message
+                        setErrorMessage('Incorrect email or password');
+                    }
+                })
+            )
+        .catch(error => console.log(error));
+    }
 
     return (
     <div className="login">
         <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '5rem' }} />
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
+            <h1>Login</h1>
+        <form onSubmit={submitlogin}>
             <div className="form-group">
                 <label>Email: </label>
                 <input
@@ -99,9 +128,9 @@ export default function Login() {
                 />
             </div>
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-            <button type="submit" style={{marginRight: '15px'}}>Log In</button>
+            <button type="submit" onClick={submitlogin} style={{marginRight: '15px'}}>Log In</button>
             <button type="button" onClick={handleResetPassword}>Reset Password</button> <br></br><br></br>
-            <button type="button" onClick={submitlogin}>Rtest</button>
+            <button type="button" onClick={submitlogin} >Rtest</button>
         </form>
     </div>
     );

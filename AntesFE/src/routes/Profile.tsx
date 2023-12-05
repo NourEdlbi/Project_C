@@ -7,9 +7,21 @@ import '../routes/Profile.css';
 import { BASE_URL } from "../consts.ts";
 export default function Profile() {
     //need to get name and email from jason token
+    interface userinfoInterface {
+        id: number;
+        name: string;
+        email: string;
+        admin: boolean;
+    }
+
+    const [userInfos, setUserInfos] = useState<userinfoInterface>();
     const [name, setName] = useState('John Doe');
     const [email, setEmail] = useState('johndoe@example.com');
     const [bio, setBio] = useState('This is my bio.');
+    const test = localStorage.getItem("Userinfo");
+    setUserInfos(JSON.parse((test)!));
+    setName((userInfos.name)!);
+    setEmail((userInfos.email)!);
 
     const update = {
         email: "tes@te.nl",
