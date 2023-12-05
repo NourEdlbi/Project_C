@@ -12,7 +12,16 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // State for error message
     const navigate = useNavigate();
-    const { setAuthTokens, setLoading, setUser } = useContext(AuthContext);
+    const { authTokens, setAuthTokens, setLoading, setUser } = useContext(AuthContext);
+
+    interface userinfoInterface {
+        ID: number;
+        Name: string;
+        Email: string;
+        Admin: boolean;
+    }
+
+    const [userInfos, setUserInfos] = useState<userinfoInterface>();
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -22,38 +31,10 @@ export default function Login() {
         setPassword(e.target.value);
     };
 
-    /*const handleLogin2 = (e) => {
-        e.preventDefault(); // Prevent default form submission
-        if (email === 'user@antes.nl' && password === 'Welkom0') {
-            navigate('/userSidebar');
-        }
-
-        else if (email === 'admin@antes.nl' && password === 'Welkom1') {
-                navigate('/adminSidebar');
-        }
-
-        else { // Set an error message
-                setErrorMessage('Incorrect email or password');
-             }
-    };*/
-
     const handleResetPassword = () => {
     // Navigate to the PasswordReset page
     navigate('/password-reset'); // Update this path to match your route for PasswordReset
     };
-
-/*    const update = {
-        email: email,
-        wachtwoord: password,
-    };
-
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(update),
-    };*/
 
     const handleLogin = (e: React.FormEvent) => {
         axios
@@ -62,7 +43,12 @@ export default function Login() {
                 setAuthTokens(response.data);
                 setUser(jwtDecode(response.data.access));
                 localStorage.setItem("authTokens", JSON.stringify(response.data));
-                navigate("/");
+                setUserInfos(response.data);
+                if (userInfos?.Admin == true) {
+                    navigate("/adminSidebar");
+                }
+                navigate("/userSidebar")
+                
                 //setLoading(true);
             })
             .catch((error) => {
@@ -98,7 +84,7 @@ export default function Login() {
                 />
             </div>
             <div className="form-group">
-                <label>Password: </label>
+                <label>Wachtwoord: </label>
                 <input
                 type="password"
                 value={password}
@@ -107,9 +93,8 @@ export default function Login() {
                 />
             </div>
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-            <button type="submit" style={{marginRight: '15px'}}>Log In</button>
-            <button type="button" onClick={handleResetPassword}>Reset Password</button> <br></br><br></br>
-            <button type="button" onClick={handleLogin}>Rtest</button>
+            <button type="submit" style={{marginRight: '15px'}}>Log in</button>
+            <button type="button" onClick={handleResetPassword}>Wachtwoord vergeten</button> 
         </form>
     </div>
     );

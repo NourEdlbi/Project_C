@@ -6,14 +6,13 @@ using YourNamespace;
 namespace AntesBE.Controllers
 {
     public record Personregister(string name, string email, string wachtwoord);
-    public record Person(string email, string wachtwoord);
+    public record Person(string email, string password);
     public class LoginController : Controller
     {
         [Route("Login")]
         [HttpPost]
         public IActionResult Login(string email, string wachtwoord) 
         {
-            
             var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
             if (syncIOFeature != null)
             {
@@ -26,7 +25,7 @@ namespace AntesBE.Controllers
                     var x = db.Accounts.Where(x => x.Email.ToLower().Equals(logindata.email.ToLower())).FirstOrDefault();
                     if (x != null)
                     {
-                        if (x.Password == logindata.wachtwoord)
+                        if (x.Password == logindata.password)
                         {
                             return Ok(x);
                         }
@@ -52,7 +51,7 @@ namespace AntesBE.Controllers
                     var x = db.Accounts.Where(x => x.Email.ToLower().Equals(logindata.email.ToLower())).FirstOrDefault();
                     if (x != null)
                     {
-                        x.Password = logindata.wachtwoord;
+                        x.Password = logindata.password;
                         db.SaveChanges();
                         return Ok(); 
                     }
