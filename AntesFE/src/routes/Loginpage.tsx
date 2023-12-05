@@ -36,43 +36,44 @@ export default function Login() {
     navigate('/password-reset'); // Update this path to match your route for PasswordReset
     };
 
-    const handleLogin = (e: React.FormEvent) => {
-        axios
-            .post("https://localhost:7109/Login", { email, password })
+    const handleLogin = () => {
+        axios.post("https://localhost:7109/Login", { email, password })
             .then((response) => {
                 setAuthTokens(response.data);
-                setUser(jwtDecode(response.data.access));
-                localStorage.setItem("authTokens", JSON.stringify(response.data));
+                localStorage.setItem("authTokens", JSON.stringify(response.data)); setUser(jwtDecode(response.data.access));
+                // setLoading(true);
+            })
+            .catch((error) => {
+                console.log(error.message);
+               
+            }
+        )
+
+        axios.get<userinfoInterface>("http://localhost:7109/GetUserInfo", {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + String(authTokens.access),
+            },
+        })
+            .then((response) => {
                 setUserInfos(response.data);
                 if (userInfos?.Admin == true) {
                     navigate("/adminSidebar");
                 }
                 navigate("/userSidebar")
-                
-                //setLoading(true);
+                setLoading(true);
             })
             .catch((error) => {
-                console.log(error.message);
-                /*if (error.message) {
-                    setError(true);
-                }*/
-            })
-
-        /*const response = fetch("https://localhost:7109/Login", options)
-            .then(res => {
-                console.log(res),
-                    res.json()
-            })
-            .then((data) => {
-                setAuthTokens(data)
-            } )*/
-       
+                console.log(error);
+            }
+        );       
     };
 
     return (
     <div className="login">
         <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '5rem' }} />
-        <h1>Login</h1>
+            <h1>Login</h1>
+        <p>Name: <span>{userInfos?.Admin}</span></p>
         <form onSubmit={handleLogin}>
             <div className="form-group">
                 <label>Email: </label>

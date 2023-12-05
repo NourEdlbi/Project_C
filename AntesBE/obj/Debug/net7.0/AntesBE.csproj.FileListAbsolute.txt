@@ -692,3 +692,11 @@ D:\HR\Year 2\Project-C\AntesTwo\Project_C\AntesBE\obj\Debug\net7.0\refint\AntesB
 D:\HR\Year 2\Project-C\AntesTwo\Project_C\AntesBE\obj\Debug\net7.0\AntesBE.pdb
 D:\HR\Year 2\Project-C\AntesTwo\Project_C\AntesBE\obj\Debug\net7.0\AntesBE.genruntimeconfig.cache
 D:\HR\Year 2\Project-C\AntesTwo\Project_C\AntesBE\obj\Debug\net7.0\ref\AntesBE.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\appsettings.json
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
