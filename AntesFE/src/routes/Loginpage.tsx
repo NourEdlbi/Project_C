@@ -39,9 +39,14 @@ export default function Login() {
     const handleLogin = () => {
         axios.post("https://localhost:7109/Login", { email, password })
             .then((response) => {
-                setAuthTokens(response.data);
-                localStorage.setItem("authTokens", JSON.stringify(response.data)); setUser(jwtDecode(response.data.access));
+                /*setAuthTokens(response.data);
+                localStorage.setItem("authTokens", JSON.stringify(response.data)); setUser(jwtDecode(response.data.access));*/
                 // setLoading(true);
+                setUserInfos(response.data)
+                if (userInfos?.Admin == true) {
+                    navigate("/adminSidebar");
+                }
+                navigate("/userSidebar")
             })
             .catch((error) => {
                 console.log(error.message);
@@ -49,7 +54,7 @@ export default function Login() {
             }
         )
 
-        axios.get<userinfoInterface>("http://localhost:7109/GetUserInfo", {
+        /*axios.get<userinfoInterface>("http://localhost:7109/GetUserInfo", {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + String(authTokens.access),
@@ -66,7 +71,7 @@ export default function Login() {
             .catch((error) => {
                 console.log(error);
             }
-        );       
+        ); */      
     };
 
     return (

@@ -13,15 +13,15 @@ namespace AntesBE.Controllers
     public record Person(string email, string password);
     public class LoginController : Controller
     {
-        private readonly IConfiguration _configuration;
+        /*private readonly IConfiguration _configuration;
         public LoginController(IConfiguration configuration)
         {
             _configuration = configuration;
-        }
+        }*/
 
-        [Route("Login")]
+        /*[Route("Auth")]
         [HttpPost]
-        public IActionResult Login(string email, string wachtwoord) 
+        public IActionResult Auth() 
         {
             var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
             if (syncIOFeature != null)
@@ -58,11 +58,11 @@ namespace AntesBE.Controllers
                 }
             }
             return BadRequest();
-        }
+        }*/
 
-        [Route("GetUserInfo")]
-        [HttpGet]
-        public IActionResult GetUserInfo(string email, string wachtwoord)
+        [Route("Login")]
+        [HttpPost]
+        public IActionResult Login(string email, string wachtwoord)
         {
             var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
             if (syncIOFeature != null)
