@@ -83,26 +83,28 @@ export default function Login() {
         },
         body: JSON.stringify(update),
     };
-    async function submitlogin()
-    {       
-        fetch(`${BASE_URL}/Login`, options)
-            .then(response => (response.json())
-                .then(response => {
-                    localStorage.setItem(JSON.stringify("Userinfo"),response)
-                    setUserInfos(response)
-                    if (userInfos?.admin == true) {
-                        navigate("/adminSidebar");
-                    }
-                    else if (userInfos?.admin == false){
-                        navigate("/userSidebar")
-                    }
-                    else { // Set an error message
-                        setErrorMessage('Incorrect email or password');
-                    }
-                })
-            )
-        .catch(error => console.log(error));
+
+        async function submitlogin() {
+        try {
+            const response = await fetch(`${BASE_URL}/Login`, options);
+            const data = await response.json();
+
+            localStorage.setItem('Userinfo', JSON.stringify(data));
+            setUserInfos(prevState => {
+                // Use the prevState to access the latest state
+                if (prevState?.admin) {
+                    navigate('/adminSidebar');
+                } else {
+                    navigate('/userSidebar');
+                }
+                return { ...data, admin: prevState?.admin };
+            });
+        } catch (error) {
+            console.log(error);
+            setErrorMessage('Incorrect email or password');
+        }
     }
+
 
     return (
     <div className="login">
