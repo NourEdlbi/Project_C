@@ -88,7 +88,7 @@ export default function Login() {
         fetch(`${BASE_URL}/Login`, options)
             .then(response => (response.json())
                 .then(response => {
-                    localStorage.setItem(JSON.stringify("Userinfo"),response)
+                    localStorage.setItem('Userinfo', JSON.stringify(response));
                     setUserInfos(response)
                     if (userInfos?.admin == true) {
                         navigate("/adminSidebar");
