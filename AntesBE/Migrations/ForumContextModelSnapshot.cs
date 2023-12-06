@@ -203,8 +203,17 @@ namespace AntesBE.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
-                    b.Property<char>("Answer")
-                        .HasColumnType("character(1)");
+                    b.Property<string>("Answer1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Answer2")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Answer3")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CorrectAnswer")
+                        .HasColumnType("text");
 
                     b.Property<string>("QuestionText")
                         .IsRequired()
@@ -230,6 +239,12 @@ namespace AntesBE.Migrations
 
                     b.Property<int>("QuizCreatorID")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
 
                     b.HasKey("ID");
 

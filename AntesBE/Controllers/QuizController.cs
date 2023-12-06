@@ -10,13 +10,14 @@ using YourNamespace;
 
 namespace AntesBE.Controllers
 {
-    public record QuizData(string quizName, string description);
+    public record QuizData(int id, int makerID, string name, string description, List<QuestionData> questions);
+    public record QuestionData(int id, int quizID, string text, string answer1, string answer2, string answer3, string correctAnswer);
 
     public class QuizController : Controller
     {
-        [Route("MakeQuiz")]
-        [HttpPost()]
-        public IActionResult NewQuiz([FromBody] QuizData quizData)
+        [Route("adminSidebar/Quizzes/MakeQuiz")]
+        [HttpPost]
+        public IActionResult NewQuiz()
         {
             var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
             if (syncIOFeature != null)
@@ -25,38 +26,70 @@ namespace AntesBE.Controllers
                 using (var reader = new StreamReader(HttpContext.Request.Body))
                 {
                     var postData = reader.ReadToEnd();
-                    var quizDatas = JsonSerializer.Deserialize<QuizData>(postData);
+                    var quizData = JsonSerializer.Deserialize<QuizData>(postData);
                     ForumContext db = new ForumContext();
 
                     Quiz quiz = new();
                     quiz.QuizCreatorID = 1;
-                    quiz.ID = 2;
-                    quiz.Name = "test";
-                    quiz.Description = "test";
+                    quiz.ID = db.Quizzes.Count() + 1;
+                    quiz.Name = quizData.name;
+                    quiz.Description = quizData.description;
                     db.Quizzes.Add(quiz);
                     db.SaveChanges();
-                    return Ok(quizDatas);
+
+                    foreach (var q in quizData.questions)
+                    {
+                        Question question = new();
+                        question.ID = db.Questions.Count() + 1;
+                        question.QuizID = quiz.ID;
+                        question.QuestionText = q.text;
+                        question.Answer1 = q.answer1;
+                        question.Answer2 = q.answer2;
+                        question.Answer3 = q.answer3;
+                        question.CorrectAnswer = q.correctAnswer;
+                        db.Questions.Add(question);
+                        db.SaveChanges();
+                    }
 
 
-
+                    return Ok();
                 }
             }
+            return BadRequest();
+        }
 
+        [Route("adminSidebar/adminQuiz")]
+        [Route("userSidebar/Quizzes")]
+        [HttpGet]
+        public IActionResult DisplayQuizzes()
+        {
             try
             {
                 ForumContext db = new ForumContext();
-                var quiz = new Quiz() { ID = 1, QuizCreatorID = 2, Name = quizData.quizName, Description = quizData.description };
+                var quizzesList = db.Quizzes.ToList();
 
-                db.Quizzes.Add(quiz);
-                db.SaveChanges();
-
-                return Ok(quizData);
+                return Ok(quizzesList);
             }
-            catch (Exception ex)
+            catch (System.Exception)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return BadRequest();
             }
+        }
 
+        [Route("userSidebar/Quizzes/{quizId}")]
+        [HttpGet]
+        public IActionResult GetQuestions(int quizId)
+        {
+            try
+            {
+                ForumContext db = new ForumContext();
+                var questions = db.Questions.Where(q => q.QuizID == quizId).ToList();
+                return Ok(questions);
+            }
+            catch (System.Exception)
+            {
+                return BadRequest();
+            }
 
         }
     }

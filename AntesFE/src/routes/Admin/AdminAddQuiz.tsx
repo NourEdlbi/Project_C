@@ -81,165 +81,215 @@
 // }
 
 import React, { useState } from 'react';
+import { BASE_URL } from "../../consts.ts";
+import './AdminAddQuiz.css';
+
+interface QuestionData {
+  id?: number;
+  quizID?: number;
+  text: string;
+  answer1: string;
+  answer2: string;
+  answer3: string;
+  correctAnswer: string;
+}
+
+interface QuizData {
+  id?: number;
+  makerID?: number;
+  quizName: string;
+  description: string;
+  questions: QuestionData[];
+}
 
 export default function Addquiz() {
-  const [quizName, setQuizName] = useState('');
-  const [description, setDescription] = useState('');
-  const [questions, setQuestions] = useState([{ question: '', answers: [''], correctAnswer: '' }]);
-  const [correctAnswers, setCorrectAnswers] = useState<string[]>([]);
+  const [quizData, setQuizData] = useState<QuizData>({
+    id: 0,
+    makerID: 0,
+    quizName: '',
+    description: '',
+    questions: [{
+      id: 0,
+      quizID: 0,
+      text: '',
+      answer1: '',
+      answer2: '',
+      answer3: '',
+      correctAnswer: '',
+    }],
+  });
 
   const addQuestion = () => {
-    setQuestions([...questions, { question: '', answers: [''], correctAnswer: '' }]);
-    setCorrectAnswers([...correctAnswers, '']);
-  };
-
-  const addAnswer = (questionIndex: number) => {
-    const newQuestions = [...questions];
-    newQuestions[questionIndex].answers.push('');
-    setQuestions(newQuestions);
+    setQuizData((prevData) => ({
+      ...prevData,
+      questions: [
+        ...prevData.questions,
+        {
+          id: 0, 
+          quizID: 0,
+          text: '',
+          answer1: '',
+          answer2: '',
+          answer3: '',
+          correctAnswer: '',
+        },
+      ],
+    }));
   };
 
   const handleQuestionChange = (index: number, value: string) => {
-    const newQuestions = [...questions];
-    newQuestions[index].question = value;
-    setQuestions(newQuestions);
+    setQuizData((prevData) => {
+      const newQuestions = [...prevData.questions];
+      newQuestions[index].text = value;
+      return {
+        ...prevData,
+        questions: newQuestions,
+      };
+    });
   };
-
-  const handleAnswerChange = (questionIndex: number, answerIndex: number, value: string) => {
-    const newQuestions = [...questions];
-    newQuestions[questionIndex].answers[answerIndex] = value;
-    setQuestions(newQuestions);
+  
+  const handleAnswerChange = (questionIndex: number, answerField: string, value: string) => {
+    setQuizData((prevData) => {
+      const newQuestions = [...prevData.questions];
+      newQuestions[questionIndex][answerField] = value;
+      return {
+        ...prevData,
+        questions: newQuestions,
+      };
+    });
   };
-
+  
   const handleCorrectAnswerChange = (questionIndex: number, value: string) => {
-    const newCorrectAnswers = [...correctAnswers];
-    newCorrectAnswers[questionIndex] = value;
-    setCorrectAnswers(newCorrectAnswers);
+    setQuizData((prevData) => {
+      const newQuestions = [...prevData.questions];
+      newQuestions[questionIndex].correctAnswer = value;
+      return {
+        ...prevData,
+        questions: newQuestions,
+      };
+    });
   };
 
-//   const submitQuiz = async () => {
-//     try {
-//       const response = await fetch("http://localhost:5173/adminSidebar/Quizzes/MakeQuiz", {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//           quizName,
-//           description,
-//           questions,
-//           correctAnswers,
-//         }),
-//       });
+  const updateQuiz = {
+    id: quizData.id,
+    makerID: quizData.makerID,
+    quizName: quizData.quizName,
+    description: quizData.description,
+    questions: quizData.questions,
+  };
 
-//       if (response.ok) {
-//         console.log('Quiz added successfully');
-//         // You can redirect or perform other actions upon successful quiz addition
-//       } else {
-//         console.error('Failed to add quiz');
-//       }
-//     } catch (error) {
-//       console.error('Error adding quiz:', error);
-//     }
-//   };
 
 const options = {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-        // quizName,
-        // description,
-        quizName:"test",
-        description:"33test",
-
-      }),
+    body: JSON.stringify(updateQuiz),
 };
 
 const submitQuiz = () => {
-    // fetch("http://localhost:5173/adminSidebar/Quizzes/MakeQuiz", options).then((res) => console.log(res)).catch((res) => console.log(res));
-    fetch("http://localhost:5263/MakeQuiz", options)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      // Handle the response data as needed
-    })
-    .catch((error) => console.error(error));
+    fetch(`${BASE_URL}/adminSidebar/Quizzes/MakeQuiz`, options).then((res) => console.log(res)).catch((res) => console.log(res));
+    
 } 
 
+return (
+  <div className='newQuiz'>
+    <div className='titel'>
+      <h1>Quiz toevoegen</h1>
+      </div>
+    <h2>Nieuwe quiz </h2>
+    <div className='quizBasics'>
+    <form>
+      <label>
+        Quiz naam:
+        <input type="text" value={quizData.quizName} onChange={(e) => setQuizData({ ...quizData, quizName: e.target.value })} />
+      </label>
+      <br />
 
-  return (
-    <div>
-      <h2>Add Quiz</h2>
-      <form>
-        <label>
-          Quiz Name:
-          <input type="text" value={quizName} onChange={(e) => setQuizName(e.target.value)} />
-        </label>
-        <br />
-
-        <label>
-          Description:
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-        </label>
-        <br />
-
-        {questions.map((q, questionIndex) => (
-          <div key={questionIndex}>
-            <label>
-              Question:
-              <input
-                type="text"
-                value={q.question}
-                onChange={(e) => handleQuestionChange(questionIndex, e.target.value)}
-              />
-            </label>
-            <br />
-
-            <label>
-              Answers:
-              {q.answers.map((answer, answerIndex) => (
-                <div key={answerIndex}>
-                  <input
-                    type="text"
-                    value={answer}
-                    onChange={(e) => handleAnswerChange(questionIndex, answerIndex, e.target.value)}
-                  />
-                </div>
-              ))}
-              <button type="button" onClick={() => addAnswer(questionIndex)}>
-                Add Answer
-              </button>
-            </label>
-            <br />
-
-            <label>
-              Correct Answer:
-              <select
-                value={correctAnswers[questionIndex]}
-                onChange={(e) => handleCorrectAnswerChange(questionIndex, e.target.value)}
-              >
-                {q.answers.map((answer, answerIndex) => (
-                  <option key={answerIndex} value={answer}>
-                    {answer}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <br />
-          </div>
-        ))}
-
-        <button type="button" onClick={addQuestion}>
-          Add Question
-        </button>
-        <br />
-
-        <button type="button" onClick={submitQuiz}>
-          Submit Quiz
-        </button>
-      </form>
+      <label>
+        Omschrijving:
+        <textarea value={quizData.description} onChange={(e) => setQuizData({ ...quizData, description: e.target.value })} />
+      </label>
+    </form>
     </div>
-  );
+
+    <h2>Vragen </h2>
+    <div className='instructions'>
+      Vul een vraag in met drie fautieve antwoorden en één correcte antwoord. Druk op "Vraag toevoegen" om een nieuwe vraag toe te voegen.
+    </div>
+
+    <div className='quizData'>
+    <form>
+      {quizData.questions.map((q, questionIndex) => (
+        <div key={questionIndex} className="questions">
+          <label>
+            Vraag:
+            <input
+              className='questionInput'
+              type="text"
+              value={q.text}
+              onChange={(e) => handleQuestionChange(questionIndex, e.target.value)}
+            />
+          </label>
+          <br />
+
+          <label>
+            Antwoord 1:
+            <br />
+            <input
+              className="answerInput"
+              type="text"
+              value={q.answer1}
+              onChange={(e) => handleAnswerChange(questionIndex, 'answer1', e.target.value)}
+            />
+            </label>
+            <label>
+            Antwoord 2:
+            <br />
+            <input
+              className="answerInput"
+              type="text"
+              value={q.answer2}
+              onChange={(e) => handleAnswerChange(questionIndex, 'answer2', e.target.value)}
+            />
+            </label>
+            <label>
+            Antwoord 3:
+            <br />
+            <input
+              className="answerInput"
+              type="text"
+              value={q.answer3}
+              onChange={(e) => handleAnswerChange(questionIndex, 'answer3', e.target.value)}
+            />
+          </label>
+          <br />
+
+          <label>
+            Juiste antwoord:
+            <input
+              type="text"
+              value={q.correctAnswer}
+              onChange={(e) => handleCorrectAnswerChange(questionIndex, e.target.value)}
+            />
+          </label>
+          <br />
+        </div>
+      ))}
+
+
+      
+    </form>
+  </div>
+  <div>
+      <button type="button" onClick={addQuestion}>
+        Vraag toevoegen
+      </button>
+      <button type="button" onClick={submitQuiz}>
+        Quiz Aanmaken
+      </button>
+  </div>
+  </div>
+    
+);
 }

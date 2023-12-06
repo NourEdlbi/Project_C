@@ -107,16 +107,16 @@ namespace YourNamespace
     {
         [Key]
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public string? Name { get; set; }
+        public string? Email { get; set; }
         public bool Admin { get; set; }
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
-        public Profile Profile { get; set; }
-        public ICollection<Agenda> Agendas { get; set; }
-        public ICollection<Forum> Forums { get; set; }
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<QuizResult> QuizResults { get; set; }
+        public Profile? Profile { get; set; }
+        public ICollection<Agenda>? Agendas { get; set; }
+        public ICollection<Forum>? Forums { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
+        public ICollection<QuizResult>? QuizResults { get; set; }
     }
 
 
@@ -125,10 +125,10 @@ namespace YourNamespace
         [Key]
         public int ID { get; set; }
         public int AccountID { get; set; }
-        public string Contact { get; set; }
-        public string Bio { get; set; }
+        public string? Contact { get; set; }
+        public string? Bio { get; set; }
 
-        public Account Account { get; set; }
+        public Account? Account { get; set; }
     }
 
     public class Agenda
@@ -140,9 +140,9 @@ namespace YourNamespace
         public DateTime End_Date { get; set; }
         public DateTime Start_Time { get; set; }
         public DateTime End_Time { get; set; }
-        public string Subject { get; set; }
+        public string? Subject { get; set; }
 
-        public Account Account { get; set; }
+        public Account? Account { get; set; }
     }
 
     public class Comment
@@ -151,23 +151,23 @@ namespace YourNamespace
         public int ID { get; set; }
         public int ForumID { get; set; }
         public int CommenterID { get; set; }
-        public string Content { get; set; }
+        public string? Content { get; set; }
         public DateTime PostTime { get; set; }
 
-        public Forum Forum { get; set; }
-        public Account Commenter { get; set; }
+        public Forum? Forum { get; set; }
+        public Account? Commenter { get; set; }
     }
     public class Forum
     {
         [Key]
         public int ID { get; set; }
         public int ForumPosterID { get; set; }
-        public string Name { get; set; }
-        public string Content { get; set; }
+        public string? Name { get; set; }
+        public string? Content { get; set; }
         public DateTime PostTime { get; set; }
 
-        public Account ForumPoster { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public Account? ForumPoster { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
     }
 
     public class Question
@@ -175,10 +175,13 @@ namespace YourNamespace
         [Key]
         public int ID { get; set; }
         public int QuizID { get; set; }
-        public string QuestionText { get; set; }
-        public char Answer { get; set; }
+        public string? QuestionText { get; set; }
+        public string? Answer1 { get; set; }
+        public string? Answer2 { get; set; }
+        public string? Answer3 { get; set; }
+        public string? CorrectAnswer { get; set; }
 
-        public Quiz Quiz { get; set; }
+        public Quiz? Quiz { get; set; }
     }
 
     public class Quiz
@@ -186,11 +189,11 @@ namespace YourNamespace
         [Key]
         public int ID { get; set; }
         public int QuizCreatorID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
 
-        public ICollection<Question> Questions { get; set; }
-        public ICollection<QuizResult> QuizResults { get; set; }
+        public ICollection<Question>? Questions { get; set; }
+        public ICollection<QuizResult>? QuizResults { get; set; }
     }
 
     public class Answer
@@ -199,7 +202,7 @@ namespace YourNamespace
         public int ID { get; set; }
         public int QuizResultID { get; set; }
         public char Value { get; set; }
-        public QuizResult QuizResult { get; set; }
+        public QuizResult? QuizResult { get; set; }
     }
 
     public class QuizResult
@@ -209,9 +212,9 @@ namespace YourNamespace
         public int QuizID { get; set; }
         public int QuizSubmitterID { get; set; }
 
-        public Quiz Quiz { get; set; }
-        public Account QuizSubmitter { get; set; }
-        public ICollection<Answer> Answers { get; set; }
+        public Quiz? Quiz { get; set; }
+        public Account? QuizSubmitter { get; set; }
+        public ICollection<Answer>? Answers { get; set; }
     }
 
     // Other classes remain the same.
