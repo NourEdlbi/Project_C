@@ -40,6 +40,7 @@ interface QuestionData {
 
 export default function Uquiz() {
     const { quizID } = useParams();
+    const navigate = useNavigate();
     const [quizData, setQuizData] = useState<{ Quiz: QuizData; Questions: QuestionData[] } | null>(null);
     const [selectedAnswers, setSelectedAnswers] = useState<{ [questionID: number]: string }>({});
     const [shuffledAnswers, setShuffledAnswers] = useState<{ [questionID: number]: string[] }>({});
@@ -113,6 +114,7 @@ export default function Uquiz() {
         } catch (error) {
             console.error('Error submitting quiz:', error);
         }
+
     };
 
     const content = (
@@ -152,7 +154,7 @@ export default function Uquiz() {
             <div className="quizzes">
                 <form>
                     {content}
-                    <button type="submit" onClick={() => { submitQuiz(); }}> submit quiz</button>
+                    <button type="submit" onClick={() => navigate('/userSidebar/Quizzes')}> submit quiz</button>
                 </form>
             </div>
         </div>
