@@ -2,74 +2,157 @@
  *   Copyright (c) 2023 
  *   All rights reserved.
  */
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
+
+import { useParams } from "react-router-dom";
 import "../Quiz.css";
+import React, { useState, useEffect } from 'react';
+import { BASE_URL } from "../../consts.ts";
+import { useNavigate, } from 'react-router-dom';
 
-const getquizzes = [
-    { id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
-    { id: 2, title: 'Installation', content: 'You can install React from npm.' }
-];
+interface QuestionData {
+    id: number;
+    quizID: number;
+    questionText: string;
+    answer1: string;
+    answer2: string;
+    answer3: string;
+    correctAnswer: string;
+  }
 
-const quizzes = getquizzes.map((quiz) =>
-    <div key={quiz.id}>
-        <button onClick={() => openQuiz(quiz.id)} className="quizbanner"> {quiz.title} </button>
-        <div id={quiz.id.toString() } className="quizdescription">
-            <p>{quiz.content}</p>
+  interface QuizData {
+    id: number;
+    makerID?: number;
+    name: string;
+    description: string;
+    questions: QuestionData[];
+  }
 
-            <button className="Gotoquizbutton">
-                Make Quiz
-            </button>
-        </div>
-        
-    </div>
-);
-function openQuiz(id) {
-    const x = document.getElementById(id) as HTMLElement;
-    if (x.style.display == "block") {
-        x.style.display = "none";
-    }
-    else {
-        x.style.display = "block";
-    }
-
+  interface AnswerData {
+    answers: { questionID: number; value: string }[];
 }
+  interface QuizResultData {
+    id: number;
+    quizID: number;
+    quizSubmitterID: number;
+    answerID: number;
+  }
+  
 
 export default function Uquiz() {
-    const { id } = useParams();
+    const { quizID } = useParams();
+    const [quizData, setQuizData] = useState<{ Quiz: QuizData; Questions: QuestionData[] } | null>(null);
+    const [selectedAnswers, setSelectedAnswers] = useState<{ [questionID: number]: string }>({});
+    const [shuffledAnswers, setShuffledAnswers] = useState<{ [questionID: number]: string[] }>({});
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const getquizquestions = [
-        { id: 1, question: 'Wat gaan we doen met de neppiraten?', ans1: 'schiet hun schip maar vol met gaten!', ans2: 'Gooi ze overboord!', ans3: 'Ik heb geen idee waar je het over hebt joh', ans4: 'idk geef ze socialisme' },
-        { id: 2, question: 'Hello World', ans1: 'Welcome to learning React!', ans2: 'Welcome to learning React!', ans3: 'Welcome to learning React!', ans4: 'Welcome to learning React!' }
-    ];
+    const shuffleArray = (array) => {
+        const shuffledArray = [...array];
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        }
+        return shuffledArray;
+    };
 
-    const quiz = getquizquestions.map((question) =>
-        
-        <div key={question.id}>
-            <p>{question.question }</p>
-            <div id={question.id.toString()} className="answers">
-                
-                <input name={question.id.toString()}  type="radio" value={question.ans1}></input>{question.ans1} <br></br>
-                <input name={question.id.toString()}  type="radio" value={question.ans2}></input>{question.ans2} <br></br>
-                <input name={question.id.toString()} type="radio" value={question.ans3}></input>{question.ans3} <br></br>
-                <input name={question.id.toString()}  type="radio" value={question.ans4}></input>{question.ans4} <br></br>
-                
-            </div>
-        </div>
+    useEffect(() => {
+        const shuffledAnswersMap = {};
+        quizData?.Quiz.questions.forEach((question) => {
+            const answersArray = [question.answer1, question.answer2, question.answer3, question.correctAnswer];
+            shuffledAnswersMap[question.id] = shuffleArray(answersArray);
+        });
+        setShuffledAnswers(shuffledAnswersMap);
+    }, [quizData]);
+
+      useEffect(() => {
+        const getData = async () => {
+          try {
+            const response = await fetch(`${BASE_URL}/userSidebar/Quizzes/${quizID}`);
+            if (response.ok) {
+              const data = await response.json();
+              console.log('Received data:', data);
+              setQuizData({ Quiz: data.quiz, Questions: data.questions });
+            } else {
+              setErrorMessage('Er is een fout opgetreden.');
+            }
+          } catch (error) {
+            setErrorMessage('Er is een fout opgetreden.');
+          }
+        };
+    
+        getData();
+      }, [quizID]);
+
+
+
+      const handleAnswerSelection = (questionID: number, selectedValue: string) => {
+        setSelectedAnswers((prevSelectedAnswers) => ({
+            ...prevSelectedAnswers,
+            [questionID]: selectedValue,
+        }));
+    };
+
+    useEffect(() => {
+        console.log('Selected Answers:', selectedAnswers);
+    }, [selectedAnswers]);
+
+
+    const submitQuiz = async () => {
+        try {
+            const answers = quizData?.Questions.map((question) => ({
+                questionID: question.id,
+                value: selectedAnswers[question.id] || '',
+            }));
+
+            const response = await fetch(`${BASE_URL}/userSidebar/Quizzes/${quizID}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ answers }),
+            });
+        } catch (error) {
+            console.error('Error submitting quiz:', error);
+        }
+    };
+
+    const content = (
+        quizData?.Quiz.questions.map((question) => {
+            const questionAnswers = shuffledAnswers[question.id] || []; // Use default empty array if shuffledAnswers[question.id] is undefined
+            return (
+                <div className="questionBox" key={question.id}>
+                    <h2>{question.questionText}</h2>
+                    <div id={question.id.toString()} className="answers">
+                        {questionAnswers.map((shuffledAnswer, index) => (
+                            <div key={index} className="answersOnly">
+                                <input
+                                    name={question.id.toString()}
+                                    type="radio"
+                                    value={shuffledAnswer}
+                                    onChange={() => handleAnswerSelection(question.id, shuffledAnswer)}
+                                />
+                                 <label className="answer">{shuffledAnswer}</label> <br />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        })
     );
 
     return (
-        <div>
+        <div className="quizContent">
             <div className="titel">
-                <h1> Quiz</h1>
+                <h1> {quizData?.Quiz.name}</h1>
             </div>
+            <div>
+                <p>{quizData?.Quiz.description}</p>
+            </div>
+            
 
             <div className="quizzes">
                 <form>
-                    {quiz}
-                    <button type="submit"> submit quiz</button>
+                    {content}
+                    <button type="submit" onClick={() => { submitQuiz(); }}> submit quiz</button>
                 </form>
             </div>
         </div>

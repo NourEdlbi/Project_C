@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import AuthProvider from "./context/AuthContext";
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
@@ -149,7 +153,7 @@ function Main() {
                             element: <Uquizzes />,
                         },
                         {
-                            path: "Quizzes/:id",
+                            path: "Quizzes/:quizID",
                             element: <Uquiz />,
 
                         },

@@ -1,4 +1,9 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import React, { useState, useEffect } from 'react';
+import { BASE_URL } from '../consts';
 
 export default function Inst() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -44,7 +49,7 @@ export default function Inst() {
             alert('Passwords do not match');
             return;
         }
-        fetch("https://localhost:7109/Password_Reset", options).then(res => console.log(res)).catch(error => console.log(error));       
+        fetch(`${BASE_URL}/Password_Reset`, options).then(res => console.log(res)).catch(error => console.log(error));       
         console.log('Form submitted', formData);
         alert('Wachtwoord veranderd!');
     };
