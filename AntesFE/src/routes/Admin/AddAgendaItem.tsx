@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BASE_URL } from '../../consts';
 
 const formStyle = {
   display: 'flex',
@@ -47,6 +48,28 @@ export default function AddAgendaItem() {
     // Handle form submission logic here
     console.log('Form submitted', formData);
   };
+
+
+  const update = {
+    title: formData.title,
+    description: formData.description,
+    date: formData.date,
+    begintime: formData.begintime,
+    endtime: formData.endtime,
+};
+
+const options = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(update),
+};
+
+const submitlogin = () => {       
+    fetch(`${BASE_URL}/AddAgendaItem`, options).then(res => console.log(res)).catch(error => console.log(error));
+};
+
 
   return (
     <div style={formStyle}>
