@@ -132,12 +132,12 @@ namespace AntesBE.Controllers
 
                 ForumContext db = new ForumContext();
                 var account = db.Accounts.Where(x => x.Email.ToLower().Equals(newdata.email)).FirstOrDefault();
-                if (account != null)
+                var profile = db.Profiles.Where(x => x.AccountID.Equals(account.ID)).FirstOrDefault();
+                if (profile != null)
                 {
-                    return Ok(account.Profile);
+                    return Ok(profile.Bio);
                 }
             }
-
             return BadRequest();
         }
 

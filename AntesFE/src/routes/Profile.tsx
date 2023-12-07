@@ -17,11 +17,11 @@ export default function Profile() {
     const [userInfos, setUserInfos] = useState<userinfoInterface>();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [bio, setBio] = useState('blablabalba');
+    const [bio, setBio] = useState('');
     const [changedBio, setChangedBio] = useState('');
 
     const update = {
-        email: "hash@hash.hash", //userInfos?.email,
+        email: userInfos?.email, // pakt de email niet
         bio: changedBio
     };
 
@@ -36,7 +36,7 @@ export default function Profile() {
     const postBio = () => {
         fetch(`${BASE_URL}/PostBio`, postoptions).then(response => response.json())
             .then(data => {
-                setBio(data) // dit moet nog kijken want werkr nog niet
+                setBio(JSON.stringify(data)) // dit moet nog kijken want werkr nog niet
                 // do whatever you want with the data
             }
         );
@@ -47,7 +47,7 @@ export default function Profile() {
     };
 
     const getoptions = {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -57,7 +57,7 @@ export default function Profile() {
     const getBio = () => {
         fetch(`${BASE_URL}/GetBio`, getoptions).then(response => response.json())
             .then(data => {
-                setBio(data)
+                setBio(JSON.stringify(data))
                 // do whatever you want with the data
             }
         );
