@@ -12,10 +12,8 @@ export default function Info() {
         { title: 'Antes Contact', url: 'https://www.anteszorg.nl/contact/', date: '2000-01-01' },
         { title: 'Werken bij antes', url: 'https://www.anteszorg.nl/werken-bij-antes/', date: '2022-01-01' },
         { title: 'Training', url: 'https://www.anteszorg.nl/cursus-training', date: '2022-01-01' },
-        { title: 'Antes Homepage', url: 'https://www.anteszorg.nl/', date: '2023-01-01' },
-        { title: 'Antes Homepage', url: 'https://www.anteszorg.nl/', date: '2023-01-01' },
-        { title: 'Antes Homepage', url: 'https://www.anteszorg.nl/', date: '2023-01-01' },
-        { title: 'Antes Homepage', url: 'https://www.anteszorg.nl/', date: '2023-01-01' },
+        { title: 'google', url: 'https://www.Google.nl/', date: '2023-01-01' },
+
         // Add other data items
     ];
 
