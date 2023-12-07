@@ -37,8 +37,8 @@
     }
 
     .answers {
-        background-color: rgba(181, 15, 34,0.2);
-        border: solid 2px;
+        background-color: #F8EEF0;
+        border: 1px solid #ccc;
         margin: 1em 1em;
     }
 
@@ -98,4 +98,32 @@
 
     .filterText{
         margin-left: 10px;
+    }
+
+    .quizContent p{
+        margin: 15px;
+    }
+
+    .questionBox{
+        background-color: rgba(181, 15, 34,0.2);
+        padding: 10px;
+        margin: 20px;
+        width: 50%;
+        position: relative;
+        left: 23%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+    }
+
+    .answer{
+        margin-left: 10px;
+        margin: 5px;
+    }
+
+    .answersOnly{
+        display: flex;
+        align-items: left;
+        position: relative;
+        left:40%;
     }

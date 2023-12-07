@@ -4,7 +4,7 @@
  */
 import "../Quiz.css";
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from "./adminconsts.ts";
+import { BASE_URL } from "../../consts.ts";
 import React, { useState, useEffect } from 'react';
 
 interface QuestionData {

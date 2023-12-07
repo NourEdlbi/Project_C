@@ -83,6 +83,7 @@
 import React, { useState } from 'react';
 import { BASE_URL } from "../../consts.ts";
 import './AdminAddQuiz.css';
+import { useNavigate } from 'react-router-dom';
 
 interface QuestionData {
   id?: number;
@@ -97,16 +98,18 @@ interface QuestionData {
 interface QuizData {
   id?: number;
   makerID?: number;
-  quizName: string;
+  name: string;
   description: string;
   questions: QuestionData[];
 }
 
 export default function Addquiz() {
+  const navigate = useNavigate();
+
   const [quizData, setQuizData] = useState<QuizData>({
     id: 0,
     makerID: 0,
-    quizName: '',
+    name: '',
     description: '',
     questions: [{
       id: 0,
@@ -173,7 +176,7 @@ export default function Addquiz() {
   const updateQuiz = {
     id: quizData.id,
     makerID: quizData.makerID,
-    quizName: quizData.quizName,
+    name: quizData.name,
     description: quizData.description,
     questions: quizData.questions,
   };
@@ -189,7 +192,7 @@ const options = {
 
 const submitQuiz = () => {
     fetch(`${BASE_URL}/adminSidebar/Quizzes/MakeQuiz`, options).then((res) => console.log(res)).catch((res) => console.log(res));
-    
+    navigate("/adminSidebar/adminQuiz")
 } 
 
 return (
@@ -202,7 +205,7 @@ return (
     <form>
       <label>
         Quiz naam:
-        <input type="text" value={quizData.quizName} onChange={(e) => setQuizData({ ...quizData, quizName: e.target.value })} />
+        <input type="text" value={quizData.name} onChange={(e) => setQuizData({ ...quizData, name: e.target.value })} />
       </label>
       <br />
 

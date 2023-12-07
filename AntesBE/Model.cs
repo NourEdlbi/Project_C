@@ -20,6 +20,7 @@ namespace YourNamespace
         public DbSet<Question> Questions { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<QuizResult> QuizResults { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -201,7 +202,7 @@ namespace YourNamespace
         [Key]
         public int ID { get; set; }
         public int QuizResultID { get; set; }
-        public char Value { get; set; }
+        public string? Value { get; set; }
         public QuizResult? QuizResult { get; set; }
     }
 
@@ -211,6 +212,8 @@ namespace YourNamespace
         public int ID { get; set; }
         public int QuizID { get; set; }
         public int QuizSubmitterID { get; set; }
+        public int AnswerID { get; set; }
+
 
         public Quiz? Quiz { get; set; }
         public Account? QuizSubmitter { get; set; }
