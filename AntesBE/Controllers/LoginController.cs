@@ -122,7 +122,7 @@ namespace AntesBE.Controllers
 
         // Action to get user bio
         [Route("GetBio")]
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> GetBio()
         {
             using (var reader = new StreamReader(HttpContext.Request.Body))
@@ -132,12 +132,12 @@ namespace AntesBE.Controllers
 
                 ForumContext db = new ForumContext();
                 var account = db.Accounts.Where(x => x.Email.ToLower().Equals(newdata.email)).FirstOrDefault();
-                if (account != null)
+                var profile = db.Profiles.Where(x => x.AccountID.Equals(account.ID)).FirstOrDefault();
+                if (profile != null)
                 {
-                    return Ok(account.Profile);
+                    return Ok(profile.Bio);
                 }
             }
-
             return BadRequest();
         }
 
@@ -158,15 +158,28 @@ namespace AntesBE.Controllers
 
                 ForumContext db = new ForumContext();
                 var account = db.Accounts.Where(x => x.Email.ToLower().Equals(newdata.email)).FirstOrDefault();
-                var profile = db.Profiles.Where(x => account.ID.Equals(x.AccountID)).FirstOrDefault();
-                if (profile != null)
+                if (account != null)
                 {
-                    profile.Bio = newdata.bio;
-                    await db.SaveChangesAsync();
-                    return Ok(account.Profile);
+                    var profile = db.Profiles.Where(x => account.ID.Equals(x.AccountID)).FirstOrDefault();
+                    if (profile == null) // create a profile if one doesnt exist
+                    {
+                        Profile profile1 = new Profile();
+                        profile1.AccountID = account.ID;
+                        profile1.ID = account.ID;
+                        profile1.Bio = newdata.bio;
+                        profile1.Contact = account.Email;
+                        db.Profiles.Add(profile1);  
+                        await db.SaveChangesAsync();
+                        return Ok(profile1.Bio);
+                    }
+                    else
+                    {
+                        profile.Bio = newdata.bio;
+                        await db.SaveChangesAsync();
+                        return Ok(profile.Bio);
+                    }
                 }
             }
-
             return BadRequest();
         }
     }

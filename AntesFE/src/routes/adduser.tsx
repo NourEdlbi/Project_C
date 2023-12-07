@@ -1,8 +1,4 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import menuImage from '../assets/Anteslogo.png';
 import '../routes/LoginPage.css';
 import {  useNavigate } from 'react-router-dom';

@@ -1,34 +1,21 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../routes/LoginPage.css';
 import menuImage from '../assets/Anteslogo.png'
-import jwt_decode from "jwt-decode";
-import { AuthContext } from "../context/AuthContext"; 
-import { BASE_URL } from '../consts';
-
+import { BASE_URL } from '../consts.ts';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // State for error message
     const navigate = useNavigate();
-    const { setAuthTokens, setLoading, setUser } = useContext(AuthContext);
-
-    /*const handleLogin = (e: React.FormEvent) => {
-        .then((response) => {
-            console.log(response.data)
-            setAuthTokens(response.data);
-            localStorage.setItem("authTokens", JSON.stringify(response.data)); setUser(jwt_decode(response.data.access));
-            setLoading(true);
-            navigate("/");
-        })
-       
-        )
-    };*/
+    const [userInfos, setUserInfos] = useState<userinfoInterface>();
+    interface userinfoInterface {
+        id: number;
+        name: string;
+        email: string;
+        admin: boolean;
+    }
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -36,21 +23,6 @@ export default function Login() {
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
-    };
-
-    const handleLogin = (e) => {
-        e.preventDefault(); // Prevent default form submission
-        if (email === 'user@antes.nl' && password === 'Welkom0') {
-            navigate('/userSidebar');
-        }
-
-        else if (email === 'admin@antes.nl' && password === 'Welkom1') {
-                navigate('/adminSidebar');
-        }
-
-        else { // Set an error message
-                setErrorMessage('Incorrect email or password');
-             }
     };
 
     const handleResetPassword = () => {
@@ -71,15 +43,41 @@ export default function Login() {
         body: JSON.stringify(update),
     };
 
-    const submitlogin = () => {       
-        fetch(`${BASE_URL}/Login`, options).then(res => console.log(res)).catch(error => console.log(error));
-    };
+    async function handleLogin() {
+        try {
+            const response = await fetch(`${BASE_URL}/Login`, options);
+            const data = await response.json();
+            localStorage.setItem('Userinfo', JSON.stringify(data))
+            setUserInfos(data)
+            if (userInfos?.admin == true) {
+                navigate("/adminSidebar");
+            }
+            else if (userInfos?.admin == false) {
+                navigate("/userSidebar")
+            }
+           
+        } catch (error) {
+            console.log(error);
+            setErrorMessage('Incorrect email or password');
+        }
+
+        /* setUserInfos(prevState => {
+                // Use the prevState to access the latest state
+                if (prevState?.admin) {
+                    navigate('/adminSidebar');
+                } else {
+                    navigate('/userSidebar');
+                }
+                return { ...data, admin: prevState?.admin };
+            });*/
+    }
+
 
     return (
     <div className="login">
         <img src={menuImage} alt="Logo" style={{ width: '300px', height: 'auto', position: 'relative', bottom: '5rem' }} />
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
+            <h1>Login</h1>
+        <form /* onSubmit={submitlogin} */>
             <div className="form-group">
                 <label>Email: </label>
                 <input
@@ -99,9 +97,9 @@ export default function Login() {
                 />
             </div>
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-            <button type="submit" style={{marginRight: '15px'}}>Log In</button>
+            <button type="submit" /* onClick={submitlogin} */ style={{marginRight: '15px'}}>Log In</button>
             <button type="button" onClick={handleResetPassword}>Reset Password</button> <br></br><br></br>
-            <button type="button" onClick={submitlogin}>Rtest</button>
+            <button type="button" onClick={handleLogin} >Rtest</button>
         </form>
     </div>
     );
