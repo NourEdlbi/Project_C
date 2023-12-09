@@ -31,6 +31,8 @@ import Addquiz from './routes/Admin/AdminAddQuiz.tsx';
 import AddUser from './routes/adduser.tsx';
 import AddAgendaItem from "./routes/Admin/AddAgendaItem.tsx";
 
+import Welkom from "./routes/User/WelcomeScreen.tsx"
+
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
         const savedMode = localStorage.getItem('isNightMode');
@@ -124,6 +126,10 @@ function Main() {
                     path: "userSidebar", // The path for userSidebar
                     element: <USidebar />, // Render the USidebar component directly
                     children: [
+                        {
+                            path: "welcome", // Define the route for Welcome screen
+                            element: <Welkom />, // Specify the component to render
+                        },
                         {
                             path: "Profile",
                             element: <Profiel />,
