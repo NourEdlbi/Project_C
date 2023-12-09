@@ -12,42 +12,35 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 export default function UserSidebar() {
     const navigate = useNavigate();
 
+    //Navigeren naar de juiste routes.
     const handleManageProfile = () => {
-    // Navigate to the "Profile" route
     navigate('profile');
     };
 
     const handleManageLogout = () => {
-        // Navigate to the "Profile" route
         navigate('/');
     };
 
     const handleManageHome = () => {
-        // Navigate to the "Profile" route
         navigate('Home');
     };
 
     const handleManageAgenda = () => {
-        // Navigate to the "Agenda" route
         navigate('Agenda');
     };
 
     const handleManageForum = () => {
-        // Navigate to the "Profile" route
         navigate('userForum');
     };
 
     const handleManageSettings = () => {
-        // Navigate to the "Profile" route
         navigate('inst');
     };
 
     const handleManageInfo = () => {
-        // Navigate to the "Profile" route
         navigate('Informatie');
     };
     const handleManageQuiz = () => {
-        // Navigate to the "Profile" route
         navigate('Quizzes');
     };
 
@@ -101,7 +94,7 @@ export default function UserSidebar() {
                 </div>
 
                 <div className="sidebarbox">
-                    <a onClick={handleManageInfo}>Informatie</a>
+                    <a onClick={handleManageInfo}>GGZ Ecademy</a>
                   
                    {/* <div className="dropdown-content">
                         <div className="sidebarbox">

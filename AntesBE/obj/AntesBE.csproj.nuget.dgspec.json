@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Abdel\\Documents\\GitHub\\ProjectC\\AntesBE\\AntesBE.csproj": {}
+    "C:\\Users\\Abdel\\Desktop\\Project_C\\ProjectC\\AntesBE\\AntesBE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Abdel\\Documents\\GitHub\\ProjectC\\AntesBE\\AntesBE.csproj": {
+    "C:\\Users\\Abdel\\Desktop\\Project_C\\ProjectC\\AntesBE\\AntesBE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Abdel\\Documents\\GitHub\\ProjectC\\AntesBE\\AntesBE.csproj",
+        "projectUniqueName": "C:\\Users\\Abdel\\Desktop\\Project_C\\ProjectC\\AntesBE\\AntesBE.csproj",
         "projectName": "AntesBE",
-        "projectPath": "C:\\Users\\Abdel\\Documents\\GitHub\\ProjectC\\AntesBE\\AntesBE.csproj",
+        "projectPath": "C:\\Users\\Abdel\\Desktop\\Project_C\\ProjectC\\AntesBE\\AntesBE.csproj",
         "packagesPath": "C:\\Users\\Abdel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Abdel\\Documents\\GitHub\\ProjectC\\AntesBE\\obj\\",
+        "outputPath": "C:\\Users\\Abdel\\Desktop\\Project_C\\ProjectC\\AntesBE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
