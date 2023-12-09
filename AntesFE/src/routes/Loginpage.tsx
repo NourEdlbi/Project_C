@@ -84,20 +84,20 @@ export default function Login() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Password: </label>
+                    <label>Wachtwoord: </label>
                     <input
                         type="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        placeholder="Password"
+                        placeholder="Wachtwoord"
                     />
                 </div>
                 {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-                <button type="button" onClick={handleLogin}>
-                    Log In
+                <button type="button" style={{ marginRight: '15px' }} onClick={handleLogin}>
+                    Inloggen
                 </button>
                 <button type="button" onClick={handleResetPassword}>
-                    Reset Password
+                    Wachtwoord Vergeten
                 </button>
                 <br />
                 <br />
