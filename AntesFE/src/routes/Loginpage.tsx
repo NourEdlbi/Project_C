@@ -53,7 +53,7 @@ export default function Login() {
                 navigate("/adminSidebar");
             }
             else if (userInfos?.admin == false) {
-                navigate("/userSidebar")
+                navigate("/userSidebar/Home")
             }
            
         } catch (error) {
