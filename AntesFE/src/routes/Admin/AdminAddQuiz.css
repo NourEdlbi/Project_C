@@ -1,0 +1,133 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
+
+ .quizBasics {
+    background-color: #F8EEF0;
+    width: 90%;
+    height: fit-content;
+    border: 1px solid #ccc;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+ }
+
+ .quizBasics input{
+    width: 80%;
+    height: 30%;
+    padding: 8px;
+    margin: 15px;
+    margin-left: 25px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+ }
+
+ .quizBasics textarea{
+    width: 80%;
+    height: fit-content;
+    padding: 10px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+ }
+
+ 
+ .quizBasics label {
+    display: block;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+  }
+
+
+ .quizData label {
+    display: block;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+  }
+
+  .questions{
+    background-color: #F8EEF0;
+    width: 90%;
+    height: fit-content;
+    border: 1px solid #ccc;
+    padding: 30px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .quizData input {
+    width: 80%;
+    height: 30%;
+    padding: 8px;
+    margin: 15px;
+    margin-left: 25px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .quizData .answerInput{
+    margin-left: 55px;
+  }
+
+  .quizData .questionInput{
+    margin-left: 98px;
+  }
+
+  .quizData textarea{
+    width: 100%;
+    padding: 8px;
+    margin-left: 25px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .instructions{
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .newQuiz h2{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 25px;
+  }
+
+  .newQuiz button{
+    margin: 10px;
+  }
+  
+ /* .question-container {
+    margin-bottom: 20px;
+  }
+  
+  .question-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .answer-input {
+    width: 80%;
+    padding: 5px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+  }
+  
+  .correct-answer-input {
+    width: 40%;
+    padding: 5px;
+    box-sizing: border-box;
+  }

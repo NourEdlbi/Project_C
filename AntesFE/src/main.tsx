@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 import AuthProvider from "./context/AuthContext";
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
@@ -29,6 +33,8 @@ import Uquizzes from './routes/User/UserQuizzes.tsx';
 import Addquiz from './routes/Admin/AdminAddQuiz.tsx';
 import AddUser from './routes/adduser.tsx';
 import AddAgendaItem from "./routes/Admin/AddAgendaItem.tsx";
+
+import Welkom from "./routes/User/WelcomeScreen.tsx"
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -132,6 +138,10 @@ function Main() {
                     element: <USidebar />, // Render the USidebar component directly
                     children: [
                         {
+                            path: "welcome", // Define the route for Welcome screen
+                            element: <Welkom />, // Specify the component to render
+                        },
+                        {
                             path: "Profile",
                             element: <Profiel />,
                         },
@@ -164,7 +174,7 @@ function Main() {
                             element: <Uquizzes />,
                         },
                         {
-                            path: "Quizzes/:id",
+                            path: "Quizzes/:quizID",
                             element: <Uquiz />,
 
                         },

@@ -7,46 +7,38 @@ export default function AdminSidebar() {
     const navigate = useNavigate();
 
 
+    //Navigeren naar de juiste routes.
     const handleManageUsers = () => {
-        // Navigate to the "Manage Users" route
         navigate('users');
     };
     const handleManageProfile = () => {
-        // Navigate to the "Profile" route
         navigate('profile');
     };
 
     const handleManageLogout = () => {
-        // Navigate to the "Profile" route
-        navigate('logout');
+        navigate('/');
     };
 
     const handleManageHome = () => {
-        // Navigate to the "Profile" route
         navigate('Home');
     };
 
     const handleManageAgenda = () => {
-        // Navigate to the "Agenda" route
         navigate('adminAgenda');
     };
 
     const handleManageForum = () => {
-        // Navigate to the "Profile" route
         navigate('adminForum');
     };
 
     const handleManageSettings = () => {
-        // Navigate to the "Profile" route
         navigate('inst');
     };
 
     const handleManageInfo = () => {
-        // Navigate to the "Profile" route
         navigate('Informatie');
     };
     const handleManageQuiz = () => {
-        // Navigate to the "Profile" route
         navigate('adminQuiz');
     };
 
@@ -109,7 +101,7 @@ export default function AdminSidebar() {
                 </div>
 
                 <div className="sidebarbox">
-                    <a onClick={ handleManageInfo}>Informatie</a>
+                    <a onClick={ handleManageInfo}>GGZ Ecademy</a>
                 </div>
 
                 <div className="sidebarbox">

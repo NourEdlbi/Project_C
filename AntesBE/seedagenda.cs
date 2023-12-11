@@ -77,6 +77,31 @@ namespace backend
             db.Accounts.AddRange(acc, acc1, acc2, acc3, acc4, acc5);
             db.SaveChanges();
         }
+        public static void Seedadmin(ForumContext db)
+        {
+            Account acc5 = new Account();
+            acc5.ID = 8;
+            acc5.Name = "Admin";
+            acc5.Email = "admin@admin.nl";
+            acc5.Password = "xSDSKgcB26XGVd6OhIWLAyuWpKnR0gsR4Lig+ZaZf1A="; // hashyhash
+            acc5.Admin = true;
+
+            db.Accounts.Add(acc5);   
+            db.SaveChanges();
+        }
+
+        public static void SeedProfiles(ForumContext db)
+        {
+            Profile prof1 = new Profile();
+            prof1.ID = 1;
+            prof1.AccountID = 1;
+            prof1.Bio = "";
+            prof1.Contact = "tes@te.nl";
+            
+            db.Profiles.Add(prof1); 
+            db.SaveChanges();
+
+        }
 
         public static void Seedagenda(ForumContext db)
         {
