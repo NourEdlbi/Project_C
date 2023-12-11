@@ -4,10 +4,11 @@ import { BASE_URL } from '../../consts';
 
 export default function UserForm() {
     const [posts, setPosts] = useState([]);
+    const [filteredPosts, setFilteredPosts] = useState([]);
     const [postData, setPostData] = useState({ postName: '', content: '' });
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
-    // Fetch posts from the backend when the component mounts
     useEffect(() => {
         fetch(`${BASE_URL}/GetForumPosts`)
             .then(response => {
@@ -18,14 +19,26 @@ export default function UserForm() {
             })
             .then(data => {
                 setPosts(data);
+                setFilteredPosts(data);
             })
             .catch(error => {
                 console.error('Error fetching posts:', error);
             });
     }, []);
 
+    useEffect(() => {
+        const filtered = posts.filter(post =>
+            post.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredPosts(filtered);
+    }, [searchTerm, posts]);
+
     const handleChange = (e) => {
         setPostData({ ...postData, [e.target.name]: e.target.value });
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
     };
 
     const handleSubmit = (e) => {
@@ -39,7 +52,7 @@ export default function UserForm() {
         fetch(`${BASE_URL}/ForumPost`, options)
             .then(response => response.json())
             .then(data => {
-                setPosts([...posts, data]);
+                setPosts(currentPosts => [...currentPosts, data]);
                 setPostData({ postName: '', content: '' });
             })
             .catch(error => {
@@ -47,7 +60,6 @@ export default function UserForm() {
             });
     };
 
-    // Navigate to the post detail view
     const handlePostClick = (postId) => {
         navigate(`/userSidebar/userForum/${postId}`);
     };
@@ -55,6 +67,14 @@ export default function UserForm() {
     return (
         <div>
             <h1>Forum</h1>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Zoek in berichten..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
+            </div>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Titel post:</label>
@@ -78,7 +98,7 @@ export default function UserForm() {
                 <button type="submit">Plaatsen</button>
             </form>
 
-            {posts.map(post => (
+            {filteredPosts.map(post => (
                 <div key={post.id}>
                     <p>{post.name}</p>
                     <button onClick={() => handlePostClick(post.id)}>Details</button>

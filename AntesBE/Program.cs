@@ -24,13 +24,13 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
         });
 });
-    
+
 var app = builder.Build();
 
 var db = new ForumContext();
-SeedDB.cleardb(db);
-SeedDB.Seedaccount(db);
-SeedDB.Seedagenda(db);
+// SeedDB.cleardb(db);
+// SeedDB.Seedaccount(db);
+// SeedDB.Seedagenda(db);
 
 
 // Configure the HTTP request pipeline.
