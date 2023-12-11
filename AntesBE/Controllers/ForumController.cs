@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AntesBE.Controllers
 {
-    public record ForumData(string PostName, string Content);
+    public record ForumData(int UserID, string PostName, string Content);
 
     public class ForumController : Controller
     {
@@ -23,7 +23,7 @@ namespace AntesBE.Controllers
                         Name = forumData.PostName,
                         Content = forumData.Content,
                         PostTime = DateTime.Now.ToUniversalTime(),
-                        ForumPosterID = 2
+                        ForumPosterID = forumData.UserID
                     };
 
                     db.Forums.Add(post);

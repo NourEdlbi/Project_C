@@ -5,11 +5,19 @@ import { BASE_URL } from '../../consts';
 export default function UserForm() {
     const [posts, setPosts] = useState([]);
     const [filteredPosts, setFilteredPosts] = useState([]);
-    const [postData, setPostData] = useState({ postName: '', content: '' });
+    const [postData, setPostData] = useState({ userID: 0, postName: '', content: '' });
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
+    const [userID, setUserID] = useState('Guest');
 
     useEffect(() => {
+
+        const storedUserInfo = localStorage.getItem('Userinfo');
+        const userInfo = storedUserInfo ? JSON.parse(storedUserInfo) : null;
+        if (userInfo && userInfo.id) {
+            setUserID(parseInt(userInfo.id, 10));
+        }
+
         fetch(`${BASE_URL}/GetForumPosts`)
             .then(response => {
                 if (!response.ok) {
@@ -26,6 +34,7 @@ export default function UserForm() {
             });
     }, []);
 
+
     useEffect(() => {
         const filtered = posts.filter(post =>
             post.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -33,9 +42,11 @@ export default function UserForm() {
         setFilteredPosts(filtered);
     }, [searchTerm, posts]);
 
+
     const handleChange = (e) => {
         setPostData({ ...postData, [e.target.name]: e.target.value });
     };
+
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -46,14 +57,14 @@ export default function UserForm() {
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(postData),
+            body: JSON.stringify({ ...postData, userID: userID }),
         };
 
         fetch(`${BASE_URL}/ForumPost`, options)
             .then(response => response.json())
             .then(data => {
                 setPosts(currentPosts => [...currentPosts, data]);
-                setPostData({ postName: '', content: '' });
+                setPostData({ userID: userID || null, postName: '', content: '' });
             })
             .catch(error => {
                 console.error('Error:', error);

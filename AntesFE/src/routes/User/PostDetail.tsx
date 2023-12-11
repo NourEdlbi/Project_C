@@ -11,11 +11,16 @@ export default function PostDetail() {
     });
     const [comments, setComments] = useState([]);
     const [commentData, setCommentData] = useState({ forumID: 0, commenterID: 0, content: '' });
-
+    const [userID, setUserID] = useState('Guest');
     const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
+        const storedUserInfo = localStorage.getItem('Userinfo');
+        const userInfo = storedUserInfo ? JSON.parse(storedUserInfo) : null;
+        if (userInfo && userInfo.id) {
+            setUserID(parseInt(userInfo.id, 10));
+        }
         fetch(`${BASE_URL}/GetForumDetail/${id}`)
             .then(response => {
                 if (!response.ok) {
@@ -54,7 +59,7 @@ export default function PostDetail() {
         const newCommentData = {
             ...commentData,
             forumID: parseInt(id),
-            commenterID: 2, // <<-- Temporary 
+            commenterID: userID, // <<-- Temporary 
         };
 
         const options = {

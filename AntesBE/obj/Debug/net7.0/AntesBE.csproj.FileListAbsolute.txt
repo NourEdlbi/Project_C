@@ -1155,3 +1155,5 @@ C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\two\Project_C\AntesBE\obj\Debug\net7
 C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\two\Project_C\AntesBE\obj\Debug\net7.0\AntesBE.genruntimeconfig.cache
 C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\two\Project_C\AntesBE\obj\Debug\net7.0\ref\AntesBE.dll
 C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\two\Project_C\AntesBE\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\two\Project_C\AntesBE\bin\Debug\net7.0\Konscious.Security.Cryptography.Argon2.dll
+C:\Users\Barrie\Desktop\HR\Jaar 2\Project-c\two\Project_C\AntesBE\bin\Debug\net7.0\Konscious.Security.Cryptography.Blake2.dll
