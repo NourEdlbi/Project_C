@@ -71,9 +71,37 @@ export default function UserForm() {
             });
     };
 
+
+    const handleDeletePost = (postId) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+
+        if (confirmDelete) {
+            const options = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            fetch(`${BASE_URL}/DeleteForumPost/${postId}`, options)
+                .then(response => {
+                    if (response.ok) {
+                        setPosts(currentPosts => currentPosts.filter(post => post.id !== postId));
+                    } else {
+                        console.error('Failed to delete post:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    };
+
+
     const handlePostClick = (postId) => {
         navigate(`/userSidebar/userForum/${postId}`);
     };
+
 
     return (
         <div>
@@ -112,9 +140,14 @@ export default function UserForm() {
             {filteredPosts.map(post => (
                 <div key={post.id}>
                     <p>{post.name}</p>
+                    {userID === post.forumPosterID && (
+                        <button onClick={() => handleDeletePost(post.id)}>Delete</button>
+
+                    )}
                     <button onClick={() => handlePostClick(post.id)}>Details</button>
                 </div>
             ))}
+
         </div>
     );
 }

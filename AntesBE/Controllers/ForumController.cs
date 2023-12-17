@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using YourNamespace;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using YourNamespace;
 
 namespace AntesBE.Controllers
 {
@@ -161,5 +163,36 @@ namespace AntesBE.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
+
+
+        [Route("DeleteForumPost/{postId}")]
+        [HttpDelete]
+        public IActionResult DeleteForumPost(int postId)
+        {
+            try
+            {
+                using (var db = new ForumContext())
+                {
+                    var post = db.Forums.Include(f => f.Comments).FirstOrDefault(f => f.ID == postId);
+
+                    if (post == null)
+                    {
+                        return NotFound();
+                    }
+
+                    db.Comments.RemoveRange(post.Comments);
+                    db.Forums.Remove(post);
+                    db.SaveChanges();
+
+                    return Ok();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
     }
 }
