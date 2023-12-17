@@ -91,14 +91,14 @@ function Main() {
                             path: "users",
                             element: <Users />,
                         },
-                        // {
-                        //     path: "adminForum",
-                        //     element: <Uforum />,
-                        // },
-                        // {
-                        //     path: "Forum/MakePost",
-                        //     element: <Addpost />,
-                        // },
+                        {
+                            path: "userForum",
+                            element: <Uforum />,
+                        },
+                        {
+                            path: "userForum/:id",
+                            element: <PostDetail />,
+                        },
                         {
                             path: "Quizzes/:id",
                             element: <Aquiz />,

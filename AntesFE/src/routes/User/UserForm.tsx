@@ -9,13 +9,14 @@ export default function UserForm() {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const [userID, setUserID] = useState('Guest');
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-
         const storedUserInfo = localStorage.getItem('Userinfo');
         const userInfo = storedUserInfo ? JSON.parse(storedUserInfo) : null;
         if (userInfo && userInfo.id) {
             setUserID(parseInt(userInfo.id, 10));
+            setIsAdmin(userInfo.admin || false);
         }
 
         fetch(`${BASE_URL}/GetForumPosts`)
@@ -71,7 +72,6 @@ export default function UserForm() {
             });
     };
 
-
     const handleDeletePost = (postId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this post?");
 
@@ -101,7 +101,6 @@ export default function UserForm() {
     const handlePostClick = (postId) => {
         navigate(`/userSidebar/userForum/${postId}`);
     };
-
 
     return (
         <div>
@@ -141,9 +140,8 @@ export default function UserForm() {
                 <div key={post.id}>
                     <p>{post.name}</p>
                     <button onClick={() => handlePostClick(post.id)}>Details</button>
-                    {userID === post.forumPosterID && (
+                    {(userID === post.forumPosterID || isAdmin) && (
                         <button onClick={() => handleDeletePost(post.id)}>Delete</button>
-
                     )}
                 </div>
             ))}
