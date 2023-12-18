@@ -21,7 +21,7 @@ namespace AntesBE.Controllers
                 {
                     var post = new Forum()
                     {
-                        ID = db.Forums.Count() + 1,
+                        // ID = db.Forums.Count() + 1,
                         Name = forumData.PostName,
                         Content = forumData.Content,
                         PostTime = DateTime.Now.ToUniversalTime(),
