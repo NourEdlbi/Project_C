@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BASE_URL } from '../../consts';
 
 const formStyle = {
   display: 'flex',
@@ -22,6 +23,7 @@ const labelStyle = {
 
 export default function AddAgendaItem() {
   const [formData, setFormData] = useState({
+    email: '',
     title: '',
     description: '',
     date: '',
@@ -44,15 +46,52 @@ export default function AddAgendaItem() {
       return;
     }
 
+    fetch(`${BASE_URL}/AddAgendaItem`, options).then(res => console.log(res)).catch(error => console.log(error));
+    alert('agendapunt toegevoegd!');
     // Handle form submission logic here
     console.log('Form submitted', formData);
   };
+
+
+  const update = {
+    email: formData.email,
+    title: formData.title,
+    description: formData.description,
+    date: formData.date,
+    begintime: formData.begintime,
+    endtime: formData.endtime,
+  };
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(update),
+  };
+
+  const submitlogin = () => {
+    fetch(`${BASE_URL}/AddAgendaItem`, options).then(res => console.log(res)).catch(error => console.log(error));
+  };
+
 
   return (
     <div style={formStyle}>
       <div style={formContainerStyle}>
         <h1>Agendapunt toevoegen</h1>
         <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="email">Sturen naar:</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email Adres"
+              required
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="title">Titel:</label>
             <input

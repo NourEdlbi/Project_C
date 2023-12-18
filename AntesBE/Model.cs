@@ -141,7 +141,8 @@ namespace YourNamespace
         public DateTime End_Date { get; set; }
         public DateTime Start_Time { get; set; }
         public DateTime End_Time { get; set; }
-        public string? Subject { get; set; }
+        public string Subject { get; set; }
+        public string Description { get; set; }
 
         public Account? Account { get; set; }
     }

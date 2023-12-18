@@ -1,100 +1,100 @@
-﻿/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
-// using Microsoft.AspNetCore.Http;
-// using Microsoft.AspNetCore.Mvc;
-// using System.Net;
-// using YourNamespace;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
+using YourNamespace;
 
-// namespace AntesBE.Controllers
-// {
-//     public class AgendaController : Controller
-//     {
-//         [Route("Getagenda/{maand}")]
-//         [HttpGet]
-//         public IActionResult Getagenda( int maand)
-//         {
-//             ForumContext db = new ForumContext();   
-//             var x = db.Agendas.Where(x=>x.Start_Date.Month.Equals(maand)).ToList(); // agenda van de maand
-//             return Ok(x);
-//         }
+namespace AntesBE.Controllers
+{
+    public class AgendaController : Controller
+    {
 
+        public record AgendaItem(string email, string title, string description, string date, string begintime, string endtime);
 
+        // Endpoint to retrieve agenda items for a specific month
+        [Route("Getagenda/{maand}")]
+        [HttpGet]
+        public IActionResult Getagenda(int maand)
+        {
+            ForumContext db = new ForumContext();
+            var agendaItems = db.Agendas.Where(x => x.Start_Date.Month.Equals(maand)).ToList();
+            return Ok(agendaItems);
+        }
 
-//         // GET: AgendaController
-//         public ActionResult Index()
-//         {
-//             return View();
-//         }
+        // Add a new agenda item
+        [HttpPost]
+        [Route("AddAgendaItem")]
+        public IActionResult AddAgendaItem([FromBody] AgendaItem agendaItem)
+        {
+            if (agendaItem == null)
+            {
+                return BadRequest("Invalid data. Please provide valid agenda item data.");
+            }
 
-//         // GET: AgendaController/Details/5
-//         public ActionResult Details(int id)
-//         {
-//             return View();
-//         }
+            ForumContext db = new ForumContext();
 
-//         // GET: AgendaController/Create
-//         public ActionResult Create()
-//         {
-//             return View();
-//         }
+            var account = db.Accounts.FirstOrDefault(a => a.Email == agendaItem.email);
 
-//         // POST: AgendaController/Create
-//         [HttpPost]
-//         [ValidateAntiForgeryToken]
-//         public ActionResult Create(IFormCollection collection)
-//         {
-//             try
-//             {
-//                 return RedirectToAction(nameof(Index));
-//             }
-//             catch
-//             {
-//                 return View();
-//             }
-//         }
+            if (account == null)
+            {
+                return BadRequest("User not found.");
+            }
 
-//         // GET: AgendaController/Edit/5
-//         public ActionResult Edit(int id)
-//         {
-//             return View();
-//         }
+            // 
 
-//         // POST: AgendaController/Edit/5
-//         [HttpPost]
-//         [ValidateAntiForgeryToken]
-//         public ActionResult Edit(int id, IFormCollection collection)
-//         {
-//             try
-//             {
-//                 return RedirectToAction(nameof(Index));
-//             }
-//             catch
-//             {
-//                 return View();
-//             }
-//         }
+            var newAgendaItem = new Agenda
+            {
+                AccountID = account.ID,
+                Start_Date = DateTime.Parse(agendaItem.date),
+                End_Date = DateTime.Parse(agendaItem.date),
+                Start_Time = DateTime.Parse(agendaItem.begintime),
+                End_Time = DateTime.Parse(agendaItem.endtime),
+                Subject = agendaItem.title,
+                Description = agendaItem.description
+            };
 
-//         // GET: AgendaController/Delete/5
-//         public ActionResult Delete(int id)
-//         {
-//             return View();
-//         }
+            db.Agendas.Add(newAgendaItem);
+            db.SaveChanges();
 
-//         // POST: AgendaController/Delete/5
-//         [HttpPost]
-//         [ValidateAntiForgeryToken]
-//         public ActionResult Delete(int id, IFormCollection collection)
-//         {
-//             try
-//             {
-//                 return RedirectToAction(nameof(Index));
-//             }
-//             catch
-//             {
-//                 return View();
-//             }
-//         }
-//     }
-// }
+            return Ok("Agenda item added successfully.");
+        }
+        // Other CRUD operations (Details, Create, Edit, Delete) could be implemented similarly
+        // Example methods are provided with comments
+
+        // GET: AgendaController/Details/5
+        // public ActionResult Details(int id)
+        // {
+        //     return View();
+        // }
+
+        // // GET: AgendaController/Create
+        // public ActionResult Create()
+        // {
+        //     return View();
+        // }
+
+        // // POST: AgendaController/Create
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+
+        // // GET: AgendaController/Edit/5
+        // public ActionResult Edit(int id)
+        // {
+        //     return View();
+        // }
+
+        // // POST: AgendaController/Edit/5
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+
+        // // GET: AgendaController/Delete/5
+        // public ActionResult Delete(int id)
+        // {
+        //     return View();
+        // }
+
+        // // POST: AgendaController/Delete/5
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+    }
+}

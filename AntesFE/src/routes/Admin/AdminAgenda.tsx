@@ -17,9 +17,15 @@ export default function AdminAgenda() {
     const [events, setEvents] = useState([
         {
             id: 1,
-            title: 'Event 1',
-            start: new Date(2023, 9, 10, 10, 0),
-            end: new Date(2023, 9, 10, 12, 0),
+            title: 'etentje',
+            start: new Date(2023, 11, 11, 10, 0),
+            end: new Date(2023, 11, 11, 12, 0),
+        },
+        {
+            id: 2,
+            title: 'afspraak',
+            start: new Date(2023, 11, 20, 10, 0),
+            end: new Date(2023, 11, 20, 12, 0),
         },
         // ... (existing events)
     ]);
