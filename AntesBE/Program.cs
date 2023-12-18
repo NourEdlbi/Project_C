@@ -1,10 +1,5 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
 using backend;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Text.Json.Serialization;
 using YourNamespace;
 
 
@@ -17,11 +12,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddControllers()
-        .AddJsonOptions(options =>
-        {
-            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-        });
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
@@ -29,25 +19,18 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173", "https://localhost:5173", "http://127.0.0.1:5173")
+            policy.WithOrigins("http://localhost:5173", "https://localhost:5173")
             .AllowAnyMethod()
             .AllowAnyHeader();
         });
 });
 
 var app = builder.Build();
-app.Use(async (context, next) =>
-{
-    context.Request.EnableBuffering();
-    await next();
-});
 
 var db = new ForumContext();
-//SeedDB.Seedadmin(db);
-//SeedDB.cleardb(db);
-//SeedDB.Seedaccount(db);
+// SeedDB.cleardb(db);
+// SeedDB.Seedaccount(db);
 // SeedDB.Seedagenda(db);
-//SeedDB.SeedProfiles(db);
 
 
 // Configure the HTTP request pipeline.

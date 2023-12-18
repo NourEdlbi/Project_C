@@ -28,7 +28,7 @@ export default function AdminSidebar() {
     };
 
     const handleManageForum = () => {
-        navigate('adminForum');
+        navigate('userForum');
     };
 
     const handleManageSettings = () => {
@@ -87,25 +87,25 @@ export default function AdminSidebar() {
                 <div className="sidebarbox">
                     <a onClick={handleManageUsers}>Manage Users</a>
                 </div>
-                
+
                 <div className="sidebarbox">
                     <a onClick={handleManageQuiz}>Manage Quiz</a>
                 </div>
 
                 <div className="sidebarbox">
-                    <a onClick={handleManageAgenda }>Manage Agenda</a>
+                    <a onClick={handleManageAgenda}>Manage Agenda</a>
                 </div>
 
                 <div className="sidebarbox">
-                    <a onClick={ handleManageForum}>Forum</a>
+                    <a onClick={handleManageForum}>Forum</a>
                 </div>
 
                 <div className="sidebarbox">
-                    <a onClick={ handleManageInfo}>GGZ Ecademy</a>
+                    <a onClick={handleManageInfo}>GGZ Ecademy</a>
                 </div>
 
                 <div className="sidebarbox">
-                    <a onClick={handleManageSettings }>Instellingen</a>
+                    <a onClick={handleManageSettings}>Instellingen</a>
                 </div>
 
                 <div className="border"></div>
