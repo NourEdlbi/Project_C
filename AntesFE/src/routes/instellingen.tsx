@@ -27,11 +27,11 @@ export default function Inst() {
     };
 
     const increaseTextSize = () => {
-        setTextSize(prevSize => prevSize + 2); // Increase text size by 2px
+        setTextSize(prevSize => Math.min(prevSize + 2, 30));
     };
-
+    
     const decreaseTextSize = () => {
-        setTextSize(prevSize => Math.max(prevSize - 2, 10)); // Decrease text size by 2px, with a minimum of 10px
+        setTextSize(prevSize => Math.max(prevSize - 2, 10));
     };
 
     const [formData, setFormData] = useState({password: '', confirmPassword: '' });
