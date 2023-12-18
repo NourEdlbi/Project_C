@@ -43,7 +43,7 @@ export default function Profile() {
     const getBio = () => {
         fetch(`${BASE_URL}/GetBio`, getoptions).then(response => response.json())
             .then(data => {
-                setBio( data)
+                setBio(data)
                 // do whatever you want with the data
             });
     };
@@ -56,32 +56,32 @@ export default function Profile() {
     };
 
     return (
-    <div className='container'>
-        <div className='titel'>
-        <h1>Profiel</h1>
-        </div>
-        <div className='labels'>
-        <label>
-        Name: 
-        {name}
-        </label>
-        <br />
-        <label>
-        Email: 
-        {email} 
-        </label>
-        <br />
-        <label>
-        Bio: 
+        <div className='container'>
+            <div className='titel'>
+                <h1>Profiel</h1>
+            </div>
+            <div className='labels'>
+                <label>
+                    Name:
+                    {name}
+                </label>
+                <br />
+                <label>
+                    Email:
+                    {email}
+                </label>
+                <br />
+                <label>
+                    Bio:
                     <textarea value={bio} onChange={handleBioChange} />
                     <button onClick={postBio}> changeBio </button>
                     <button onClick={getBio}> testbutton </button>
 
                 </label>
-            profile pic
+                profile pic
             </div>
-        
-      
-    </div>
+
+
+        </div>
     );
 }

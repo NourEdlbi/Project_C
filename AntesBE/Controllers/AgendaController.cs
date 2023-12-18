@@ -9,7 +9,7 @@ namespace AntesBE.Controllers
     public class AgendaController : Controller
     {
 
-        public record AgendaItem(string title, string description, string date, string begintime, string endtime);
+        public record AgendaItem(string email, string title, string description, string date, string begintime, string endtime);
 
         // Endpoint to retrieve agenda items for a specific month
         [Route("Getagenda/{maand}")]
@@ -33,21 +33,20 @@ namespace AntesBE.Controllers
 
             ForumContext db = new ForumContext();
 
-            string userEmail = User.Identity.Name; // Retrieve the email of the authenticated user
-            var account = db.Accounts.FirstOrDefault(a => a.Email == userEmail);
+            var account = db.Accounts.FirstOrDefault(a => a.Email == agendaItem.email);
 
             if (account == null)
             {
                 return BadRequest("User not found.");
             }
 
+            // 
 
-            // Creating a new Agenda item
             var newAgendaItem = new Agenda
             {
                 AccountID = account.ID,
-                Start_Date = DateTime.Parse(agendaItem.date), // Assuming the date format is acceptable without explicit conversion
-                End_Date = DateTime.Parse(agendaItem.date),   // Set both Start_Date and End_Date as the provided date
+                Start_Date = DateTime.Parse(agendaItem.date),
+                End_Date = DateTime.Parse(agendaItem.date),
                 Start_Time = DateTime.Parse(agendaItem.begintime),
                 End_Time = DateTime.Parse(agendaItem.endtime),
                 Subject = agendaItem.title,
@@ -59,10 +58,9 @@ namespace AntesBE.Controllers
 
             return Ok("Agenda item added successfully.");
         }
-
         // Other CRUD operations (Details, Create, Edit, Delete) could be implemented similarly
         // Example methods are provided with comments
-        
+
         // GET: AgendaController/Details/5
         // public ActionResult Details(int id)
         // {
