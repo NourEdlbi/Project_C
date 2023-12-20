@@ -37,7 +37,6 @@ namespace AntesBE.Controllers
                     return Ok(account);
                 }
             }
-
             return BadRequest();
         }
 
@@ -59,7 +58,6 @@ namespace AntesBE.Controllers
                     return Ok();
                 }
             }
-
             return BadRequest();
         }
 

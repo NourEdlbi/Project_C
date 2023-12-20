@@ -27,7 +27,12 @@
     .Gotoquizbutton {
         margin: 1em 1em;
         border-radius: 1em;
+        
 
+    }
+
+    .quiznavbar {
+        flex-direction:row;
     }
 
     .question {

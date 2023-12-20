@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\two\\Project_C\\AntesBE\\AntesBE.csproj": {}
+    "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\two\\Project_C\\AntesBE\\AntesBE.csproj": {
+    "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\two\\Project_C\\AntesBE\\AntesBE.csproj",
+        "projectUniqueName": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
         "projectName": "AntesBE",
-        "projectPath": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\two\\Project_C\\AntesBE\\AntesBE.csproj",
-        "packagesPath": "C:\\Users\\Barrie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Barrie\\Desktop\\HR\\Jaar 2\\Project-c\\two\\Project_C\\AntesBE\\obj\\",
+        "projectPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
+        "packagesPath": "C:\\Users\\Noure\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Barrie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Noure\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +43,10 @@
             "Konscious.Security.Cryptography.Argon2": {
               "target": "Package",
               "version": "[1.3.0, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[3.1.1, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -100,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

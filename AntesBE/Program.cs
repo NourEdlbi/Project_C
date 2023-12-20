@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173", "https://localhost:5173")
+            policy.WithOrigins("http://localhost:5173", "https://localhost:5173", "http://127.0.0.1:5173")
             .AllowAnyMethod()
             .AllowAnyHeader();
         });
@@ -28,6 +28,7 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 var db = new ForumContext();
+// SeedDB.Seedadmin(db);
 // SeedDB.cleardb(db);
 // SeedDB.Seedaccount(db);
 // SeedDB.Seedagenda(db);
