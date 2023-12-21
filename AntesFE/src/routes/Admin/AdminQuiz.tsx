@@ -1,7 +1,3 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
 import "../Quiz.css";
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../../consts.ts";
@@ -87,8 +83,6 @@ export default function Aquiz() {
         navigate("/adminSidebar/adminQuiz")
     }
 
-    const fakeFilters = ['Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter'];
-
     return (
         <div>
             <div className="titel">
@@ -105,15 +99,6 @@ export default function Aquiz() {
                     {quizzes}
                 </div>
 
-                <div className="filters">
-                    <h2>Filters</h2>
-                    {fakeFilters.map((filter) => (
-                    <label key={filter} className="filter">
-                    <input type="checkbox" />
-                    <span className="filterText">{filter}</span>
-                    </label>
-                    ))}
-                </div>
             </div>
         </div>
     )

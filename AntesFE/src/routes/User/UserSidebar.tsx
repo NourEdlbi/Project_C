@@ -1,7 +1,3 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import menuImage from '../../assets/Anteslogo.png';
@@ -109,9 +105,9 @@ export default function UserSidebar() {
                     </div>*/}
                 </div>
 
-                <div className="sidebarbox">
+                {/*<div className="sidebarbox">
                     <a onClick={handleManageSettings}>Instellingen</a>
-                </div>
+                </div>*/}
                 <div className="border"></div>
             </div>
             <button id= "open" className="openbtn" onClick={openNav}> 

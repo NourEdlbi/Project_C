@@ -1,8 +1,4 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import '../routes/Profile.css';
 import { BASE_URL } from "../consts.ts";
 export default function Profile() {
@@ -20,8 +16,28 @@ export default function Profile() {
     const [bio, setBio] = useState('');
     const [changedBio, setChangedBio] = useState('');
 
+    useEffect(() => {
+        const storedUserInfo = localStorage.getItem('Userinfo');
+        const userInfo = storedUserInfo ? JSON.parse(storedUserInfo) : null;
+        setUserInfos(userInfo);
+
+        if (userInfo && userInfo.name) {
+            setName(userInfo.name);
+        }
+        if (userInfo && userInfo.email) {
+            setEmail(userInfo.email)
+        }
+
+        const storedBio = localStorage.getItem('Bio');
+        const Bio = storedUserInfo ? JSON.parse(storedBio) : null;
+        if (Bio) {
+            setBio(Bio)
+        }
+    });
+
+
     const update = {
-        email: userInfos?.email, // pakt de email niet
+        email: userInfos?.email, 
         bio: changedBio
     };
 
@@ -36,14 +52,13 @@ export default function Profile() {
     const postBio = () => {
         fetch(`${BASE_URL}/PostBio`, postoptions).then(response => response.json())
             .then(data => {
-                setBio(JSON.stringify(data)) // dit moet nog kijken want werkr nog niet
-                // do whatever you want with the data
+                localStorage.setItem('Bio', JSON.stringify(data));
             }
         );
     };
 
     const getbio = {
-        email: "hash@hash.hash" //userInfos?.email 
+        email: userInfos?.email 
     };
 
     const getoptions = {
@@ -66,24 +81,79 @@ export default function Profile() {
     const handleBioChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setChangedBio(event.target.value);
     };
-    window.onload = function () {
-        getBio();
-        const test = localStorage.getItem('Userinfo');
-        setUserInfos(JSON.parse((test)!));
-        setName((userInfos.name)!);
-        setEmail((userInfos.email)!);
+
+    const [isNightMode, setIsNightMode] = useState(() => {
+        const savedMode = localStorage.getItem('isNightMode');
+        return savedMode !== null ? JSON.parse(savedMode) : false;
+    });
+
+    const [textSize, setTextSize] = useState(() => {
+        const savedSize = localStorage.getItem('textSize');
+        return savedSize !== null ? parseInt(savedSize, 10) : 16; // Default text size is 16 if not stored
+    });
+
+    useEffect(() => {
+        localStorage.setItem('isNightMode', JSON.stringify(isNightMode));
+        localStorage.setItem('textSize', textSize.toString()); // Save text size to local storage
+        document.body.style.fontSize = `${textSize}px`; // Apply the text size to the body element
+    }, [isNightMode, textSize]);
+
+    const toggleNightMode = () => {
+        setIsNightMode(!isNightMode);
     };
 
-    const test = () => {
-        const test = localStorage.getItem('Userinfo');
-        getBio();
-        //setUserInfos(JSON.parse((test)!));
-        setUserInfos(JSON.parse((test)!));
-        setName((userInfos.name)!);
-        setEmail((userInfos.email)!);
-        
-    }
+    const increaseTextSize = () => {
+        setTextSize(prevSize => Math.min(prevSize + 2, 30));
+    };
 
+    const decreaseTextSize = () => {
+        setTextSize(prevSize => Math.max(prevSize - 2, 10));
+    };
+
+    const [formData, setFormData] = useState({ password: '', confirmPassword: '' });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (formData.password !== formData.confirmPassword) {
+            alert('Passwords do not match');
+            return;
+        }
+        fetch(`${BASE_URL}/Password_Reset`, options).then(res => console.log(res)).catch(error => console.log(error));
+        console.log('Form submitted', formData);
+        alert('Wachtwoord veranderd!');
+    };
+
+    const changepassword = {
+        //email: email, //we zijn ingelogd dus email komt van ergens anders
+        email: "tes@te.nl",
+        wachtwoord: formData.password,
+    };
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(changepassword),
+    };
+
+    function seepw(id) {
+        const x = document.getElementById(id) as HTMLElement;
+        if (x.style.display == "block") {
+            x.style.display = "none";
+        }
+        else {
+            x.style.display = "block";
+        }
+    }
+    
     return (
         <div className='container'>
             <div className='titel'>
@@ -100,13 +170,47 @@ export default function Profile() {
                 <br />
                 <label>
                     Bio: {bio}  <br></br>
+                    <button onClick={() => seepw("Bio")} > Bewerk biographie</button>
+                    <div id="Bio" className="settingButton">
+                        <textarea  value={changedBio} onChange={handleBioChange} />
+                        <button onClick={postBio}> opslaan</button>
+                    </div>
+                    
                 </label>
 
-                <button onClick={postBio}> changeBio </button>
-                <textarea value={changedBio} onChange={handleBioChange} />
                 <button onClick={getBio}>Getbio </button>
-                <button onClick={test}> Getinfofromlocalstorage</button>
-                profile pic
+                profile pic laten zien
+                <label>
+                    Tekstgrootte:
+                    <button onClick={decreaseTextSize}>Maak tekst kleiner</button>
+                    <button onClick={increaseTextSize}>Maak tekst groter</button>
+                </label>
+                   
+                <label>
+                    Nachtmodus:
+                    <button onClick={toggleNightMode}>Verander</button>
+                </label>
+                <label>
+                    Wachtoord:
+                    <button onClick={() => seepw("wachtwoord")}> Wachtwoord veranderen</button>
+                    <form id="wachtwoord" className="settingButton" onSubmit={handleSubmit}>
+                        <input
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required >
+                        </input>
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            required>
+                        </input>  <br></br>
+                        <button type="submit">Verander wachtwoord.</button>
+                    </form>
+                </label>
             </div>
         </div>
     );

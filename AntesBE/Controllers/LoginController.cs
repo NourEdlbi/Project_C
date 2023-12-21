@@ -130,10 +130,17 @@ namespace AntesBE.Controllers
 
                 ForumContext db = new ForumContext();
                 var account = db.Accounts.Where(x => x.Email.ToLower().Equals(newdata.email)).FirstOrDefault();
-                var profile = db.Profiles.Where(x => x.AccountID.Equals(account.ID)).FirstOrDefault();
-                if (profile != null)
+                if (account != null)
                 {
-                    return Ok(profile.Bio);
+                    var profile = db.Profiles.Where(x => x.AccountID.Equals(account.ID)).FirstOrDefault();
+                    if (profile.Bio != null)
+                    {
+                        return Ok(profile.Bio);
+                    }
+                    else
+                    {
+                        return Ok("");
+                    }
                 }
             }
             return BadRequest();
@@ -144,14 +151,9 @@ namespace AntesBE.Controllers
         [HttpPost]
         public async Task<IActionResult> PostBio()
         {
-            using (var reader = new StreamReader(
-                HttpContext.Request.Body,
-                bufferSize: 1024))
+            using (var reader = new StreamReader(HttpContext.Request.Body))
             {
-                HttpContext.Request.EnableBuffering();
-                reader.BaseStream.Seek(0, SeekOrigin.Begin);
                 var data = await reader.ReadToEndAsync();
-
                 var newdata = JsonSerializer.Deserialize<Bio>(data);
 
                 ForumContext db = new ForumContext();

@@ -65,8 +65,6 @@ export default function Uquizzes() {
         navigate(route);
     }
 
-    const fakeFilters = ['Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter', 'Een neppe filter'];
-
     return (
         <div className="quizPage">
 
@@ -77,15 +75,6 @@ export default function Uquizzes() {
                 {quizzes}
             </div>
 
-            <div className="filters">
-            <h2>Filters</h2>
-            {fakeFilters.map((filter) => (
-            <label key={filter} className="filter">
-              <input type="checkbox" />
-              <span className="filterText">{filter}</span>
-            </label>
-          ))}
-            </div>
         </div>
     )
 }

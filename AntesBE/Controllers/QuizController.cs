@@ -32,23 +32,31 @@ namespace AntesBE.Controllers
                     quiz.Name = quizData.name;
                     quiz.Description = quizData.description;
                     db.Quizzes.Add(quiz);
-                    db.SaveChanges();
-
+                    
+                    List<Question> questions = new List<Question>();
                     foreach (var q in quizData.questions)
                     {
+                        Console.WriteLine(q);
                         Question question = new();
-                        question.ID = db.Questions.Count() + 1;
+                        //question.ID = db.Questions.Count() + 1;
                         question.QuizID = quiz.ID;
-                        question.QuestionText = q.questionText;
+                        if (q.questionText == null)
+                        {
+                            question.QuestionText = "";
+                        }
+                        else
+                        {
+                            question.QuestionText = q.questionText;
+                        }
                         question.Answer1 = q.answer1;
                         question.Answer2 = q.answer2;
                         question.Answer3 = q.answer3;
                         question.CorrectAnswer = q.correctAnswer;
-                        db.Questions.Add(question);
-                        db.SaveChanges();
+                        
+                        questions.Add(question);
                     }
-
-
+                    db.Questions.AddRange(questions.ToArray());
+                    db.SaveChanges();
                     return Ok();
                 }
             }

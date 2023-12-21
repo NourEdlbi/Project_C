@@ -178,7 +178,7 @@ export default function Addquiz() {
     makerID: quizData.makerID,
     name: quizData.name,
     description: quizData.description,
-    questions: quizData.questions,
+    questions: quizData.questions, //krijgen we hier alle questions?
   };
 
 
