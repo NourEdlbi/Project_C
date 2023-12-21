@@ -1,15 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using System.IO;
 using System.Linq;
-using YourNamespace;
+using System.Text.Json;
+using YourNamespace; // Replace with your actual namespace
+using Konscious.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AntesBE.Controllers
 {
     public class AgendaController : Controller
     {
 
-        public record AgendaItem(string email, string title, string description, string date, string begintime, string endtime);
+        public record AgendaItem(int id, string title, string description, string date, string begintime, string endtime);
 
         // Endpoint to retrieve agenda items for a specific month
         [Route("Getagenda/{maand}")]
@@ -24,77 +28,83 @@ namespace AntesBE.Controllers
         // Add a new agenda item
         [HttpPost]
         [Route("AddAgendaItem")]
-        public IActionResult AddAgendaItem([FromBody] AgendaItem agendaItem)
+        public async Task<IActionResult> AddAgendaItem()
         {
-            if (agendaItem == null)
+            try
             {
-                return BadRequest("Invalid data. Please provide valid agenda item data.");
+                using (var reader = new StreamReader(HttpContext.Request.Body))
+                {
+                    var postData = await reader.ReadToEndAsync();
+                    var agendaData = JsonSerializer.Deserialize<AgendaItem>(postData);
+
+                    ForumContext db = new ForumContext();
+
+                    var newAgendaItem = new Agenda
+                    {
+                        AccountID = agendaData.id,
+                        Start_Date = DateTime.Parse(agendaData.date + "T" + agendaData.begintime).ToUniversalTime(),
+                        End_Date = DateTime.Parse(agendaData.date + "T" + agendaData.endtime).ToUniversalTime(),
+                        Start_Time = DateTime.Parse(agendaData.begintime).ToUniversalTime(),
+                        End_Time = DateTime.Parse(agendaData.endtime).ToUniversalTime(),
+                        Subject = agendaData.title,
+                        Description = agendaData.description
+                    };
+
+                    db.Agendas.Add(newAgendaItem);
+                    await db.SaveChangesAsync();
+
+                    return Ok("Agenda item added successfully.");
+                }
             }
-
-            ForumContext db = new ForumContext();
-
-            var account = db.Accounts.FirstOrDefault(a => a.Email == agendaItem.email);
-
-            if (account == null)
+            catch (Exception ex)
             {
-                return BadRequest("User not found.");
+                // Log the exception for debugging purposes
+                // Replace 'YourLoggingMethod' with your actual logging mechanism (e.g., ILogger)
+                Console.WriteLine($"Error adding agenda item: {ex}");
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error adding agenda item.");
             }
-
-            // 
-
-            var newAgendaItem = new Agenda
-            {
-                AccountID = account.ID,
-                Start_Date = DateTime.Parse(agendaItem.date),
-                End_Date = DateTime.Parse(agendaItem.date),
-                Start_Time = DateTime.Parse(agendaItem.begintime),
-                End_Time = DateTime.Parse(agendaItem.endtime),
-                Subject = agendaItem.title,
-                Description = agendaItem.description
-            };
-
-            db.Agendas.Add(newAgendaItem);
-            db.SaveChanges();
-
-            return Ok("Agenda item added successfully.");
         }
-        // Other CRUD operations (Details, Create, Edit, Delete) could be implemented similarly
-        // Example methods are provided with comments
-
-        // GET: AgendaController/Details/5
-        // public ActionResult Details(int id)
-        // {
-        //     return View();
-        // }
-
-        // // GET: AgendaController/Create
-        // public ActionResult Create()
-        // {
-        //     return View();
-        // }
-
-        // // POST: AgendaController/Create
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-
-        // // GET: AgendaController/Edit/5
-        // public ActionResult Edit(int id)
-        // {
-        //     return View();
-        // }
-
-        // // POST: AgendaController/Edit/5
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-
-        // // GET: AgendaController/Delete/5
-        // public ActionResult Delete(int id)
-        // {
-        //     return View();
-        // }
-
-        // // POST: AgendaController/Delete/5
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
     }
 }
+
+
+// Other CRUD operations (Details, Create, Edit, Delete) could be implemented similarly
+// Example methods are provided with comments
+
+// GET: AgendaController/Details/5
+// public ActionResult Details(int id)
+// {
+//     return View();
+// }
+
+// // GET: AgendaController/Create
+// public ActionResult Create()
+// {
+//     return View();
+// }
+
+// // POST: AgendaController/Create
+// [HttpPost]
+// [ValidateAntiForgeryToken]
+
+// // GET: AgendaController/Edit/5
+// public ActionResult Edit(int id)
+// {
+//     return View();
+// }
+
+// // POST: AgendaController/Edit/5
+// [HttpPost]
+// [ValidateAntiForgeryToken]
+
+// // GET: AgendaController/Delete/5
+// public ActionResult Delete(int id)
+// {
+//     return View();
+// }
+
+// // POST: AgendaController/Delete/5
+// [HttpPost]
+// [ValidateAntiForgeryToken]
+

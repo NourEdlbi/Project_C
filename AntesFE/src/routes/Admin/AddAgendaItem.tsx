@@ -23,7 +23,6 @@ const labelStyle = {
 
 export default function AddAgendaItem() {
   const [formData, setFormData] = useState({
-    email: '',
     title: '',
     description: '',
     date: '',
@@ -52,9 +51,10 @@ export default function AddAgendaItem() {
     console.log('Form submitted', formData);
   };
 
-
+  const storedUserInfo = localStorage.getItem('Userinfo');
+  const userInfo = storedUserInfo ? JSON.parse(storedUserInfo) : null;
   const update = {
-    email: formData.email,
+    id: userInfo.id,
     title: formData.title,
     description: formData.description,
     date: formData.date,
@@ -80,18 +80,6 @@ export default function AddAgendaItem() {
       <div style={formContainerStyle}>
         <h1>Agendapunt toevoegen</h1>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Sturen naar:</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email Adres"
-              required
-            />
-          </div>
           <div className="form-group">
             <label htmlFor="title">Titel:</label>
             <input
