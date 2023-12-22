@@ -33,7 +33,7 @@ export default function Profile() {
         if (Bio) {
             setBio(Bio)
         }
-    });
+    },[]);
 
 
     const update = {
@@ -52,9 +52,10 @@ export default function Profile() {
     const postBio = () => {
         fetch(`${BASE_URL}/PostBio`, postoptions).then(response => response.json())
             .then(data => {
-                localStorage.setItem('Bio', JSON.stringify(data));
+                localStorage.setItem('Bio', JSON.stringify(data)); //dit werkt niet wrm??
             }
         );
+        see("Bio")
     };
 
     const getbio = {
@@ -72,6 +73,7 @@ export default function Profile() {
     const getBio = () => {
         fetch(`${BASE_URL}/GetBio`, getoptions).then(response => response.json())
             .then(data => {
+                localStorage.setItem('Bio', data);
                 setBio(JSON.stringify(data))
                 // do whatever you want with the data
             }
@@ -131,8 +133,7 @@ export default function Profile() {
     };
 
     const changepassword = {
-        //email: email, //we zijn ingelogd dus email komt van ergens anders
-        email: "tes@te.nl",
+        email: userInfos?.email, //we zijn ingelogd dus email komt van userinfo localstorage
         wachtwoord: formData.password,
     };
 
@@ -144,7 +145,7 @@ export default function Profile() {
         body: JSON.stringify(changepassword),
     };
 
-    function seepw(id) {
+    function see(id) {
         const x = document.getElementById(id) as HTMLElement;
         if (x.style.display == "block") {
             x.style.display = "none";
@@ -170,14 +171,14 @@ export default function Profile() {
                 <br />
                 <label>
                     Bio: {bio}  <br></br>
-                    <button onClick={() => seepw("Bio")} > Bewerk biographie</button>
+                    <button onClick={() => see("Bio")} > Bewerk biographie</button>
                     <div id="Bio" className="settingButton">
                         <textarea  value={changedBio} onChange={handleBioChange} />
                         <button onClick={postBio}> opslaan</button>
                     </div>
                     
                 </label>
-
+                //button for testing purposes will be removed
                 <button onClick={getBio}>Getbio </button>
                 profile pic laten zien
                 <label>
@@ -192,7 +193,7 @@ export default function Profile() {
                 </label>
                 <label>
                     Wachtoord:
-                    <button onClick={() => seepw("wachtwoord")}> Wachtwoord veranderen</button>
+                    <button onClick={() => see("wachtwoord")}> Wachtwoord veranderen</button>
                     <form id="wachtwoord" className="settingButton" onSubmit={handleSubmit}>
                         <input
                             type="password"

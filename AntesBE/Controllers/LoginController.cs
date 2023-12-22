@@ -135,11 +135,13 @@ namespace AntesBE.Controllers
                     var profile = db.Profiles.Where(x => x.AccountID.Equals(account.ID)).FirstOrDefault();
                     if (profile.Bio != null)
                     {
+                        Console.WriteLine(profile.Bio);
                         return Ok(profile.Bio);
                     }
                     else
                     {
-                        return Ok("");
+                        Console.WriteLine("je hbet geen bio \n");
+                        return Ok("je hebt nog geen bio");
                     }
                 }
             }
