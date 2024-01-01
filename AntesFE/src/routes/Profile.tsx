@@ -27,11 +27,9 @@ export default function Profile() {
         if (userInfo && userInfo.email) {
             setEmail(userInfo.email)
         }
-
         const storedBio = localStorage.getItem('Bio');
-        const Bio = storedUserInfo ? JSON.parse(storedBio) : null;
-        if (Bio) {
-            setBio(Bio)
+        if (storedBio != null) {
+            setBio(storedBio)
         }
     },[]);
 
@@ -49,14 +47,17 @@ export default function Profile() {
         body: JSON.stringify(update),
     };
 
-    const postBio = () => {
-        fetch(`${BASE_URL}/PostBio`, postoptions).then(response => response.json())
+    async function postBio(){
+        await 
+        fetch(`${BASE_URL}/PostBio`, postoptions).then(response => response.text())
             .then(data => {
-                localStorage.setItem('Bio', JSON.stringify(data)); //dit werkt niet wrm??
+                localStorage.setItem('Bio', JSON.stringify(data)); //dit werkt wel
             }
         );
         see("Bio")
-    };
+
+        location.reload();
+    }
 
     const getbio = {
         email: userInfos?.email 
@@ -73,11 +74,12 @@ export default function Profile() {
     const getBio = () => {
         fetch(`${BASE_URL}/GetBio`, getoptions).then(response => response.json())
             .then(data => {
-                localStorage.setItem('Bio', data);
+                localStorage.setItem('Bio',JSON.stringify(data));
                 setBio(JSON.stringify(data))
                 // do whatever you want with the data
             }
         );
+        
     };
 
     const handleBioChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -157,6 +159,7 @@ export default function Profile() {
     
     return (
         <div className='container'>
+            <body onLoad={()=>getBio() }>
             <div className='titel'>
                 <h1>Profiel</h1>
             </div>
@@ -171,15 +174,15 @@ export default function Profile() {
                 <br />
                 <label>
                     Bio: {bio}  <br></br>
-                    <button onClick={() => see("Bio")} > Bewerk biographie</button>
+                    <button  onClick={() => see("Bio")} > Bewerk biografie</button>
                     <div id="Bio" className="settingButton">
                         <textarea  value={changedBio} onChange={handleBioChange} />
                         <button onClick={postBio}> opslaan</button>
                     </div>
                     
                 </label>
-                //button for testing purposes will be removed
-                <button onClick={getBio}>Getbio </button>
+               {/* //button for testing purposes will be removed
+                <button onClick={getBio}>Getbio </button>*/}
                 profile pic laten zien
                 <label>
                     Tekstgrootte:
@@ -212,7 +215,8 @@ export default function Profile() {
                         <button type="submit">Verander wachtwoord.</button>
                     </form>
                 </label>
-            </div>
+                </div>
+            </body>
         </div>
     );
 }
