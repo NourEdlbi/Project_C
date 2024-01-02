@@ -159,13 +159,13 @@ export default function Profile() {
     
     return (
         <div className='container'>
-            <body onLoad={()=>getBio() }>
+           {/* <body onLoad={()=>getBio() }>*/}
             <div className='titel'>
                 <h1>Profiel</h1>
             </div>
             <div className='labels'>
                 <label>
-                    Name: {name}         
+                    Name: {name}         profile pic laten zien
                 </label>
                 <br />
                 <label>
@@ -176,24 +176,30 @@ export default function Profile() {
                     Bio: {bio}  <br></br>
                     <button  onClick={() => see("Bio")} > Bewerk biografie</button>
                     <div id="Bio" className="settingButton">
+                        <br></br>
                         <textarea  value={changedBio} onChange={handleBioChange} />
                         <button onClick={postBio}> opslaan</button>
+                        <br></br>
                     </div>
                     
                 </label>
                {/* //button for testing purposes will be removed
                 <button onClick={getBio}>Getbio </button>*/}
-                profile pic laten zien
+                <br></br>
                 <label>
                     Tekstgrootte:
                     <button onClick={decreaseTextSize}>Maak tekst kleiner</button>
+                </label>
+                <br></br>
+                <label>
                     <button onClick={increaseTextSize}>Maak tekst groter</button>
                 </label>
-                   
+                <br></br>
                 <label>
                     Nachtmodus:
                     <button onClick={toggleNightMode}>Verander</button>
                 </label>
+                <br></br>
                 <label>
                     Wachtoord:
                     <button onClick={() => see("wachtwoord")}> Wachtwoord veranderen</button>
@@ -216,7 +222,7 @@ export default function Profile() {
                     </form>
                 </label>
                 </div>
-            </body>
+            {/*</body>*/}
         </div>
     );
 }

@@ -24,6 +24,12 @@
   border-radius: 4px;
 }
 
+.labels button{
+    position:absolute;
+    right: 2em;
+    
+}
+
 .labels{
   background-color: #F8EEF0;
   width: 90%;
