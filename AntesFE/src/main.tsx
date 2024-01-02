@@ -34,6 +34,7 @@ import AddUser from './routes/adduser.tsx';
 import AddAgendaItem from "./routes/Admin/AddAgendaItem.tsx";
 
 import Welkom from "./routes/User/WelcomeScreen.tsx"
+import Playquiz from "./routes/PlayQuiz.tsx";
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -100,7 +101,7 @@ function Main() {
                         },
                         {
                             path: "Quizzes/:id",
-                            element: <Aquiz />,
+                            element: <Playquiz />,
                         },
                         {
                             path: "adminQuiz",
@@ -109,10 +110,6 @@ function Main() {
                         {
                             path: "Quizzes/MakeQuiz",
                             element: <Addquiz />,
-                        },
-                        {
-                            path: "Quizzes/:id",
-                            element: <Aquiz />,
                         },
                         {
                             path: "adminAgenda",

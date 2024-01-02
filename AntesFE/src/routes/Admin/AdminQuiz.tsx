@@ -1,4 +1,4 @@
-import "../Quiz.css";
+ import "../Quiz.css";
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../../consts.ts";
 import React, { useState, useEffect } from 'react';
@@ -51,9 +51,10 @@ export default function Aquiz() {
             <div key={quiz.id} className="quizBox">
                 <h2>{quiz.name}</h2>
                 <p>{quiz.description}</p>
-                <button className="Gotoquizbutton">
+                <button onClick={() => navigateToQuiz(quiz.id)} className="Gotoquizbutton">
                     Quiz openen
                 </button>
+                <button onClick={ () => Deletequiz(quiz.id)} className="Gotoquizbutton"> verwijder quiz</button>
             </div>
         );
       });
@@ -66,21 +67,22 @@ export default function Aquiz() {
     const Makequiz = (e) => {
         navigate("/adminSidebar/Quizzes/MakeQuiz")
     }
-    const Quiz = {
-        id:1 //quizzes.find(),
-    };
 
-    const options = {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(Quiz),
-    };
+    function Deletequiz(quizid) {
+        const Quiz = {
+            id: quizid
+        };
 
-    const Deletequiz = (e) => {
-        fetch(`${BASE_URL}/adminSidebar/Quizzes/MakeQuiz`, options).then((res) => console.log(res)).catch((res) => console.log(res));
-        navigate("/adminSidebar/adminQuiz")
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(Quiz),
+        };
+
+        fetch(`${BASE_URL}/DeleteQuiz`, options).then((res) => console.log(res)).catch((res) => console.log(res));
+        location.reload();
     }
 
     return (
@@ -91,7 +93,6 @@ export default function Aquiz() {
 
             <div className="quiznavbar">
                 <button className="Gotoquizbutton" onClick= {Makequiz}> Nieuwe quiz</button>
-                <button className="Gotoquizbutton" onClick={Deletequiz}> Verwijder quiz</button>
             </div>
 
             <div className="quizPage">

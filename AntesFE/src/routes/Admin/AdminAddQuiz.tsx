@@ -193,6 +193,7 @@ const options = {
 const submitQuiz = () => {
     fetch(`${BASE_URL}/adminSidebar/Quizzes/MakeQuiz`, options).then((res) => console.log(res)).catch((res) => console.log(res));
     navigate("/adminSidebar/adminQuiz")
+    location.reload();
 } 
 
 return (

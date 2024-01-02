@@ -9,6 +9,7 @@ namespace AntesBE.Controllers
     public record QuestionData(int id, int quizID, string questionText, string answer1, string answer2, string answer3, string correctAnswer);
     public record AnswerData(int id, int quizResultD, string value);
     public record QuizResultData(int id, int quizID, int quizSubmitterID, int answerID);
+    public record QuizID(int id);
 
     public class QuizController : Controller
     {
@@ -32,7 +33,7 @@ namespace AntesBE.Controllers
                     quiz.Name = quizData.name;
                     quiz.Description = quizData.description;
                     db.Quizzes.Add(quiz);
-                    
+
                     List<Question> questions = new List<Question>();
                     foreach (var q in quizData.questions)
                     {
@@ -52,7 +53,7 @@ namespace AntesBE.Controllers
                         question.Answer2 = q.answer2;
                         question.Answer3 = q.answer3;
                         question.CorrectAnswer = q.correctAnswer;
-                        
+
                         questions.Add(question);
                     }
                     db.Questions.AddRange(questions.ToArray());
@@ -136,6 +137,32 @@ namespace AntesBE.Controllers
             }
             return BadRequest();
         }
+        [Route("DeleteQuiz")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteQuiz()
+        {
+            var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
+            if (syncIOFeature != null)
+            {
+                syncIOFeature.AllowSynchronousIO = true;
+                using (var reader = new StreamReader(HttpContext.Request.Body))
+                {
+                    var postData = await reader.ReadToEndAsync();
+                    var quizid = JsonSerializer.Deserialize<QuizID>(postData);
+                    ForumContext db = new ForumContext();
+
+                    var Removequiz = db.Quizzes.Where(x => x.ID == quizid.id).FirstOrDefault();
+                    if (Removequiz != null)
+                    {
+                        db.Quizzes.Remove(Removequiz);
+                        db.SaveChanges();
+                        return Ok();
+                    }
+                }
+            }
+            return BadRequest();
+        }
+
 
     }
 }
