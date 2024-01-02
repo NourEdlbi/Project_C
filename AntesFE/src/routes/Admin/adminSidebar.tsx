@@ -31,10 +31,6 @@ export default function AdminSidebar() {
         navigate('userForum');
     };
 
-    const handleManageSettings = () => {
-        navigate('inst');
-    };
-
     const handleManageInfo = () => {
         navigate('Informatie');
     };
@@ -102,10 +98,6 @@ export default function AdminSidebar() {
 
                 <div className="sidebarbox">
                     <a onClick={handleManageInfo}>GGZ Ecademy</a>
-                </div>
-
-                <div className="sidebarbox">
-                    <a onClick={handleManageSettings}>Instellingen</a>
                 </div>
 
                 <div className="border"></div>

@@ -126,11 +126,7 @@ function Main() {
                         {
                             path: "Informatie",
                             element: <Info />
-                        },
-                        {
-                            path: "inst",
-                            element: <Inst />
-                        },
+                        },                   
                     ],
                 },
                 {
