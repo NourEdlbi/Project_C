@@ -11,7 +11,6 @@ import './index.css';
 import ErrorPage from "./error-page";
 import Login from './routes/Loginpage.tsx';
 import Info from './routes/Info.tsx';
-import Inst from './routes/instellingen.tsx';
 import PasswordReset from './routes/PasswordReset.tsx';
 import Profiel from './routes/Profile.tsx';
 
@@ -156,10 +155,6 @@ function Main() {
                         {
                             path: "Informatie",
                             element: <Info />
-                        },
-                        {
-                            path: "inst",
-                            element: <Inst />
                         },
                         {
                             path: "Home",
