@@ -65,53 +65,56 @@ export default function Login() {
     }
   };
 
-  return (
-    <div className="login">
-      <img
-        src={menuImage}
-        alt="Logo"
-        style={{ width: '300px', height: 'auto', position: 'relative', bottom: '5rem' }}
-      />
-      <h1>Login</h1>
-      <form>
-        <div className="form-group">
-          <label>Email: </label>
-          <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" />
+
+    return (
+        <div className="login">
+
+            <img
+                src={menuImage}
+                alt="Logo"
+                style={{ width: '300px', height: 'auto', position: 'relative', bottom: '5rem' }}
+              />
+              <h1 >Login</h1>
+            <form>
+                
+                <div className="form-group">
+                  <label>Email: </label>
+                  <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" />
+                </div>
+                <div className="form-group">
+                  <label>Wachtwoord: </label>
+                  <div style={{ position: 'relative' }}>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      value={password}
+                      onChange={handlePasswordChange}
+                      placeholder="Wachtwoord"
+                    />
+                    <span
+                      style={{
+                        position: 'absolute',
+                        right: '10px',
+                        top: '35%',
+                        transform: 'translateY(-50%)',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {/* Emoji kan je veranderen door een andere te plakken op de gewenste plek. */}
+                      {showPassword ? '🙉' : '🙈'}
+                    </span>
+                  </div>
+                </div>
+                {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+                <button type="button" style={{ marginRight: '15px' }} onClick={handleLogin}>
+                  Inloggen
+                </button>
+                <button type="button" onClick={handleResetPassword}>
+                  Wachtwoord Vergeten
+                </button>
+                <br />
+                <br />
+            </form>
         </div>
-        <div className="form-group">
-          <label>Wachtwoord: </label>
-          <div style={{ position: 'relative' }}>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={handlePasswordChange}
-              placeholder="Wachtwoord"
-            />
-            <span
-              style={{
-                position: 'absolute',
-                right: '10px',
-                top: '35%',
-                transform: 'translateY(-50%)',
-                cursor: 'pointer',
-              }}
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {/* Emoji kan je veranderen door een andere te plakken op de gewenste plek. */}
-              {showPassword ? '🙉' : '🙈'}
-            </span>
-          </div>
-        </div>
-        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-        <button type="button" style={{ marginRight: '15px' }} onClick={handleLogin}>
-          Inloggen
-        </button>
-        <button type="button" onClick={handleResetPassword}>
-          Wachtwoord Vergeten
-        </button>
-        <br />
-        <br />
-      </form>
-    </div>
-  );
+    );
 }

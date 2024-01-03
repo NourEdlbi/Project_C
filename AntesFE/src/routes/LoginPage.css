@@ -1,68 +1,60 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
- .pagecontent {
+
+.pagecontent {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-  }
-  
-  .login h1 {
+    }
+    
+.login h1 {
     font-size: 1.5em;
-    margin-bottom: 10px;
-    position: absolute;
-    top: 16rem;
-    right: 45rem;
-  }
+    position: relative;
+}
   
-  .login form {
+.login form {
     background-color: #F8EEF0;
     width: 22rem;
     position: relative;
     top: 3rem;
-    left: 36%;
+    left: 33%;
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  .form-group {
+.form-group {
     margin-bottom: 15px;
-  }
+}
   
-  .form_group label {
+.form_group label {
     display: block;
     margin-bottom: 7px;
-  }
+}
   
-  .form-group input {
+.form-group input {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+}
 
-
-  
- button {
+button {
     background-color: #A2102C;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
   
-  button:hover {
+button:hover {
     background-color: #020b64;
-  }
+}
   
-  .error-message {
+.error-message {
     color: red;
-  }
+}

@@ -160,46 +160,42 @@ export default function Profile() {
     return (
         <div className='container'>
            {/* <body onLoad={()=>getBio() }>*/}
-            <div className='titel'>
+            <div >
                 <h1>Profiel</h1>
+                <br></br>
             </div>
             <div className='labels'>
                 <label>
                     Name: {name}         profile pic laten zien
                 </label>
-                <br />
                 <label>
                     Email: {email} 
                 </label>
-                <br />
                 <label>
-                    Bio: {bio}  <br></br>
-                    <button  onClick={() => see("Bio")} > Bewerk biografie</button>
-                    <div id="Bio" className="settingButton">
-                        <br></br>
-                        <textarea  value={changedBio} onChange={handleBioChange} />
-                        <button onClick={postBio}> opslaan</button>
-                        <br></br>
-                    </div>
-                    
+                    Bio: {bio}  
+                    <button onClick={() => see("Bio")} > Bewerk biografie</button>
                 </label>
+
+                <label id="Bio" >
+                    <textarea  value={changedBio} onChange={handleBioChange} />
+                    <button onClick={postBio}> opslaan</button>
+                </label>
+              
+                
                {/* //button for testing purposes will be removed
                 <button onClick={getBio}>Getbio </button>*/}
-                <br></br>
+                
                 <label>
                     Tekstgrootte:
                     <button onClick={decreaseTextSize}>Maak tekst kleiner</button>
                 </label>
-                <br></br>
                 <label>
                     <button onClick={increaseTextSize}>Maak tekst groter</button>
                 </label>
-                <br></br>
                 <label>
                     Nachtmodus:
                     <button onClick={toggleNightMode}>Verander</button>
                 </label>
-                <br></br>
                 <label>
                     Wachtoord:
                     <button onClick={() => see("wachtwoord")}> Wachtwoord veranderen</button>

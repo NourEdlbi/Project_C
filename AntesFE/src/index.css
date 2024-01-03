@@ -135,12 +135,6 @@ body.dark-mode a {
   /* Add any additional styles for the close button */
 }
 
-.titel {
-    font-size: 25px;
-    color: rgb(181, 15, 34);
-    right: 35rem;
-}
-
 .settingButton{
     display:none;
 }
