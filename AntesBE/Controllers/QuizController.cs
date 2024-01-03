@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using YourNamespace;
+using static AntesBE.Controllers.LoginController;
 
 namespace AntesBE.Controllers
 {
@@ -82,26 +83,26 @@ namespace AntesBE.Controllers
             }
         }
 
-        [Route("userSidebar/Quizzes/{quizID}")]
-        [HttpGet]
-        public IActionResult GetQuestions(int quizID)
+        [Route("GetQuizQuestions")]
+        [HttpPost]
+        public async Task<IActionResult> GetQuestions(int quizID)
         {
-            try
+            using (var reader = new StreamReader(HttpContext.Request.Body))
             {
+                var postData = await reader.ReadToEndAsync();
+                var newdata = JsonSerializer.Deserialize<QuizID>(postData);
+
                 ForumContext db = new ForumContext();
-                // var quiz = db.Quizzes.FirstOrDefault(q => q.ID == quizID);
-                var quiz = db.Quizzes.FirstOrDefault(q => q.ID == quizID);
-                var questions = db.Questions.Where(q => q.QuizID == quizID).ToList();
+                var quiz = db.Quizzes.FirstOrDefault(q => q.ID == newdata.id);
+                var questions = db.Questions.Where(q => q.QuizID == newdata.id).ToList();
 
                 var quizWithQuestions = new { Quiz = quiz, Questions = questions };
-
-                return Ok(quizWithQuestions);
+                if (quizWithQuestions != null)
+                {
+                    return Ok(quizWithQuestions);
+                }
             }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-
+            return BadRequest();
         }
 
         [Route("userSidebar/Quizzes/{quizID}")]
