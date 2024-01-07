@@ -1176,3 +1176,6 @@ C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\zh-Hans\M
 C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
 C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Noure\HR\Year2\Project\Project_C_git\AntesBE\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

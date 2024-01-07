@@ -11,6 +11,7 @@ namespace AntesBE.Controllers
     public record AnswerData(int id, int quizResultD, string value);
     public record QuizResultData(int id, int quizID, int quizSubmitterID, int answerID);
     public record QuizID(int id);
+    public record QuizIDstring(string id);
 
     public class QuizController : Controller
     {
@@ -85,21 +86,21 @@ namespace AntesBE.Controllers
 
         [Route("GetQuizQuestions")]
         [HttpPost]
-        public async Task<IActionResult> GetQuestions(int quizID)
+        public async Task<IActionResult> GetQuestions()
         {
             using (var reader = new StreamReader(HttpContext.Request.Body))
             {
                 var postData = await reader.ReadToEndAsync();
-                var newdata = JsonSerializer.Deserialize<QuizID>(postData);
-
-                ForumContext db = new ForumContext();
-                var quiz = db.Quizzes.FirstOrDefault(q => q.ID == newdata.id);
-                var questions = db.Questions.Where(q => q.QuizID == newdata.id).ToList();
-
-                var quizWithQuestions = new { Quiz = quiz, Questions = questions };
-                if (quizWithQuestions != null)
-                {
-                    return Ok(quizWithQuestions);
+                var newdata = JsonSerializer.Deserialize<QuizIDstring>(postData);
+                if (newdata != null)
+                { 
+                    ForumContext db = new ForumContext();
+                    var quiz = db.Quizzes.FirstOrDefault(q => q.ID.ToString() == newdata.id) ;
+                    var questions = db.Questions.Where(q => q.QuizID.ToString() == newdata.id).ToList();
+                    questions.ForEach(q => { q.Quiz = null; });
+                    
+                    return Ok(quiz);
+                    
                 }
             }
             return BadRequest();
