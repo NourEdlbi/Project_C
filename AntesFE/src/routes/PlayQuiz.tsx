@@ -166,7 +166,7 @@ export default function Playquiz() {
             <div className="quizzes">
                 <form>
                     {content}
-                    <button type="submit" onClick={() => navigate('/userSidebar/Quizzes')}> submit quiz</button>
+                    <button type="submit" onClick={() => navigate('/Quizzes')}> submit quiz</button>
                 </form>
             </div>
         </div>

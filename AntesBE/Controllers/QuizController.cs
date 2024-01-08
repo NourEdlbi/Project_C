@@ -15,23 +15,20 @@ namespace AntesBE.Controllers
 
     public class QuizController : Controller
     {
-        [Route("adminSidebar/Quizzes/MakeQuiz")]
+        [Route("NewQuiz")]
         [HttpPost]
         public async Task<IActionResult> NewQuiz()
         {
-            var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
-            if (syncIOFeature != null)
+            using (var reader = new StreamReader(HttpContext.Request.Body))
             {
-                syncIOFeature.AllowSynchronousIO = true;
-                using (var reader = new StreamReader(HttpContext.Request.Body))
+                var postData = await reader.ReadToEndAsync(); 
+                var quizData = JsonSerializer.Deserialize<QuizData>(postData);
+                if (quizData != null)
                 {
-                    var postData = await reader.ReadToEndAsync();
-                    var quizData = JsonSerializer.Deserialize<QuizData>(postData);
                     ForumContext db = new ForumContext();
-
                     Quiz quiz = new();
                     quiz.QuizCreatorID = 1;
-                    quiz.ID = db.Quizzes.Count() + 1;
+                    quiz.ID = db.Quizzes.Count() + 1; // dit gaat ni werken met delete
                     quiz.Name = quizData.name;
                     quiz.Description = quizData.description;
                     db.Quizzes.Add(quiz);
@@ -43,14 +40,7 @@ namespace AntesBE.Controllers
                         Question question = new();
                         //question.ID = db.Questions.Count() + 1;
                         question.QuizID = quiz.ID;
-                        if (q.questionText == null)
-                        {
-                            question.QuestionText = "";
-                        }
-                        else
-                        {
-                            question.QuestionText = q.questionText;
-                        }
+                        question.QuestionText = q.questionText;                        
                         question.Answer1 = q.answer1;
                         question.Answer2 = q.answer2;
                         question.Answer3 = q.answer3;
@@ -66,8 +56,7 @@ namespace AntesBE.Controllers
             return BadRequest();
         }
 
-        [Route("adminSidebar/adminQuiz")]
-        [Route("userSidebar/Quizzes")]
+        [Route("DisplayQuizzes")]
         [HttpGet]
         public IActionResult DisplayQuizzes()
         {
@@ -100,7 +89,6 @@ namespace AntesBE.Controllers
                     questions.ForEach(q => { q.Quiz = null; });
                     
                     return Ok(quiz);
-                    
                 }
             }
             return BadRequest();

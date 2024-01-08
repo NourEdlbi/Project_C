@@ -1,16 +1,19 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
+import { QuizData} from  '../../interfaces.tsx'
 import '../User/UserHomepage.css';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { BASE_URL} from  "../../consts.ts";
 
 const localizer = momentLocalizer(moment);
 
 export default function Uhome() {
+
+    const navigate = useNavigate();
+    const [quizList, setQuizList] = useState<QuizData[]>([]);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const [events, setEvents] = useState([
         {
@@ -21,6 +24,41 @@ export default function Uhome() {
         },
         // ... (existing events)
       ]);
+
+    function navigateToQuiz(id) { //checken of admin of user en dan navigate to one or another 
+        const route = `/UserSidebar/Quizzes/${id}`
+        navigate(route);
+    }
+
+    useEffect(() => {
+        const getQuizzes = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/DisplayQuizzes`);
+                if (response.ok) {
+                    const quizzesL = await response.json();
+                    console.log(quizzesL);
+                    setQuizList(quizzesL);
+                } else {
+                    setErrorMessage('Er is een fout opgetreden met de verbinding.');
+                }
+            } catch (error) {
+                setErrorMessage('Er is een fout opgetreden met de verbinding.');
+            }
+        };
+        getQuizzes();
+    }, []);
+
+    const quizzes = quizList.map((quiz) => {
+        return (
+            <div key={quiz.id} className="quizBox">
+                <h2>{quiz.name}</h2>
+                <p>{quiz.description}</p>
+                <button onClick={() => navigateToQuiz(quiz.id)} className="Gotoquizbutton">
+                    Quiz openen
+                </button>
+            </div>
+        );
+    });
 
     return (
         <div className='container'>
@@ -49,9 +87,12 @@ export default function Uhome() {
                 />
                 </div>
             
-            <div className='quizzen'>
+            <div className='quizzen'> {/* css styling is nodig voor de homepage*/}
                 <h1>Quiz</h1>
                 Maak verschillende quizzen om je kennis te testen!
+                <div className="quizzes">
+                    {quizzes}
+                </div>
             </div>
         </div>
     );

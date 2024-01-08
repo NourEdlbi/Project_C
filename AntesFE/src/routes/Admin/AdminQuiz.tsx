@@ -1,7 +1,7 @@
  import "../Quiz.css";
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../../consts.ts";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 interface QuestionData {
     id?: number;
@@ -11,15 +11,15 @@ interface QuestionData {
     answer2: string;
     answer3: string;
     correctAnswer: string;
-  }
+}
   
-  interface QuizData {
+interface QuizData {
     id: number;
     makerID?: number;
     name: string;
     description: string;
     questions: QuestionData[];
-  }
+}
 
 export default function Aquiz() {
 
@@ -29,22 +29,21 @@ export default function Aquiz() {
 
     useEffect(() => {
         const getQuizzes = async () => {
-          try {
-            const response = await fetch(`${BASE_URL}/adminSidebar/adminQuiz`);
+            try {
+                const response = await fetch(`${BASE_URL}/DisplayQuizzes`);
             if (response.ok) {
-              const quizzesL = await response.json();
-              console.log(quizzesL);
-              setQuizList(quizzesL);
+                const quizzesL = await response.json();
+                console.log(quizzesL);
+                setQuizList(quizzesL);
             } else {
-              setErrorMessage('Er is een fout opgetreden met de verbinding.');
+                setErrorMessage('Er is een fout opgetreden met de verbinding.');
             }
-          } catch (error) {
+            } catch (error) {
             setErrorMessage('Er is een fout opgetreden met de verbinding.');
-          }
+            }
         };
-    
         getQuizzes();
-      }, []);
+    }, []);
 
     const quizzes = quizList.map((quiz) => {
         return (
@@ -57,7 +56,7 @@ export default function Aquiz() {
                 <button onClick={ () => Deletequiz(quiz.id)} className="Gotoquizbutton"> verwijder quiz</button>
             </div>
         );
-      });
+    });
 
     function navigateToQuiz(id) {
         const route = `/adminSidebar/Quizzes/${id}`
