@@ -59,7 +59,7 @@ export default function PostDetail() {
         const newCommentData = {
             ...commentData,
             forumID: parseInt(id),
-            commenterID: userID, // <<-- Temporary 
+            commenterID: userID,
         };
 
         const options = {
