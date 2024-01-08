@@ -50,10 +50,12 @@ export default function Uhome() {
 
             <div className="forum_posts">
         {posts.map(post => (
+            <div className='post'>
           <div key={post.id}>
             <p>Geplaatst door: {post.forumPosterName}</p>
             <p>Post datum/tijd: {new Date(post.postTime).toLocaleString()}</p>
             <h1>{post.name}</h1>
+            </div>
           </div>
         ))}
       </div>
