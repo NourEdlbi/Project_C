@@ -1,15 +1,15 @@
-import { QuizData} from  '../../interfaces.tsx'
-import '../User/UserHomepage.css';
+import { QuizData} from  '../interfaces.tsx'
+import './Homepage.css';
 import { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { BASE_URL} from  "../../consts.ts";
+import { BASE_URL} from  "../consts.ts";
 
 const localizer = momentLocalizer(moment);
 
-export default function Uhome() {
+export default function HomePage() {
 
     const navigate = useNavigate();
     const [quizList, setQuizList] = useState<QuizData[]>([]);
@@ -26,7 +26,7 @@ export default function Uhome() {
       ]);
 
     function navigateToQuiz(id) { //checken of admin of user en dan navigate to one or another 
-        const route = `/UserSidebar/Quizzes/${id}`
+        const route = `/Quizzes/${id}`
         navigate(route);
     }
 
@@ -62,9 +62,6 @@ export default function Uhome() {
 
     return (
         <div className='container'>
-            <div className="titel">
-                <h1 >Home</h1>
-            </div>
 
             <div className="posts">
                 <h1>Posts</h1>
@@ -88,8 +85,7 @@ export default function Uhome() {
                 </div>
             
             <div className='quizzen'> {/* css styling is nodig voor de homepage*/}
-                <h1>Quiz</h1>
-                Maak verschillende quizzen om je kennis te testen!
+                <h2> Maak een quiz!</h2>
                 <div className="quizzes">
                     {quizzes}
                 </div>

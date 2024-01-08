@@ -1,10 +1,6 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
 import "../Quiz.css";
 import { useNavigate, } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BASE_URL } from "../../consts.ts";
   interface QuestionData {
     id?: number;
@@ -32,7 +28,7 @@ export default function Uquizzes() {
     useEffect(() => {
         const getQuizzes = async () => {
           try {
-            const response = await fetch(`${BASE_URL}/userSidebar/Quizzes`);
+              const response = await fetch(`${BASE_URL}/DisplayQuizzes`);
             if (response.ok) {
               const quizzesL = await response.json();
               console.log(quizzesL);

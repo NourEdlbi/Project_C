@@ -2,24 +2,7 @@ import { useState } from 'react';
 import { BASE_URL } from "../../consts.ts";
 import './AdminAddQuiz.css';
 import { useNavigate } from 'react-router-dom';
-
-interface QuestionData {
-  id?: number;
-  quizID?: number;
-  text: string;
-  answer1: string;
-  answer2: string;
-  answer3: string;
-  correctAnswer: string;
-}
-
-interface QuizData {
-  id?: number;
-  makerID?: number;
-  name: string;
-  description: string;
-  questions: QuestionData[];
-}
+import { QuizData } from '../../interfaces.tsx'
 
 export default function Addquiz() {
     const navigate = useNavigate();

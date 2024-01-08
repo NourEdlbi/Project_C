@@ -1,7 +1,3 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
 import AuthProvider from "./context/AuthContext";
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
@@ -26,8 +22,6 @@ import Uforum from './routes/User/UserForm.tsx';
 import PostDetail from './routes/User/PostDetail.tsx';
 // import UPost from './routes/User/Post.tsx';
 // import AddPost from './routes/Admin/AdminAddQuiz.tsx';
-import Uhome from './routes/User/UserHomepage.tsx';
-import Uquiz from './routes/User/UserQuiz.tsx';
 import Uquizzes from './routes/User/UserQuizzes.tsx';
 import Addquiz from './routes/Admin/AdminAddQuiz.tsx';
 import AddUser from './routes/adduser.tsx';
@@ -35,6 +29,7 @@ import AddAgendaItem from "./routes/Admin/AddAgendaItem.tsx";
 
 import Welkom from "./routes/User/WelcomeScreen.tsx"
 import Playquiz from "./routes/PlayQuiz.tsx";
+import HomePage from "./routes/Homepage.tsx";
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -85,7 +80,7 @@ function Main() {
                         },
                         {
                             path: "Home",
-                            element: <Uhome />
+                            element: <HomePage />
                         },
                         {
                             path: "users",
@@ -155,7 +150,7 @@ function Main() {
                         },
                         {
                             path: "Home",
-                            element: <Uhome />
+                            element: <HomePage/>
                         },
                         {
                             path: "Quizzes",
@@ -163,8 +158,7 @@ function Main() {
                         },
                         {
                             path: "Quizzes/:quizID",
-                            element: <Uquiz />,
-
+                            element: <Playquiz />,
                         },
                     ],
                 },
