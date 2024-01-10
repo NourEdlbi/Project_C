@@ -50,13 +50,7 @@ export default function Login() {
 
       setUserInfos((prevState) => {
         localStorage.setItem('Userinfo', JSON.stringify(data));
-
-        if (data.admin) {
-          navigate('/adminSidebar');
-        } else {
-          navigate('/userSidebar/welcome');
-        }
-
+        navigate('/Sidebar');
         return data;
       });
     } catch (error) {

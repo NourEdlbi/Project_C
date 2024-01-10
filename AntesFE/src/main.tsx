@@ -10,13 +10,11 @@ import Info from './routes/Info.tsx';
 import PasswordReset from './routes/PasswordReset.tsx';
 import Profiel from './routes/Profile.tsx';
 
-import ASidebar from './routes/Admin/adminSidebar.tsx';
 import Users from './routes/Admin/AdminUsers.tsx';
 // import Aforum from './routes/Admin/adminForum.tsx';
 import Aquiz from './routes/Admin/AdminQuiz.tsx';
 import AdminAgenda from './routes/Admin/AdminAgenda.tsx';
 
-import USidebar from './routes/User/UserSidebar.tsx';
 import Uagenda from './routes/User/userAgenda.tsx';
 import Uforum from './routes/User/UserForm.tsx';
 import PostDetail from './routes/User/PostDetail.tsx';
@@ -30,6 +28,7 @@ import AddAgendaItem from "./routes/Admin/AddAgendaItem.tsx";
 import Welkom from "./routes/User/WelcomeScreen.tsx"
 import Playquiz from "./routes/PlayQuiz.tsx";
 import HomePage from "./routes/Homepage.tsx";
+import Sidebar from "./Sidebar.tsx";
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -71,95 +70,72 @@ function Main() {
                     element: <PasswordReset />, // Specify the component to render
                 },
                 {
-                    path: "adminSidebar", // The path for adminSidebar
-                    element: <ASidebar />, // Render the ASidebar component directly
-                    children: [
-                        {
-                            path: "Profile",
-                            element: <Profiel />,
-                        },
-                        {
-                            path: "Home",
-                            element: <HomePage />
-                        },
-                        {
-                            path: "users",
-                            element: <Users />,
-                        },
-                        {
-                            path: "userForum",
-                            element: <Uforum />,
-                        },
-                        {
-                            path: "userForum/:id",
-                            element: <PostDetail />,
-                        },
-                        {
-                            path: "Quizzes/:id",
-                            element: <Playquiz />,
-                        },
-                        {
-                            path: "adminQuiz",
-                            element: <Aquiz />,
-                        },
-                        {
-                            path: "Quizzes/MakeQuiz",
-                            element: <Addquiz />,
-                        },
-                        {
-                            path: "adminAgenda",
-                            element: <AdminAgenda />,
-                        },
-                        {
-                            path: "adminAgenda/AddAgendaItem",
-                            element: <AddAgendaItem />,
-                        },
-                        {
-                            path: "Informatie",
-                            element: <Info />
-                        },                   
-                    ],
-                },
-                {
-                    path: "userSidebar", // The path for userSidebar
-                    element: <USidebar />, // Render the USidebar component directly
-                    children: [
-                        {
-                            path: "welcome", // Define the route for Welcome screen
-                            element: <Welkom />, // Specify the component to render
-                        },
-                        {
-                            path: "Profile",
-                            element: <Profiel />,
-                        },
-                        {
-                            path: "agenda",
-                            element: <Uagenda />,
-                        },
-                        {
-                            path: "userForum",
-                            element: <Uforum />,
-                        },
-                        {
-                            path: "userForum/:id",
-                            element: <PostDetail />,
-                        },
-                        {
-                            path: "Informatie",
-                            element: <Info />
-                        },
-                        {
-                            path: "Home",
-                            element: <HomePage/>
-                        },
-                        {
-                            path: "Quizzes",
-                            element: <Uquizzes />,
-                        },
-                        {
-                            path: "Quizzes/:quizID",
-                            element: <Playquiz />,
-                        },
+                    path: "Sidebar", // The path for Sidebar
+                    element: <Sidebar />, // Render the Sidebar component directly
+                    children: [{
+                        path: "Quizzes/:id",
+                        element: <Playquiz />,
+                    },
+                    {
+                        path: "Quizzes/MakeQuiz",
+                        element: <Addquiz />,
+                    },
+                    {
+                        path: "Profile",
+                        element: <Profiel />,
+                    },
+                    {
+                        path: "Home",
+                        element: <HomePage />
+                    },
+                    {
+                        path: "users",
+                        element: <Users />,
+                    },
+                    {
+                        path: "userForum",
+                        element: <Uforum />,
+                    },
+                    {
+                        path: "userForum/:id",
+                        element: <PostDetail />,
+                    },
+                    {
+                        path: "adminQuiz",
+                        element: <Aquiz />,
+                    },
+                    {
+                        path: "adminAgenda",
+                        element: <AdminAgenda />,
+                    },
+                    {
+                        path: "adminAgenda/AddAgendaItem",
+                        element: <AddAgendaItem />,
+                    },
+                    {
+                        path: "Informatie",
+                        element: <Info />
+                    },    
+                    {
+                        path: "welcome", // Define the route for Welcome screen
+                        element: <Welkom />, // Specify the component to render
+                    },
+                    {
+                        path: "agenda",
+                        element: <Uagenda />,
+                    },
+                    {
+                        path: "userForum",
+                        element: <Uforum />,
+                    },
+                    {
+                        path: "userForum/:id",
+                        element: <PostDetail />,
+                    },
+                    {
+                        path: "Quizzes",
+                        element: <Uquizzes />,
+                    },
                     ],
                 },
             ],

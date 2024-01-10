@@ -90,8 +90,8 @@ export default function Addquiz() {
         body: JSON.stringify(updateQuiz),
     };
 
-    const submitQuiz = () => {
-        fetch(`${BASE_URL}/NewQuiz`, options).then((res) => console.log(res)).catch((res) => console.log(res));
+    async function submitQuiz(){
+        await fetch(`${BASE_URL}/NewQuiz`, options).then((res) => console.log(res)).catch((res) => console.log(res));
         navigate("/adminSidebar/adminQuiz")
         location.reload();
     } 

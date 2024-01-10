@@ -2,44 +2,16 @@ import { useState, useEffect } from 'react';
 import { BASE_URL } from "../consts.ts";
 import { useNavigate, useParams} from 'react-router-dom';
 import "./Quiz.css";
+import { QuizData, AnswerData, QuizResultData } from "../interfaces.tsx";
+import {Sidebar } from "../Sidebar.tsx";
 export default function Playquiz() {
     const navigate = useNavigate(); 
     const { quizID } = useParams();
     const [quiz, setQuiz] = useState<QuizData | null>(null);
     const [selectedAnswers, setSelectedAnswers] = useState<{ [questionID: number]: string }>({});
     const [shuffledAnswers, setShuffledAnswers] = useState<{ [questionID: number]: string[] }>({});
-    const [errorMessage, setErrorMessage] = useState('');
 
-    interface AnswerData {
-        answers: { questionID: number; value: string }[];
-    }
-    interface QuizResultData {
-        id: number;
-        quizID: number;
-        quizSubmitterID: number;
-        answerID: number;
-    }
-    interface QuestionData {        
-        answer1: string;
-        answer2: string;
-        answer3: string;
-        correctAnswer: string;
-        id: number;
-        questionText: string;
-        quiz: string
-        quizID: number
-    }
-
-    interface QuizData {
-        description: string
-        id: number
-        name: string
-        questions: QuestionData[]
-        quizCreatorID: number
-        quizResults: string
-    }
-
-    const shuffleArray = (array) => {
+    const shuffleArray = (array: string[]) => {
         const shuffledArray = [...array];
         for (let i = shuffledArray.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -87,9 +59,6 @@ export default function Playquiz() {
     useEffect(() => {
         console.log('Selected Answers:', selectedAnswers);
     }, [selectedAnswers]);
-   /* useEffect(() => {
-        getQuizQuestions();
-    }, []);*/
 
     window.onload = function exampleFunction() {
         console.log('Getting Quiz info...');
@@ -97,9 +66,9 @@ export default function Playquiz() {
     }
 
     const Quiz = {
-        id: window.location.href.split("/").pop(), // id moet van url komen
+        id: window.location.href.split("/").pop(), // pakt de id van de url
     };
-
+     
     const options = {
         method: 'POST',
         headers: {
@@ -114,15 +83,12 @@ export default function Playquiz() {
             if (response.ok) {
                 const res = await response.json()
                 setQuiz(res);
-                setErrorMessage('');
+                console.log('');
             } else {
-                console.log("ik kom in else 1")
-                setErrorMessage('Er is een fout opgetreden met de verbinding.');
+                console.log('Er is een fout opgetreden met de verbinding.');
             }
         } catch (error) {
-
-            console.log("ik kom in else 2")
-            setErrorMessage('Er is een fout opgetreden met de verbinding.');
+            console.log('Er is een fout opgetreden met de verbinding.');
         }
     };
 

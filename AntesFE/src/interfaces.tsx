@@ -15,3 +15,18 @@ export interface QuizData {
     description: string;
     questions: QuestionData[];
 }
+export interface AnswerData {
+    answers: { questionID: number; value: string }[];
+}
+export interface QuizResultData {
+    id: number;
+    quizID: number;
+    quizSubmitterID: number;
+    answerID: number;
+}
+export interface userinfoInterface {
+    id: number;
+    name: string;
+    email: string;
+    admin: boolean;
+}
