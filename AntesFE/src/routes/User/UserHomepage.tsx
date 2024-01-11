@@ -8,11 +8,12 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { BASE_URL } from '../../consts';
+import { useNavigate } from 'react-router-dom';
 const localizer = momentLocalizer(moment);
 
 export default function Uhome() {
     const [posts, setPosts] = useState([]);
-
+    const navigate = useNavigate();
     useEffect(() => {
         fetch(`${BASE_URL}/GetForumPosts`)
             .then(response => {
@@ -30,14 +31,16 @@ export default function Uhome() {
     }, []);
     const [events, setEvents] = useState([
         {
-          id: 1,
-          title: 'Event 1',
-          start: new Date(2023, 9, 10, 10, 0),
-          end: new Date(2023, 9, 10, 12, 0),
+            id: 1,
+            title: 'Event 1',
+            start: new Date(2023, 9, 10, 10, 0),
+            end: new Date(2023, 9, 10, 12, 0),
         },
         // ... (existing events)
-      ]);
-
+    ]);
+    const handlePostClick = (postId) => {
+        navigate(`/userSidebar/userForum/${postId}`);
+    };
     return (
         <div className='container'>
             <div className="titel">
@@ -49,17 +52,18 @@ export default function Uhome() {
             </div >
 
             <div className="forum_posts">
-        {posts.map(post => (
-            <div className='post'>
-          <div key={post.id}>
-            <p>Geplaatst door: {post.forumPosterName}</p>
-            <p>Post datum/tijd: {new Date(post.postTime).toLocaleString()}</p>
-            <h1>{post.name}</h1>
+                {posts.map(post => (
+                    <div className='post'>
+                        <div key={post.id}>
+                            <p>Geplaatst door: {post.forumPosterName}</p>
+                            <p>Post datum/tijd: {new Date(post.postTime).toLocaleString()}</p>
+                            <h1 onClick={() => handlePostClick(post.id)}>{post.name}</h1>
+
+                        </div>
+                    </div>
+                ))}
             </div>
-          </div>
-        ))}
-      </div>
-            
+
             <div className='agenda'>
                 <h1>Agenda</h1>
                 <p>.</p>
@@ -69,10 +73,10 @@ export default function Uhome() {
                     events={events}
                     startAccessor="start"
                     endAccessor="end"
-                    style={{ height: '40vh', width: '112%', backgroundColor: '#F8EEF0', margin: -12}}
+                    style={{ height: '40vh', width: '112%', backgroundColor: '#F8EEF0', margin: -12 }}
                 />
-                </div>
-            
+            </div>
+
             <div className='quizzen'>
                 <h1>Quiz</h1>
                 Maak verschillende quizzen om je kennis te testen!
