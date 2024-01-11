@@ -1,7 +1,7 @@
 export interface QuestionData {
     id?: number;
     quizID?: number;
-    text: string;
+    questionText: string;
     answer1: string;
     answer2: string;
     answer3: string;

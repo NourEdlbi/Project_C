@@ -1,15 +1,13 @@
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using YourNamespace;
-using static AntesBE.Controllers.LoginController;
 
 namespace AntesBE.Controllers
 {
     public record QuizData(int id, int makerID, string name, string description, List<QuestionData> questions);
     public record QuestionData(int id, int quizID, string questionText, string answer1, string answer2, string answer3, string correctAnswer);
-    public record AnswerData(int id, int quizResultD, string value);
-    public record QuizResultData(int id, int quizID, int quizSubmitterID, int answerID);
+    public record AnswerData(int id, string answer);
+    public record QuizResultData( int quizID, int quizSubmitterID, List<AnswerData> Answers);
     public record QuizID(int id);
     public record QuizIDstring(string id);
 
@@ -94,31 +92,34 @@ namespace AntesBE.Controllers
             return BadRequest();
         }
 
-        [Route("userSidebar/Quizzes/{quizID}")]
+        [Route("SubmitQuiz")]
         [HttpPost]
-        public async Task<IActionResult> SubmitQuiz(int quizID)
+        public async Task<IActionResult> SubmitQuiz()
         {
-            var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
-            if (syncIOFeature != null)
+            using (var reader = new StreamReader(HttpContext.Request.Body))
             {
-                syncIOFeature.AllowSynchronousIO = true;
-                using (var reader = new StreamReader(HttpContext.Request.Body))
+                var postData = await reader.ReadToEndAsync();
+                var QuizData = JsonSerializer.Deserialize<QuizResultData>(postData);
+                ForumContext db = new ForumContext();
+                var quizresultid = db.QuizResults.Count() + 1;
+                List<Answer> answers = new List<Answer>();
+                if (QuizData != null)
                 {
-                    var postData = await reader.ReadToEndAsync();
-                    var answerData = JsonSerializer.Deserialize<AnswerData>(postData);
-                    ForumContext db = new ForumContext();
-
-                    Answer answer = new Answer();
-                    answer.ID = db.Answers.Count() + 1;
-                    answer.Value = answerData.value;
-                    answer.QuizResultID = db.QuizResults.Count() + 1;
-
+                    foreach (var item in QuizData.Answers)
+                    {
+                        Answer answer = new Answer();
+                        answer.ID = db.Answers.Count() + 1; //idk
+                        answer.Value = item.answer;
+                        answer.QuizResultID = quizresultid;
+                        answers.Add(answer);    
+                    }
+               
                     QuizResult quizRes = new QuizResult();
-                    quizRes.QuizID = quizID;
-                    quizRes.QuizSubmitterID = 1;
-                    quizRes.AnswerID = answer.ID;
+                    quizRes.QuizID = QuizData.quizID;
+                    quizRes.QuizSubmitterID = QuizData.quizSubmitterID;
+                    quizRes.AnswerID = quizresultid;
 
-                    db.Answers.Add(answer);
+                    db.Answers.AddRange(answers);
                     db.QuizResults.Add(quizRes);
                     db.SaveChanges();
 
@@ -127,32 +128,26 @@ namespace AntesBE.Controllers
             }
             return BadRequest();
         }
+
         [Route("DeleteQuiz")]
         [HttpDelete]
         public async Task<IActionResult> DeleteQuiz()
         {
-            var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
-            if (syncIOFeature != null)
+            using (var reader = new StreamReader(HttpContext.Request.Body))
             {
-                syncIOFeature.AllowSynchronousIO = true;
-                using (var reader = new StreamReader(HttpContext.Request.Body))
-                {
-                    var postData = await reader.ReadToEndAsync();
-                    var quizid = JsonSerializer.Deserialize<QuizID>(postData);
-                    ForumContext db = new ForumContext();
+                var postData = await reader.ReadToEndAsync();
+                var quizid = JsonSerializer.Deserialize<QuizID>(postData);
+                ForumContext db = new ForumContext();
 
-                    var Removequiz = db.Quizzes.Where(x => x.ID == quizid.id).FirstOrDefault();
-                    if (Removequiz != null)
-                    {
-                        db.Quizzes.Remove(Removequiz);
-                        db.SaveChanges();
-                        return Ok();
-                    }
+                var Removequiz = db.Quizzes.Where(x => x.ID == quizid.id).FirstOrDefault();
+                if (Removequiz != null)
+                {
+                    db.Quizzes.Remove(Removequiz);
+                    db.SaveChanges();
+                    return Ok();
                 }
             }
             return BadRequest();
         }
-
-
     }
 }

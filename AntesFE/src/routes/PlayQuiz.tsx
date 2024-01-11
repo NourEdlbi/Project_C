@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { BASE_URL } from "../consts.ts";
 import { useNavigate, useParams} from 'react-router-dom';
 import "./Quiz.css";
-import { QuizData, AnswerData, QuizResultData } from "../interfaces.tsx";
-import {Sidebar } from "../Sidebar.tsx";
+import { QuizData, AnswerData, QuizResultData, userinfoInterface } from "../interfaces.tsx";
 export default function Playquiz() {
     const navigate = useNavigate(); 
     const { quizID } = useParams();
@@ -30,16 +29,24 @@ export default function Playquiz() {
     const submitQuiz = async () => {
         try {
             const answers = quiz?.questions.map((question) => ({
-                questionID: question.id,
-                value: selectedAnswers[question.id] || '',
+                id: question.id,
+                answer: selectedAnswers[question.id] || '', //make this bool correct ture flase
             }));
 
-            const response = await fetch(`${BASE_URL}/userSidebar/Quizzes/${quizID}`, {
+            const storedUserInfo = localStorage.getItem('Userinfo');
+            const userInfo:userinfoInterface = storedUserInfo ? JSON.parse(storedUserInfo) : null;
+            const Quizresults = {
+                quizSubmitterID: userInfo.id,
+                quizID: quiz?.id,
+                answers
+            };
+
+            const response = await fetch(`${BASE_URL}/SubmitQuiz`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ answers }),
+                body: JSON.stringify({ Quizresults }),
             });
         } catch (error) {
             console.error('Error submitting quiz:', error);
@@ -115,10 +122,7 @@ export default function Playquiz() {
             );
         })
     );
-
-   
-
-
+    
     return (
         <div className="quizContent">
             <div className="titel">
@@ -128,15 +132,13 @@ export default function Playquiz() {
                 <p>{quiz?.description}</p>
             </div>
 
-
             <div className="quizzes">
                 <form>
                     {content}
-                    <button type="submit" onClick={() => navigate('/Quizzes')}> submit quiz</button>
+                    <button type="submit" onClick={() => submitQuiz()}> submit quiz</button>
                 </form>
             </div>
         </div>
-
     );
 }
 

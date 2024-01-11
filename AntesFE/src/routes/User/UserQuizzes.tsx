@@ -57,7 +57,7 @@ export default function Uquizzes() {
       });
 
     function navigateToQuiz(id) {
-        const route = `/userSidebar/Quizzes/${id}`
+        const route = `/Sidebar/Quizzes/${id}`
         navigate(route);
     }
 

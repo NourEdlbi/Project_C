@@ -1,14 +1,8 @@
 import React, { useState , useEffect} from 'react';
 import '../routes/Profile.css';
 import { BASE_URL } from "../consts.ts";
+import { userinfoInterface } from "../interfaces.tsx";
 export default function Profile() {
-    //need to get name and email from jason token
-    interface userinfoInterface {
-        id: number;
-        name: string;
-        email: string;
-        admin: boolean;
-    }
 
     const [userInfos, setUserInfos] = useState<userinfoInterface>();
     const [name, setName] = useState('');
