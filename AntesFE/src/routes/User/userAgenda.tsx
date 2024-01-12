@@ -17,43 +17,43 @@ export default function userAgenda() {
   const [events, setEvents] = useState([
     {
       id: 1,
-      title: 'Event 1',
+      title: 'test',
       start: new Date(2023, 10, 11, 10, 0),
       end: new Date(2023, 10, 11, 12, 0),
     },
     // ... (existing events)
   ]);
 
-  const [newEvent, setNewEvent] = useState({
-    id: null,
-    title: '',
-    start: new Date(),
-    end: new Date(),
-  });
+  // const [newEvent, setNewEvent] = useState({
+  //   id: null,
+  //   title: '',
+  //   start: new Date(),
+  //   end: new Date(),
+  // });
 
-  const handleEventChange = (e) => {
-    const { name, value } = e.target;
-    setNewEvent({
-      ...newEvent,
-      [name]: name === 'start' || name === 'end' ? new Date(value) : value,
-    });
-  };
+  // const handleEventChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setNewEvent({
+  //     ...newEvent,
+  //     [name]: name === 'start' || name === 'end' ? new Date(value) : value,
+  //   });
+  // };
 
-  const addEvent = () => {
-    setNewEvent({ ...newEvent, id: events.length + 1 });
-    setEvents([...events, newEvent]);
-  };
+  // const addEvent = () => {
+  //   setNewEvent({ ...newEvent, id: events.length + 1 });
+  //   setEvents([...events, newEvent]);
+  // };
 
-  const exportEventsToJSON = () => {
-    const data = JSON.stringify(events, null, 2);
-    const blob = new Blob([data], { type: 'application/json' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'events.json';
-    a.click();
-    window.URL.revokeObjectURL(url);
-  };
+  // const exportEventsToJSON = () => {
+  //   const data = JSON.stringify(events, null, 2);
+  //   const blob = new Blob([data], { type: 'application/json' });
+  //   const url = window.URL.createObjectURL(blob);
+  //   const a = document.createElement('a');
+  //   a.href = url;
+  //   a.download = 'events.json';
+  //   a.click();
+  //   window.URL.revokeObjectURL(url);
+  // };
 
   const werk = () => {
 
