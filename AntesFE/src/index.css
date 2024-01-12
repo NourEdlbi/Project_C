@@ -16,7 +16,7 @@
 .App.night-mode {
   /* Night mode styles */
   background-color: #000;
-  color: #fff;
+  color: #000;
 }
 
 /* Reset some default styles */
@@ -51,13 +51,13 @@ body {
 body.dark-mode {
   background-color: hsl(0, 0%, 20%);
   /* Dark background color */
-  color: #fff;
+  color: #000;
   /* Light text color */
 }
 
 /* You might also want to adjust other elements in dark mode */
 body.dark-mode a {
-  color: #fff;
+  color: #000;
   /* Light text color for links */
 }
 
@@ -82,7 +82,7 @@ body.dark-mode a {
 .night-mode-sidebar {
   background-color: hsl(0, 0%, 20%);
   /* Dark background color */
-  color: #fff;
+  color: #000000;
   /* Light text color */
 }
 
