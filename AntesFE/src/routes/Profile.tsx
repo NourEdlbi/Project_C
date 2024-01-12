@@ -164,7 +164,7 @@ export default function Profile() {
             </div>
             <div className='labels'>
                 <label>
-                    Name: {name}         profile pic laten zien
+                    Name: {name}
                 </label>
                 <label>
                     Email: {email} 
