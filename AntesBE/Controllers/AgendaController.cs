@@ -12,17 +12,42 @@ namespace AntesBE.Controllers
 {
     public class AgendaController : Controller
     {
-
         public record AgendaItem(int id, string title, string description, string date, string begintime, string endtime);
 
         // Endpoint to retrieve agenda items for a specific month
-        [Route("Getagenda/{maand}")]
+        [Route("Getagenda/{maand?}")]
         [HttpGet]
-        public IActionResult Getagenda(int maand)
+        public IActionResult Getagenda(int? maand)
         {
-            ForumContext db = new ForumContext();
-            var agendaItems = db.Agendas.Where(x => x.Start_Date.Month.Equals(maand)).ToList();
-            return Ok(agendaItems);
+            try
+            {
+                ForumContext db = new ForumContext();
+                var query = db.Agendas.AsQueryable();
+
+                if (maand.HasValue)
+                {
+                    // Filter by month if maand is provided
+                    query = query.Where(x => x.Start_Date.Month == maand.Value);
+                }
+
+                var agendaItems = query
+                    .Select(item => new
+                    {
+                        id = item.AccountID,
+                        title = item.Subject,
+                        date = item.Start_Date.ToString("yyyy-MM-dd"),
+                        begintime = item.Start_Time.ToString("HH:mm:ss"),
+                        endtime = item.End_Time.ToString("HH:mm:ss")
+                    })
+                    .ToList();
+
+                return Ok(agendaItems);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching agenda items: {ex}");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error fetching agenda items.");
+            }
         }
 
         // Add a new agenda item
@@ -58,53 +83,11 @@ namespace AntesBE.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception for debugging purposes
-                // Replace 'YourLoggingMethod' with your actual logging mechanism (e.g., ILogger)
                 Console.WriteLine($"Error adding agenda item: {ex}");
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error adding agenda item.");
             }
         }
+
+        // ... (other code for CRUD operations)
     }
 }
-
-
-// Other CRUD operations (Details, Create, Edit, Delete) could be implemented similarly
-// Example methods are provided with comments
-
-// GET: AgendaController/Details/5
-// public ActionResult Details(int id)
-// {
-//     return View();
-// }
-
-// // GET: AgendaController/Create
-// public ActionResult Create()
-// {
-//     return View();
-// }
-
-// // POST: AgendaController/Create
-// [HttpPost]
-// [ValidateAntiForgeryToken]
-
-// // GET: AgendaController/Edit/5
-// public ActionResult Edit(int id)
-// {
-//     return View();
-// }
-
-// // POST: AgendaController/Edit/5
-// [HttpPost]
-// [ValidateAntiForgeryToken]
-
-// // GET: AgendaController/Delete/5
-// public ActionResult Delete(int id)
-// {
-//     return View();
-// }
-
-// // POST: AgendaController/Delete/5
-// [HttpPost]
-// [ValidateAntiForgeryToken]
-
