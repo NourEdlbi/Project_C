@@ -61,12 +61,20 @@ export default function Uquizzes() {
         navigate(route);
     }
 
+    function navigateAddquiz() {
+        const route = `/Sidebar/Quizzes/MakeQuiz`
+        navigate(route);
+    }
+
+
     return (
         <div className="quizPage">
 
             <div className="titel">
                 <h1> Quiz</h1>
+                <button onClick={() => navigateAddquiz()}></button>
             </div>
+           
             <div className="quizzes">
                 {quizzes}
             </div>
