@@ -170,7 +170,7 @@ export default function Profile() {
                     <button onClick={() => see("Bio")} > Bewerk biografie</button>
                 </label>
 
-                <label id="Bio" >
+                <label id="Bio" style={{display:'none'}} >
                     <textarea  value={changedBio} onChange={handleBioChange} />
                     <button onClick={postBio}> opslaan</button>
                 </label>

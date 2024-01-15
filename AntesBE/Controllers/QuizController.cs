@@ -6,8 +6,8 @@ namespace AntesBE.Controllers
 {
     public record QuizData(int id, int makerID, string name, string description, List<QuestionData> questions);
     public record QuestionData(int id, int quizID, string questionText, string answer1, string answer2, string answer3, string correctAnswer);
-    public record AnswerData(int id, string answer);
-    public record QuizResultData( int quizID, int quizSubmitterID, List<AnswerData> Answers);
+    public record AnswerData(int questionID, string value);
+    public record QuizResultData( int quizID, int quizSubmitterID, AnswerData[] Answers);
     public record QuizID(int id);
     public record QuizIDstring(string id);
 
@@ -108,8 +108,8 @@ namespace AntesBE.Controllers
                     foreach (var item in QuizData.Answers)
                     {
                         Answer answer = new Answer();
-                        answer.ID = db.Answers.Count() + 1; //idk
-                        answer.Value = item.answer;
+                        answer.ID = item.questionID; //idk
+                        answer.Value = item.value;
                         answer.QuizResultID = quizresultid;
                         answers.Add(answer);    
                     }

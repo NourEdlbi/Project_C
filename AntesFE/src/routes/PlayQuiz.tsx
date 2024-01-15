@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { BASE_URL } from "../consts.ts";
-import { useNavigate, useParams} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import "./Quiz.css";
 import { QuizData, AnswerData, QuizResultData, userinfoInterface } from "../interfaces.tsx";
 export default function Playquiz() {
     const navigate = useNavigate(); 
-    const { quizID } = useParams();
-    const [quiz, setQuiz] = useState<QuizData | null>(null);
-    const [selectedAnswers, setSelectedAnswers] = useState<{ [questionID: number]: string }>({});
+    const [quiz, setQuiz] = useState<QuizData>();
+    const [selectedAnswers, setSelectedAnswers] = useState < AnswerData[]>([]);
     const [shuffledAnswers, setShuffledAnswers] = useState<{ [questionID: number]: string[] }>({});
 
     const shuffleArray = (array: string[]) => {
@@ -20,38 +19,35 @@ export default function Playquiz() {
     };
 
     const handleAnswerSelection = (questionID: number, selectedValue: string) => {
+        const answerdata: AnswerData = { value: selectedValue, questionID: questionID }
         setSelectedAnswers((prevSelectedAnswers) => ({
             ...prevSelectedAnswers,
-            [questionID]: selectedValue,
+            answerdata
         }));
+        console.log(selectedAnswers);
     };
 
     const submitQuiz = async () => {
+        const storedUserInfo = localStorage.getItem('Userinfo');
+        const userInfo:userinfoInterface = storedUserInfo ? JSON.parse(storedUserInfo) : null;
+        const Quizresults:QuizResultData = {
+            quizSubmitterID: userInfo.id,
+            quizID: quiz.id,
+            answers: selectedAnswers
+        };
         try {
-            const answers = quiz?.questions.map((question) => ({
-                id: question.id,
-                answer: selectedAnswers[question.id] || '', //make this bool correct ture flase
-            }));
-
-            const storedUserInfo = localStorage.getItem('Userinfo');
-            const userInfo:userinfoInterface = storedUserInfo ? JSON.parse(storedUserInfo) : null;
-            const Quizresults = {
-                quizSubmitterID: userInfo.id,
-                quizID: quiz?.id,
-                answers
-            };
-
             const response = await fetch(`${BASE_URL}/SubmitQuiz`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ Quizresults }),
-            });
+                body: JSON.stringify(Quizresults),
+                
+            }); 
+
         } catch (error) {
             console.error('Error submitting quiz:', error);
         }
-
     };
 
     useEffect(() => {
@@ -65,7 +61,7 @@ export default function Playquiz() {
    
     useEffect(() => {
         console.log('Selected Answers:', selectedAnswers);
-    }, [selectedAnswers]);
+    }, [selectedAnswers]); 
 
     window.onload = function exampleFunction() {
         console.log('Getting Quiz info...');
@@ -90,7 +86,7 @@ export default function Playquiz() {
             if (response.ok) {
                 const res = await response.json()
                 setQuiz(res);
-                console.log('');
+                console.log(res);
             } else {
                 console.log('Er is een fout opgetreden met de verbinding.');
             }

@@ -16,13 +16,13 @@ export interface QuizData {
     questions: QuestionData[];
 }
 export interface AnswerData {
-    answers: { questionID: number; value: string }[];
+    questionID: number;
+    value: string;
 }
 export interface QuizResultData {
-    id: number;
     quizID: number;
     quizSubmitterID: number;
-    answerID: number;
+    answers: AnswerData[];
 }
 export interface userinfoInterface {
     id: number;
