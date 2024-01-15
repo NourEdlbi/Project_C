@@ -16,20 +16,24 @@
 } */
 .agenda-name{
     width: 26%;
+    padding: 0px;
     position: relative;
     top: -46.5rem; 
     left: 67%;
-    overflow: auto;
+    /* overflow: auto; */
 }
 .agenda {
     width: 26%;
-    height: 25rem;
+    height: 23rem;
     box-sizing: border-box;
     border: 1px solid #A2102C;
     position: relative;
-    bottom: 45.5rem;
+    bottom: 45.7rem;
     left: 67%;
-    padding: 40px;
+    padding-left: 50px;
+    padding-right: 60px;
+    padding-top: 20px;
+    padding-bottom: 50px;
     overflow: auto;
 }
 
