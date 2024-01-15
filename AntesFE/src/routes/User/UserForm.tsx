@@ -139,8 +139,9 @@ export default function UserForm() {
             {filteredPosts.map(post => (
                 <div key={post.id}>
                     <p>{post.name}</p>
+                
                     <button onClick={() => handlePostClick(post.id)}>Details</button>
-                    {(userID === post.forumPosterID || isAdmin) && (
+                    {(userID === post.userID || isAdmin) && (
                         <button onClick={() => handleDeletePost(post.id)}>Delete</button>
                     )}
                 </div>

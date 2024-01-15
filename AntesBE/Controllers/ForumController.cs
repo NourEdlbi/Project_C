@@ -48,15 +48,29 @@ namespace AntesBE.Controllers
             {
                 using (var db = new ForumContext())
                 {
-                    var posts = db.Forums.ToList();
+                    var posts = db.Forums
+                        .Include(p => p.ForumPoster)
+                        .ThenInclude(fp => fp.Profile) 
+                        .Select(post => new
+                        {
+                            id = post.ID,
+                            name = post.Name,
+                            postTime = post.PostTime,
+                            forumPosterName = post.ForumPoster.Name, 
+                            userID = post.ForumPoster.ID
+                        })
+                        .ToList();
+
                     return Ok(posts);
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
+
+
         [Route("GetForumDetail/{id}")]
         [HttpGet]
         public IActionResult GetForumDetail(int id)
