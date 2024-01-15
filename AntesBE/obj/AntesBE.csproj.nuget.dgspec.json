@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj": {}
+    "C:\\Users\\BarrieBM\\Desktop\\HR\\Jaar 2\\Project-c\\new\\Project_C\\AntesBE\\AntesBE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj": {
+    "C:\\Users\\BarrieBM\\Desktop\\HR\\Jaar 2\\Project-c\\new\\Project_C\\AntesBE\\AntesBE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
+        "projectUniqueName": "C:\\Users\\BarrieBM\\Desktop\\HR\\Jaar 2\\Project-c\\new\\Project_C\\AntesBE\\AntesBE.csproj",
         "projectName": "AntesBE",
-        "projectPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
-        "packagesPath": "C:\\Users\\Noure\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\obj\\",
+        "projectPath": "C:\\Users\\BarrieBM\\Desktop\\HR\\Jaar 2\\Project-c\\new\\Project_C\\AntesBE\\AntesBE.csproj",
+        "packagesPath": "C:\\Users\\BarrieBM\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\BarrieBM\\Desktop\\HR\\Jaar 2\\Project-c\\new\\Project_C\\AntesBE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Noure\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\BarrieBM\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[1.3.0, )"
             },
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "MSTest.TestFramework": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -71,6 +75,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.13, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.2.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -108,7 +116,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
