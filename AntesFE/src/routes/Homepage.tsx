@@ -75,7 +75,7 @@ export default function HomePage() {
         );
     });
     const handlePostClick = (postId) => {
-        navigate(`/userSidebar/userForum/${postId}`);
+        navigate(`/Sidebar/userForum/${postId}`);
     };
     return (
         <div className='container'>

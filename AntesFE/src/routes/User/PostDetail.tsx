@@ -107,7 +107,7 @@ export default function PostDetail() {
                 <button type="submit">Plaats reactie</button>
             </form>
 
-            <button onClick={() => navigate(`/userSidebar/userForum`)}>Terug</button>
+            <button onClick={() => navigate(`/Sidebar/userForum`)}>Terug</button>
             <h2>Reacties:</h2>
             <ul>
                 {comments.map(comment => (

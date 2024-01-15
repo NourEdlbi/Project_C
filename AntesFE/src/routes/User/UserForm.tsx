@@ -99,7 +99,7 @@ export default function UserForm() {
 
 
     const handlePostClick = (postId) => {
-        navigate(`/userSidebar/userForum/${postId}`);
+        navigate(`/Sidebar/userForum/${postId}`);
     };
 
     return (

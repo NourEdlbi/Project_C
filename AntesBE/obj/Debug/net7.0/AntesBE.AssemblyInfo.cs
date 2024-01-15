@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AntesBE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+695596adf4af2c08c1d075fb19d6f05a203896b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c18c9715471c1cbcbd1e0b2c22e9f7d665693cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("AntesBE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AntesBE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -33,6 +33,7 @@
 }
 
 .forum_posts{
+    overflow: auto;
     width: 60%;
     height: 39rem;
     position: relative;
