@@ -10,9 +10,16 @@
     top: -2rem;
 }
 
-.agenda_name{
+/* .agenda_name{
     position: relative;
     top: 1rem;
+} */
+.agenda-name{
+    width: 26%;
+    position: relative;
+    top: -46.5rem; 
+    left: 67%;
+    overflow: auto;
 }
 .agenda {
     width: 26%;

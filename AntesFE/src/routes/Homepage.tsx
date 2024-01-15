@@ -96,9 +96,11 @@ export default function HomePage() {
                     </div>
                 ))}
             </div>
-            
+            <div className='agenda-name'>
+            <h1>Agenda</h1>
+            </div>
             <div className='agenda'>
-                <h1>Agenda</h1>
+                
                 <p>.</p>
 
                 <Calendar
