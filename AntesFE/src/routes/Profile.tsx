@@ -9,6 +9,7 @@ export default function Profile() {
     const [email, setEmail] = useState('');
     const [bio, setBio] = useState('');
     const [changedBio, setChangedBio] = useState('');
+    const [nightMode, setNightMode] = useState(false);
 
     useEffect(() => {
         const storedUserInfo = localStorage.getItem('Userinfo');
@@ -25,7 +26,20 @@ export default function Profile() {
         if (storedBio != null) {
             setBio(storedBio)
         }
+
+        const nightModePreference = localStorage.getItem('nightMode');
+        setNightMode(nightModePreference === 'true');
     },[]);
+
+    useEffect(() => {
+        document.body.style.backgroundColor = nightMode ? '#8e918f' : '#fff';
+        document.body.style.color = nightMode ? '#000' : '#000';
+      }, [nightMode]);
+    
+      const toggleNightMode = () => {
+        setNightMode((prevNightMode) => !prevNightMode);
+        localStorage.setItem('nightMode', (!nightMode).toString()); // Save night mode preference
+      };
 
 
     const update = {
@@ -80,25 +94,15 @@ export default function Profile() {
         setChangedBio(event.target.value);
     };
 
-    const [isNightMode, setIsNightMode] = useState(() => {
-        const savedMode = localStorage.getItem('isNightMode');
-        return savedMode !== null ? JSON.parse(savedMode) : false;
-    });
-
     const [textSize, setTextSize] = useState(() => {
         const savedSize = localStorage.getItem('textSize');
         return savedSize !== null ? parseInt(savedSize, 10) : 16; // Default text size is 16 if not stored
     });
 
     useEffect(() => {
-        localStorage.setItem('isNightMode', JSON.stringify(isNightMode));
         localStorage.setItem('textSize', textSize.toString()); // Save text size to local storage
         document.body.style.fontSize = `${textSize}px`; // Apply the text size to the body element
-    }, [isNightMode, textSize]);
-
-    const toggleNightMode = () => {
-        setIsNightMode(!isNightMode);
-    };
+    }, [textSize]);
 
     const increaseTextSize = () => {
         setTextSize(prevSize => Math.min(prevSize + 2, 30));
@@ -160,7 +164,7 @@ export default function Profile() {
             </div>
             <div className='labels'>
                 <label>
-                    Name: {name}         profile pic laten zien
+                    Name: {name}
                 </label>
                 <label>
                     Email: {email} 
@@ -187,8 +191,10 @@ export default function Profile() {
                     <button onClick={increaseTextSize}>Maak tekst groter</button>
                 </label>
                 <label>
-                    Nachtmodus:
-                    <button onClick={toggleNightMode}>Verander</button>
+                Nachtmodus:
+                <button onClick={toggleNightMode}>
+                    {nightMode ? 'Schakel dagmodus in' : 'Schakel nachtmodus in'}
+                </button>
                 </label>
                 <label>
                     Wachtoord:
@@ -211,6 +217,7 @@ export default function Profile() {
                         <button type="submit">Verander wachtwoord.</button>
                     </form>
                 </label>
+                
                 </div>
             {/*</body>*/}
         </div>

@@ -148,6 +148,36 @@ namespace AntesBE.Controllers
             return BadRequest();
         }
 
+        [Route("DeleteUser")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser()
+        {
+            using (var reader = new StreamReader(HttpContext.Request.Body))
+            {
+                var postData = await reader.ReadToEndAsync();
+                var emailData = JsonSerializer.Deserialize<Email>(postData);
+
+                ForumContext db = new ForumContext();
+                var account = db.Accounts.FirstOrDefault(x => x.Email.ToLower().Equals(emailData.email.ToLower()));
+
+                if (account != null)
+                {
+                    db.Accounts.Remove(account); // Mark the user for deletion
+                    await db.SaveChangesAsync(); // Commit the changes
+
+                    // Explicitly set the content type in the response headers
+                    HttpContext.Response.Headers.Add("Content-Type", "application/json");
+                    return Ok(new { message = "User deleted successfully." });
+                }
+            }
+
+            // Modify this part to return a BadRequest with a JSON object
+            // Also, explicitly set the content type in the response headers
+            HttpContext.Response.Headers.Add("Content-Type", "application/json");
+            return BadRequest(new { error = "User not found." });
+        }
+
+
         // Action to post user bio
         [Route("PostBio")]
         [HttpPost]
