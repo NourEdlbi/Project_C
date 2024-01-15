@@ -45,6 +45,9 @@
     background-color: #FFF;
     flex: 1 0 50rem;
 }
+.post{
+    padding-bottom: 20px;
+}
 
 .quizzen {
     width: 26%;
