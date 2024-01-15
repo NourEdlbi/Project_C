@@ -40,14 +40,22 @@
     bottom: 2rem;
     left: 1%;
     border: 1px solid #A2102C; 
-    padding: 20px;
+    /* padding: 20px; */
     margin: 30px 0;
     background-color: #FFF;
     flex: 1 0 50rem;
+    
 }
 .post{
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
+.post:nth-child(even) {
+    background-color: #f1efef; /* Light red */
+  }
+  
+  .post:nth-child(odd) {
+    background-color: #ffffff; /* White */
+  }
 .post h1:hover{
     font-size: 40px;
     color:rgb(90, 32, 32);
