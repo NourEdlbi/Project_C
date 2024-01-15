@@ -24,12 +24,26 @@ export default function HomePage() {
         },
         // ... (existing events)
       ]);
-
+      const [posts, setPosts] = useState([]);
     function navigateToQuiz(id) { //checken of admin of user en dan navigate to one or another 
         const route = `/Quizzes/${id}`
         navigate(route);
     }
-
+    useEffect(() => {
+        fetch(`${BASE_URL}/GetForumPosts`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setPosts(data);
+            })
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+            });
+    }, []);
     useEffect(() => {
         const getQuizzes = async () => {
             try {
@@ -47,6 +61,7 @@ export default function HomePage() {
         };
         getQuizzes();
     }, []);
+    
 
     const quizzes = quizList.map((quiz) => {
         return (
@@ -59,7 +74,9 @@ export default function HomePage() {
             </div>
         );
     });
-
+    const handlePostClick = (postId) => {
+        navigate(`/userSidebar/userForum/${postId}`);
+    };
     return (
         <div className='container'>
 
@@ -67,8 +84,17 @@ export default function HomePage() {
                 <h1>Posts</h1>
             </div >
 
-            <div className="forum_posts" >
-                Hier komen forum posts die wij nog niet hebben.
+            <div className="forum_posts">
+                {posts.map(post => (
+                    <div className='post'>
+                        <div key={post.id}>
+                            <p>Geplaatst door: {post.forumPosterName}</p>
+                            <p>Post datum/tijd: {new Date(post.postTime).toLocaleString()}</p>
+                            <h1 onClick={() => handlePostClick(post.id)}>{post.name}</h1>
+
+                        </div>
+                    </div>
+                ))}
             </div>
             
             <div className='agenda'>
