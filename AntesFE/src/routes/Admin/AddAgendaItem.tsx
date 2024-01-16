@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { BASE_URL } from '../../consts';
+import { useNavigate } from 'react-router-dom';
+
 
 const formStyle = {
   display: 'flex',
@@ -22,6 +24,7 @@ const labelStyle = {
 };
 
 export default function AddAgendaItem() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -46,9 +49,10 @@ export default function AddAgendaItem() {
     }
 
     fetch(`${BASE_URL}/AddAgendaItem`, options).then(res => console.log(res)).catch(error => console.log(error));
-    alert('agendapunt toegevoegd!');
+    // alert('agendapunt toegevoegd!');
     // Handle form submission logic here
     console.log('Form submitted', formData);
+    navigate("/Sidebar/adminAgenda");
   };
 
   const storedUserInfo = localStorage.getItem('Userinfo');
