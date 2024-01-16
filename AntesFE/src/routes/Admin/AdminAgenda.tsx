@@ -9,23 +9,42 @@ import { BASE_URL } from '../../consts';
 const localizer = momentLocalizer(moment);
 
 export default function AdminAgenda() {
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState([
+        {
+            id: 1,
+            title: 'test',
+            start: new Date(2023, 10, 11, 10, 0),
+            end: new Date(2023, 10, 11, 12, 0),
+        },
+        // ... (existing events)
+    ]);
+
+    //   const [newEvent, setNewEvent] = useState({
+    //     id: null,
+    //     title: '',
+    //     start: new Date(),
+    //     end: new Date(),
+    //   });
 
     useEffect(() => {
-        const fetchAgenda = async (month) => {
-            try {
-                const response = await fetch(`${BASE_URL}/Getagenda/${month}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth() + 1; // Adding 1 because getMonth() returns zero-based index
+        const newCurrentMonth = currentMonth.toString();
 
+        fetch(`${BASE_URL}/Getagenda/${currentMonth}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'month': newCurrentMonth
+            },
+        })
+            .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-
-                const data = await response.json();
+                return response.json();
+            })
+            .then(data => {
                 const mappedEvents = data.map((item, index) => {
                     const startDate = new Date(item.date + 'T' + item.begintime);
                     const endDate = new Date(item.date + 'T' + item.endtime);
@@ -36,17 +55,15 @@ export default function AdminAgenda() {
                         end: endDate,
                     };
                 });
-
                 setEvents(mappedEvents);
-            } catch (error) {
+            })
+            .catch(error => {
                 console.error('Error fetching agenda items:', error);
-            }
-        };
+            });
+    }, []);
 
-        const currentDate = new Date();
-        const currentMonth = currentDate.getMonth() + 1;
-        fetchAgenda(currentMonth);
-    }, []); // Empty dependency array to fetch data on component mount
+
+
 
     const navigate = useNavigate();
 
