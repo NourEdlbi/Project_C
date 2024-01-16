@@ -84,7 +84,7 @@ export default function HomePage() {
                 <h1>Posts</h1>
             </div >
 
-            <div className="forum_posts">
+            <div className="forum_posts_home">
                 {posts.map(post => (
                     <div className='post'>
                         <div key={post.id}>

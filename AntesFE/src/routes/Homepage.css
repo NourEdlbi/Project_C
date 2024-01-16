@@ -43,7 +43,7 @@
     right: 46%;
 }
 
-.forum_posts{
+.forum_posts_home{
     overflow: auto;
     width: 60%;
     height: 39rem;
@@ -51,7 +51,7 @@
     bottom: 2rem;
     left: 1%;
     border: 1px solid #A2102C; 
-    /* padding: 20px; */
+  
     margin: 30px 0;
     background-color: #FFF;
     flex: 1 0 50rem;
@@ -61,17 +61,115 @@
     padding-bottom: 25px;
 }
 .post:nth-child(even) {
-    background-color: #f1efef; /* Light red */
+    background-color: #f1efef;
   }
   
   .post:nth-child(odd) {
-    background-color: #ffffff; /* White */
+    background-color: #ffffff; 
   }
 .post h1:hover{
     font-size: 40px;
     color:rgb(90, 32, 32);
     cursor:pointer;
 }
+
+
+
+
+  .ForumContainer {
+    background-color: #F8EEF0;
+    width: 80%;
+    height: fit-content;
+    border: 1px solid #ccc;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Forum-add-post {
+    width: 80%;
+    margin-top: 20px;
+}
+
+.Forum-add-post label {
+    display: block;
+    margin-bottom: 7px;
+}
+
+.Forum-add-post input,
+.Forum-add-post textarea {
+    width: 30%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.posts {
+    position: relative;
+    top: -1rem;
+    right: 46%;
+}
+
+.forum_posts {
+    overflow: auto;
+    width: 60%;
+    height: 39rem;
+    position: relative;
+    bottom: 2rem;
+    left: 1%;
+    border: 1px solid #A2102C; 
+  
+    margin: 30px 0;
+    background-color: #FFF;
+   
+}
+
+.post {
+    padding-bottom: 25px;
+}
+
+.post:nth-child(even) {
+    background-color: #f1efef;
+}
+
+.post:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.post h1:hover {
+    font-size: 40px;
+    color: rgb(90, 32, 32);
+    cursor: pointer;
+}
+
+.Search-bar {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.Search-bar input {
+    width: 80%;
+    padding: 8px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
 .quizzen {
     width: 26%;
     height: 13.5rem;
