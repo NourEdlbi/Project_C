@@ -4,6 +4,7 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal'; // Import the Modal component
 import { BASE_URL } from '../../consts';
 
 const localizer = momentLocalizer(moment);
@@ -19,16 +20,12 @@ export default function AdminAgenda() {
         // ... (existing events)
     ]);
 
-    //   const [newEvent, setNewEvent] = useState({
-    //     id: null,
-    //     title: '',
-    //     start: new Date(),
-    //     end: new Date(),
-    //   });
+    const [selectedEvent, setSelectedEvent] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const currentDate = new Date();
-        const currentMonth = currentDate.getMonth() + 1; // Adding 1 because getMonth() returns zero-based index
+        const currentMonth = currentDate.getMonth() + 1;
         const newCurrentMonth = currentMonth.toString();
 
         fetch(`${BASE_URL}/Getagenda/${currentMonth}`, {
@@ -46,6 +43,7 @@ export default function AdminAgenda() {
             })
             .then(data => {
                 const mappedEvents = data.map((item, index) => {
+                    console.log(item);
                     const startDate = new Date(item.date + 'T' + item.begintime);
                     const endDate = new Date(item.date + 'T' + item.endtime);
                     return {
@@ -53,6 +51,7 @@ export default function AdminAgenda() {
                         title: item.title,
                         start: startDate,
                         end: endDate,
+                        description: item.description,
                     };
                 });
                 setEvents(mappedEvents);
@@ -62,36 +61,64 @@ export default function AdminAgenda() {
             });
     }, []);
 
-
-
-
-    const navigate = useNavigate();
-
     const navigateAddAfspraak = () => {
-        navigate('/adminSidebar/adminAgenda/AddAgendaItem');
+        navigate('AddAgendaItem');
+    };
+
+    const handleEventClick = event => {
+        setSelectedEvent(event);
+        // Additional logic or fetching details if needed
+        // You can fetch additional details here based on the event.id or other properties
+    };
+
+    const handleCloseModal = () => {
+        setSelectedEvent(null);
     };
 
     return (
         <div className='agenda_pagina'>
-            <div className="titel">
-                <h1>Agenda</h1>
-            </div>
             <div className='calendar'>
+                <div className="titel" style={{ textAlign: 'center', marginBottom: '20px', marginLeft: '-350px' }}>
+                    <h1>Agenda</h1>
+                </div>
+                <button onClick={navigateAddAfspraak} style={{ marginLeft: '-350px' }}>Agendapunt toevoegen</button>
                 <Calendar
                     localizer={localizer}
                     events={events}
                     startAccessor="start"
                     endAccessor="end"
+                    onSelectEvent={handleEventClick} // Add the event click handler
                     style={{ height: 570, width: 850, backgroundColor: '#F8EEF0', border: '1px', borderStyle: 'solid', borderColor: '#A2102C' }}
                 />
-                <button onClick={navigateAddAfspraak}> Agendapunt toevoegen</button>
             </div>
-            <div className='events'>
-                <h1 style={{ padding: 2, position: 'relative', right: '70%' }}>Events</h1>
-                <ul>
-                    {/* Render the list of events here if needed */}
-                </ul>
-            </div>
+
+            <Modal
+                isOpen={selectedEvent !== null}
+                onRequestClose={handleCloseModal}
+                shouldCloseOnOverlayClick={true}  // Allow closing the modal by clicking outside
+                contentLabel="Event Details"
+                style={{
+                    content: {
+                        left: '81%', // Keep the modal centered horizontally
+                        right: 'auto', // Reset the right property
+                        transform: 'translateX(-50%)', // Center the modal horizontally
+                    },
+                }}
+            >
+                {selectedEvent && (
+                    <div>
+                        <h2>{selectedEvent.title}</h2>
+                        <p>Datum en tijd</p>
+                        <p>{selectedEvent.start.toString()}</p>
+
+                        {/* <p>Beschrijving: {selectedEvent.description}</p> */}
+                        {/* Add more details if needed */}
+
+                    </div>
+                )}
+            </Modal>
+
+
         </div>
     );
 }

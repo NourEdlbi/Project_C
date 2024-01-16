@@ -14,14 +14,14 @@ export default function Sidebar() {
         const storedUserInfo = localStorage.getItem('Userinfo');
         const userInfo: userinfoInterface = storedUserInfo ? JSON.parse(storedUserInfo) : null;
         if (userInfo && userInfo.admin == true) {
-            setcontent( admincontent)
-            
+            setcontent(admincontent)
+
         }
         else {
-            setcontent( usercontent)
+            setcontent(usercontent)
         }
     }, []);
-    
+
     //Navigeren naar de juiste routes.
     const handleManageProfile = () => {
         navigate('profile');
@@ -36,7 +36,10 @@ export default function Sidebar() {
         navigate('Home');
     };
     const handleManageAgenda = () => {
-        navigate('Agenda');
+        navigate('agenda');
+    };
+    const handleManageAdminAgenda = () => {
+        navigate('adminAgenda');
     };
     const handleManageForum = () => {
         navigate('userForum');
@@ -74,39 +77,39 @@ export default function Sidebar() {
     const usercontent = () => {
         return (
             <div>
-            <div id="sbar" className="sidebar">
-                <img className="image" src={menuImage} alt="Menu" style={{ width: '120px', height: 'auto' }} />
-                <button className="closebtn" onClick={closeNav}> X </button>
-                <div className="border"></div>
-                <div className="sidebarbox">
-                    <a onClick={handleManageLogout}>Uitloggen</a>
+                <div id="sbar" className="sidebar">
+                    <img className="image" src={menuImage} alt="Menu" style={{ width: '120px', height: 'auto' }} />
+                    <button className="closebtn" onClick={closeNav}> X </button>
+                    <div className="border"></div>
+                    <div className="sidebarbox">
+                        <a onClick={handleManageLogout}>Uitloggen</a>
+                    </div>
+                    <div className="sidebarbox">
+                        <a onClick={handleManageHome}>Home</a>
+                    </div>
+                    <div className="sidebarbox">
+                        <a onClick={handleManageProfile}>Profiel</a>
+                    </div>
+                    <div className="sidebarbox">
+                        <a onClick={handleManageAgenda}>Agenda</a>
+                    </div>
+                    <div className="sidebarbox">
+                        <a onClick={handleManageQuiz}>Quiz</a>
+                    </div>
+                    <div className="sidebarbox">
+                        <a onClick={handleManageForum}>Forum</a>
+                    </div>
+                    <div className="sidebarbox">
+                        <a onClick={handleManageInfo}>GGZ Ecademy</a>
+                    </div>
+                    <div className="border"></div>
                 </div>
-                <div className="sidebarbox">
-                    <a onClick={handleManageHome}>Home</a>
+                <button id="open" className="openbtn" onClick={openNav}>
+                    <KeyboardDoubleArrowRightIcon style={{ padding: '0', width: '23px' }}></KeyboardDoubleArrowRightIcon>
+                </button>
+                <div id="detail">
+                    <Outlet />
                 </div>
-                <div className="sidebarbox">
-                    <a onClick={handleManageProfile}>Profiel</a>
-                </div>
-                <div className="sidebarbox">
-                    <a onClick={handleManageAgenda}>Agenda</a>
-                </div>
-                <div className="sidebarbox">
-                    <a onClick={handleManageQuiz}>Quiz</a>
-                </div>
-                <div className="sidebarbox">
-                    <a onClick={handleManageForum}>Forum</a>
-                </div>
-                <div className="sidebarbox">
-                    <a onClick={handleManageInfo}>GGZ Ecademy</a>
-                </div>
-                <div className="border"></div>
-            </div>
-            <button id="open" className="openbtn" onClick={openNav}>
-                <KeyboardDoubleArrowRightIcon style={{ padding: '0', width: '23px' }}></KeyboardDoubleArrowRightIcon>
-            </button>
-            <div id="detail">
-                <Outlet />
-            </div>
             </div>
 
         )
@@ -115,49 +118,49 @@ export default function Sidebar() {
     const admincontent = () => {
         return (
             <>
-            <div id="sbar" className="sidebar">
-                <img className="image" src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
-                <button className="closebtn" onClick={closeNav}> X </button>
-                <div className="border"></div>
+                <div id="sbar" className="sidebar">
+                    <img className="image" src={menuImage} alt="Menu" style={{ width: '100px', height: 'auto' }} /> {/* Replace "alt" with a suitable description for the image. */}
+                    <button className="closebtn" onClick={closeNav}> X </button>
+                    <div className="border"></div>
 
-                <div className="sidebarbox">
-                    <a onClick={handleManageLogout}>Uitloggen</a>
+                    <div className="sidebarbox">
+                        <a onClick={handleManageLogout}>Uitloggen</a>
+                    </div>
+
+                    <div className="sidebarbox">
+                        <a onClick={handleManageHome}>Home</a>
+                    </div>
+
+                    <div className="sidebarbox">
+                        <a onClick={handleManageProfile}>Profiel</a>
+                    </div>
+
+                    <div className="sidebarbox">
+                        <a onClick={handleManageUsers}>Manage Users</a>
+                    </div>
+
+                    <div className="sidebarbox">
+                        <a onClick={handleManageQuiz}>Manage Quiz</a>
+                    </div>
+
+                    <div className="sidebarbox">
+                        <a onClick={handleManageAdminAgenda}>Manage Agenda</a>
+                    </div>
+
+                    <div className="sidebarbox">
+                        <a onClick={handleManageForum}>Forum</a>
+                    </div>
+
+                    <div className="sidebarbox">
+                        <a onClick={handleManageInfo}>GGZ Ecademy</a>
+                    </div>
+
+                    <div className="border"></div>
                 </div>
+                <button id="open" className="openbtn" onClick={openNav}> Open Sidebar</button>
 
-                <div className="sidebarbox">
-                    <a onClick={handleManageHome}>Home</a>
-                </div>
-
-                <div className="sidebarbox">
-                    <a onClick={handleManageProfile}>Profiel</a>
-                </div>
-
-                <div className="sidebarbox">
-                    <a onClick={handleManageUsers}>Manage Users</a>
-                </div>
-
-                <div className="sidebarbox">
-                    <a onClick={handleManageQuiz}>Manage Quiz</a>
-                </div>
-
-                <div className="sidebarbox">
-                    <a onClick={handleManageAgenda}>Manage Agenda</a>
-                </div>
-
-                <div className="sidebarbox">
-                    <a onClick={handleManageForum}>Forum</a>
-                </div>
-
-                <div className="sidebarbox">
-                    <a onClick={handleManageInfo}>GGZ Ecademy</a>
-                </div>
-
-                <div className="border"></div>
-            </div>
-            <button id="open" className="openbtn" onClick={openNav}> Open Sidebar</button>
-
-            <div id="detail">
-                <Outlet />
+                <div id="detail">
+                    <Outlet />
                 </div>
             </>
         )
@@ -167,6 +170,6 @@ export default function Sidebar() {
         <>
             {content}
         </>
-           
+
     );
 }

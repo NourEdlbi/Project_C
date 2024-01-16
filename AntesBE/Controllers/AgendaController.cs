@@ -37,7 +37,8 @@ namespace AntesBE.Controllers
                         title = item.Subject,
                         date = item.Start_Date.ToString("yyyy-MM-dd"),
                         begintime = item.Start_Time.ToString("HH:mm:ss"),
-                        endtime = item.End_Time.ToString("HH:mm:ss")
+                        endtime = item.End_Time.ToString("HH:mm:ss"),
+                        description = item.Description,
                     })
                     .ToList();
 
