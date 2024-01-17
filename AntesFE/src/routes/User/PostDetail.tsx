@@ -59,7 +59,7 @@ export default function PostDetail() {
         const newCommentData = {
             ...commentData,
             forumID: parseInt(id),
-            commenterID: userID, // <<-- Temporary 
+            commenterID: userID,
         };
 
         const options = {
@@ -83,7 +83,7 @@ export default function PostDetail() {
 
 
     return (
-        <div>
+        <div className='ForumContainer'>
             {forumDetail.postName ? (
                 <div>
                     <p>Geplaatst door: {forumDetail.forumPosterName}</p>
@@ -107,18 +107,22 @@ export default function PostDetail() {
                 <button type="submit">Plaats reactie</button>
             </form>
 
-            <button onClick={() => navigate(`/userSidebar/userForum`)}>Terug</button>
+            <button onClick={() => navigate(`/Sidebar/userForum`)}>Terug</button>
             <h2>Reacties:</h2>
+            <div className="forum_posts">
             <ul>
                 {comments.map(comment => (
+                    <div className='post'>
                     <li key={comment.id}>
                         <p>Comment van: {comment.commenterName}</p>
                         <p>Comment datum/tijd: {new Date(comment.postTime).toLocaleString()}</p>
                         <h3>{comment.content}</h3>
 
                     </li>
+                    </div>
                 ))}
             </ul>
+            </div>
 
         </div>
     );

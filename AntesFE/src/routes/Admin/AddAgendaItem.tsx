@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { BASE_URL } from '../../consts';
+import { useNavigate } from 'react-router-dom';
+
 
 const formStyle = {
   display: 'flex',
@@ -22,8 +24,8 @@ const labelStyle = {
 };
 
 export default function AddAgendaItem() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
     title: '',
     description: '',
     date: '',
@@ -47,14 +49,16 @@ export default function AddAgendaItem() {
     }
 
     fetch(`${BASE_URL}/AddAgendaItem`, options).then(res => console.log(res)).catch(error => console.log(error));
-    alert('agendapunt toegevoegd!');
+    // alert('agendapunt toegevoegd!');
     // Handle form submission logic here
     console.log('Form submitted', formData);
+    navigate("/Sidebar/adminAgenda");
   };
 
-
+  const storedUserInfo = localStorage.getItem('Userinfo');
+  const userInfo = storedUserInfo ? JSON.parse(storedUserInfo) : null;
   const update = {
-    email: formData.email,
+    id: userInfo.id,
     title: formData.title,
     description: formData.description,
     date: formData.date,
@@ -80,18 +84,6 @@ export default function AddAgendaItem() {
       <div style={formContainerStyle}>
         <h1>Agendapunt toevoegen</h1>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Sturen naar:</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email Adres"
-              required
-            />
-          </div>
           <div className="form-group">
             <label htmlFor="title">Titel:</label>
             <input

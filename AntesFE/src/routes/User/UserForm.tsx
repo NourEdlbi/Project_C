@@ -28,13 +28,12 @@ export default function UserForm() {
             })
             .then(data => {
                 setPosts(data);
-                setFilteredPosts(data);
+                setFilteredPosts(data); 
             })
             .catch(error => {
                 console.error('Error fetching posts:', error);
             });
     }, []);
-
 
     useEffect(() => {
         const filtered = posts.filter(post =>
@@ -43,35 +42,41 @@ export default function UserForm() {
         setFilteredPosts(filtered);
     }, [searchTerm, posts]);
 
-
     const handleChange = (e) => {
         setPostData({ ...postData, [e.target.name]: e.target.value });
     };
-
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...postData, userID: userID }),
         };
-
-        fetch(`${BASE_URL}/ForumPost`, options)
-            .then(response => response.json())
-            .then(data => {
-                setPosts(currentPosts => [...currentPosts, data]);
-                setPostData({ userID: userID || null, postName: '', content: '' });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    
+        try {
+            const response = await fetch(`${BASE_URL}/ForumPost`, options);
+            if (!response.ok) {
+                throw new Error('Failed to add post');
+            }
+    
+            const updatedPosts = await fetch(`${BASE_URL}/GetForumPosts`).then(response => response.json());
+            setPosts(updatedPosts);
+    
+            const filtered = updatedPosts.filter(post =>
+                post.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setFilteredPosts(filtered);
+    
+            setPostData({ userID: userID || null, postName: '', content: '' });
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
-
     const handleDeletePost = (postId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this post?");
 
@@ -97,22 +102,14 @@ export default function UserForm() {
         }
     };
 
-
     const handlePostClick = (postId) => {
-        navigate(`/userSidebar/userForum/${postId}`);
+        navigate(`/Sidebar/userForum/${postId}`);
     };
 
     return (
-        <div>
-            <h1>Forum</h1>
-            <div>
-                <input
-                    type="text"
-                    placeholder="Zoek in berichten..."
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                />
-            </div>
+    <div className='ForumContainer'>
+        <div className="Forum-add-post">
+            <label>Post toevoegen</label>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Titel post:</label>
@@ -135,17 +132,35 @@ export default function UserForm() {
                 </div>
                 <button type="submit">Plaatsen</button>
             </form>
-
+        </div>
+        {/* <div className="posts">
+            <h1>Posts</h1>
+        </div> */}
+        <div className="Search-bar">
+            <label>Zoeken</label>
+            <input
+                type="text"
+                placeholder="Zoek in berichten..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+            />
+        </div>
+        <div className="forum_posts">
             {filteredPosts.map(post => (
-                <div key={post.id}>
-                    <p>{post.name}</p>
-                    <button onClick={() => handlePostClick(post.id)}>Details</button>
-                    {(userID === post.forumPosterID || isAdmin) && (
-                        <button onClick={() => handleDeletePost(post.id)}>Delete</button>
-                    )}
+                <div className='post' key={post.id}>
+                    <div>
+                        <p>Geplaatst door: {post.forumPosterName}</p>
+                        <p>Post datum/tijd: {new Date(post.postTime).toLocaleString()}</p>
+                        <h1 onClick={() => handlePostClick(post.id)}>{post.name}</h1>
+                        {(userID === post.userID || isAdmin) && (
+                            <div>
+                                <button onClick={() => handleDeletePost(post.id)}>Delete</button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             ))}
-
         </div>
-    );
+    </div>
+    )
 }
