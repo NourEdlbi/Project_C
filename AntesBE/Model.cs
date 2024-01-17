@@ -97,6 +97,7 @@ namespace YourNamespace
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("User ID = postgres; Password = 666; Host = localhost; port = 5432; Database = Antes; Pooling = true");
+            
             //optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
             //optionsBuilder.EnableSensitiveDataLogging();
 
@@ -143,7 +144,6 @@ namespace YourNamespace
         public DateTime End_Time { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
-
         public Account? Account { get; set; }
     }
 

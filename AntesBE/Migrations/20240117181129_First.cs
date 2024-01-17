@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AntesBE.Migrations
 {
     /// <inheritdoc />
-    public partial class makeDB : Migration
+    public partial class First : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,10 +18,10 @@ namespace AntesBE.Migrations
                 {
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
                     Admin = table.Column<bool>(type: "boolean", nullable: false),
-                    Password = table.Column<string>(type: "text", nullable: false)
+                    Password = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,7 +34,9 @@ namespace AntesBE.Migrations
                 {
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    QuizCreatorID = table.Column<int>(type: "integer", nullable: false)
+                    QuizCreatorID = table.Column<int>(type: "integer", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,7 +54,8 @@ namespace AntesBE.Migrations
                     End_Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Start_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     End_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Subject = table.Column<string>(type: "text", nullable: false)
+                    Subject = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,8 +75,8 @@ namespace AntesBE.Migrations
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ForumPosterID = table.Column<int>(type: "integer", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Content = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Content = table.Column<string>(type: "text", nullable: true),
                     PostTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
@@ -94,8 +97,8 @@ namespace AntesBE.Migrations
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     AccountID = table.Column<int>(type: "integer", nullable: false),
-                    Contact = table.Column<string>(type: "text", nullable: false),
-                    Bio = table.Column<string>(type: "text", nullable: false)
+                    Contact = table.Column<string>(type: "text", nullable: true),
+                    Bio = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -115,8 +118,11 @@ namespace AntesBE.Migrations
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     QuizID = table.Column<int>(type: "integer", nullable: false),
-                    QuestionText = table.Column<string>(type: "text", nullable: false),
-                    Answer = table.Column<char>(type: "character(1)", nullable: false)
+                    QuestionText = table.Column<string>(type: "text", nullable: true),
+                    Answer1 = table.Column<string>(type: "text", nullable: true),
+                    Answer2 = table.Column<string>(type: "text", nullable: true),
+                    Answer3 = table.Column<string>(type: "text", nullable: true),
+                    CorrectAnswer = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -136,7 +142,8 @@ namespace AntesBE.Migrations
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     QuizID = table.Column<int>(type: "integer", nullable: false),
-                    QuizSubmitterID = table.Column<int>(type: "integer", nullable: false)
+                    QuizSubmitterID = table.Column<int>(type: "integer", nullable: false),
+                    AnswerID = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -163,7 +170,7 @@ namespace AntesBE.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ForumID = table.Column<int>(type: "integer", nullable: false),
                     CommenterID = table.Column<int>(type: "integer", nullable: false),
-                    Content = table.Column<string>(type: "text", nullable: false),
+                    Content = table.Column<string>(type: "text", nullable: true),
                     PostTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
@@ -184,19 +191,19 @@ namespace AntesBE.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Answer",
+                name: "Answers",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     QuizResultID = table.Column<int>(type: "integer", nullable: false),
-                    Value = table.Column<char>(type: "character(1)", nullable: false)
+                    Value = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Answer", x => x.ID);
+                    table.PrimaryKey("PK_Answers", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Answer_QuizResults_QuizResultID",
+                        name: "FK_Answers_QuizResults_QuizResultID",
                         column: x => x.QuizResultID,
                         principalTable: "QuizResults",
                         principalColumn: "ID",
@@ -209,8 +216,8 @@ namespace AntesBE.Migrations
                 column: "AccountID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Answer_QuizResultID",
-                table: "Answer",
+                name: "IX_Answers_QuizResultID",
+                table: "Answers",
                 column: "QuizResultID");
 
             migrationBuilder.CreateIndex(
@@ -257,7 +264,7 @@ namespace AntesBE.Migrations
                 name: "Agendas");
 
             migrationBuilder.DropTable(
-                name: "Answer");
+                name: "Answers");
 
             migrationBuilder.DropTable(
                 name: "Comments");
