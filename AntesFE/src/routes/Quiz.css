@@ -132,3 +132,13 @@
         position: relative;
         left:40%;
     }
+
+.quizPage {
+    width: 100%;
+    display: block;
+    text-align: -webkit-center;
+}
+
+.quizzes{
+    width: 33%;
+}

@@ -9,10 +9,13 @@ import Login from './routes/Loginpage.tsx';
 import Info from './routes/Info.tsx';
 import PasswordReset from './routes/PasswordReset.tsx';
 import Profiel from './routes/Profile.tsx';
+import Welkom from "./routes/User/WelcomeScreen.tsx"
+import Playquiz from "./routes/PlayQuiz.tsx";
+import HomePage from "./routes/Homepage.tsx";
+import Sidebar from "./Sidebar.tsx";
 
 import Users from './routes/Admin/AdminUsers.tsx';
 // import Aforum from './routes/Admin/adminForum.tsx';
-import Aquiz from './routes/Admin/AdminQuiz.tsx';
 import AdminAgenda from './routes/Admin/AdminAgenda.tsx';
 
 import Uagenda from './routes/User/userAgenda.tsx';
@@ -20,15 +23,10 @@ import Uforum from './routes/User/UserForm.tsx';
 import PostDetail from './routes/User/PostDetail.tsx';
 // import UPost from './routes/User/Post.tsx';
 // import AddPost from './routes/Admin/AdminAddQuiz.tsx';
-import Uquizzes from './routes/User/UserQuizzes.tsx';
+import Quiz from './routes/User/UserQuizzes.tsx';
 import Addquiz from './routes/Admin/AdminAddQuiz.tsx';
 import AddUser from './routes/adduser.tsx';
 import AddAgendaItem from "./routes/Admin/AddAgendaItem.tsx";
-
-import Welkom from "./routes/User/WelcomeScreen.tsx"
-import Playquiz from "./routes/PlayQuiz.tsx";
-import HomePage from "./routes/Homepage.tsx";
-import Sidebar from "./Sidebar.tsx";
 
 function Main() {
     const [isNightMode, setIsNightMode] = useState(() => {
@@ -101,8 +99,8 @@ function Main() {
                         element: <PostDetail />,
                     },
                     {
-                        path: "adminQuiz",
-                        element: <Aquiz />,
+                        path: "Quizzes",
+                        element: <Quiz />,
                     },
                     {
                         path: "adminAgenda",
@@ -131,10 +129,6 @@ function Main() {
                     {
                         path: "userForum/:id",
                         element: <PostDetail />,
-                    },
-                    {
-                        path: "Quizzes",
-                        element: <Uquizzes />,
                     },
                     ],
                 },

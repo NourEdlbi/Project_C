@@ -12309,19 +12309,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BarrieBM\\.nuget\\packages\\": {}
+    "C:\\Users\\Noure\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BarrieBM\\Desktop\\HR\\Jaar 2\\Project-c\\new\\Project_C\\AntesBE\\AntesBE.csproj",
+      "projectUniqueName": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
       "projectName": "AntesBE",
-      "projectPath": "C:\\Users\\BarrieBM\\Desktop\\HR\\Jaar 2\\Project-c\\new\\Project_C\\AntesBE\\AntesBE.csproj",
-      "packagesPath": "C:\\Users\\BarrieBM\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BarrieBM\\Desktop\\HR\\Jaar 2\\Project-c\\new\\Project_C\\AntesBE\\obj\\",
+      "projectPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\AntesBE.csproj",
+      "packagesPath": "C:\\Users\\Noure\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Noure\\HR\\Year2\\Project\\Project_C_git\\AntesBE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\BarrieBM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Noure\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12423,7 +12423,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

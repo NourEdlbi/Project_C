@@ -1,8 +1,3 @@
-/*
- *   Copyright (c) 2023 
- *   All rights reserved.
- */
-
 
 /* Sidebar */
 .sidebar {
@@ -18,7 +13,8 @@
     /* Allow vertical scrolling if needed */
     padding-top: 0px;
     border-right: 2px solid rgb(181, 15, 34);
-    background-color: #f4d2d9;
+    
+    background-color: rgba(181, 15, 34,0.1);
     /* Add a border on the right side */
 }
 
@@ -31,11 +27,14 @@
     border-bottom: 1px solid rgb(181, 15, 34, 0,2);
     /* iets fixen voor top en bottom zodat t gelijk is */
     border-top: 1px solid rgb(181, 15, 34, 0.2);
+    background-color: rgba(181, 15, 34,0.1);
 }
 
 /* Sidebar Box Hover Effect */
 .sidebarbox:hover {
     background-color: rgba(181, 15, 34, 0.1);
+    border:solid 2px;
+    border-color: rgb(181, 15, 34);
 }
 
 /* Sidebar Links */
