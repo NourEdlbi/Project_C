@@ -30,6 +30,38 @@ export default function HomePage() {
         navigate(route);
     }
     useEffect(() => {
+        fetch(`${BASE_URL}/Getagenda`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                // Include any additional headers if needed
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const mappedEvents = data.map((item, index) => {
+                    const startDate = new Date(item.date + 'T' + item.begintime);
+                    const endDate = new Date(item.date + 'T' + item.endtime);
+                    return {
+                        id: index + 1,
+                        title: item.title,
+                        start: startDate,
+                        end: endDate,
+                        description: item.description,
+                    };
+                });
+                setEvents(mappedEvents);
+            })
+            .catch(error => {
+                console.error('Error fetching agenda items:', error);
+            });
+    }, []);
+    useEffect(() => {
         fetch(`${BASE_URL}/GetForumPosts`)
             .then(response => {
                 if (!response.ok) {

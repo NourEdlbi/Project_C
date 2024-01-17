@@ -12,8 +12,8 @@ using YourNamespace;
 namespace AntesBE.Migrations
 {
     [DbContext(typeof(ForumContext))]
-    [Migration("20231130144157_ProjectMigration")]
-    partial class ProjectMigration
+    [Migration("20240117181129_First")]
+    partial class First
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,15 +37,12 @@ namespace AntesBE.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("ID");
@@ -63,6 +60,10 @@ namespace AntesBE.Migrations
 
                     b.Property<int>("AccountID")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("End_Date")
                         .HasColumnType("timestamp with time zone");
@@ -98,14 +99,14 @@ namespace AntesBE.Migrations
                     b.Property<int>("QuizResultID")
                         .HasColumnType("integer");
 
-                    b.Property<char>("Value")
-                        .HasColumnType("character(1)");
+                    b.Property<string>("Value")
+                        .HasColumnType("text");
 
                     b.HasKey("ID");
 
                     b.HasIndex("QuizResultID");
 
-                    b.ToTable("Answer");
+                    b.ToTable("Answers");
                 });
 
             modelBuilder.Entity("YourNamespace.Comment", b =>
@@ -120,7 +121,6 @@ namespace AntesBE.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ForumID")
@@ -147,14 +147,12 @@ namespace AntesBE.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ForumPosterID")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("PostTime")
@@ -179,11 +177,9 @@ namespace AntesBE.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Bio")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Contact")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("ID");
@@ -202,11 +198,19 @@ namespace AntesBE.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
-                    b.Property<char>("Answer")
-                        .HasColumnType("character(1)");
+                    b.Property<string>("Answer1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Answer2")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Answer3")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CorrectAnswer")
+                        .HasColumnType("text");
 
                     b.Property<string>("QuestionText")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("QuizID")
@@ -227,6 +231,12 @@ namespace AntesBE.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
                     b.Property<int>("QuizCreatorID")
                         .HasColumnType("integer");
 
@@ -242,6 +252,9 @@ namespace AntesBE.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("AnswerID")
+                        .HasColumnType("integer");
 
                     b.Property<int>("QuizID")
                         .HasColumnType("integer");
@@ -359,8 +372,7 @@ namespace AntesBE.Migrations
 
                     b.Navigation("Forums");
 
-                    b.Navigation("Profile")
-                        .IsRequired();
+                    b.Navigation("Profile");
 
                     b.Navigation("QuizResults");
                 });
