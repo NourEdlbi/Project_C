@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BASE_URL } from "../consts.ts";
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
 import "./Quiz.css";
 import { QuizData, AnswerData, QuizResultData, userinfoInterface } from "../interfaces.tsx";
 export default function Playquiz() {
@@ -68,9 +68,7 @@ export default function Playquiz() {
         getQuizQuestions();
     }
 
-    const Quiz = {
-        id: window.location.href.split("/").pop(), // pakt de id van de url
-    };
+    const Quiz = useParams();
      
     const options = {
         method: 'POST',

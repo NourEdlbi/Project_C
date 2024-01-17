@@ -11,7 +11,7 @@ namespace AntesBE.Controllers
     public record QuizID(int id);
     public record QuizIDstring(string id);
 
-    public class QuizController : Controller
+    public class QuizController : Controller 
     {
         [Route("NewQuiz")]
         [HttpPost]

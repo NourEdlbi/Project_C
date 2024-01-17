@@ -2,28 +2,20 @@ import "../Quiz.css";
 import { useNavigate, } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { BASE_URL } from "../../consts.ts";
-  interface QuestionData {
-    id?: number;
-    quizID?: number;
-    text: string;
-    answer1: string;
-    answer2: string;
-    answer3: string;
-    correctAnswer: string;
-  }
-  
-  interface QuizData {
-    id: number;
-    makerID?: number;
-    name: string;
-    description: string;
-    questions: QuestionData[];
-  }
+import {QuizData, userinfoInterface } from "../../interfaces.tsx"
 
 export default function Uquizzes() {
     const navigate = useNavigate();
     const [quizList, setQuizList] = useState<QuizData[]>([]);
     const [errorMessage, setErrorMessage] = useState('');
+
+    useEffect(() => {
+        const storedUserInfo = localStorage.getItem('Userinfo');
+        const userInfo: userinfoInterface = storedUserInfo ? JSON.parse(storedUserInfo) : null;
+        if (userInfo.admin == true) {
+            see("admin")
+        }
+    }, []);
 
     useEffect(() => {
         const getQuizzes = async () => {
@@ -66,13 +58,22 @@ export default function Uquizzes() {
         navigate(route);
     }
 
+    function see(id) {
+        const x = document.getElementById(id) as HTMLElement;
+        if (x.style.display == "block") {
+            x.style.display = "none";
+        }
+        else {
+            x.style.display = "block";
+        }
+    }
 
     return (
         <div className="quizPage">
 
             <div className="titel">
                 <h1> Quiz</h1>
-                <button onClick={() => navigateAddquiz()}></button>
+                <button id="admin" style={{ display: "none" }} onClick={() => navigateAddquiz()}></button>
             </div>
            
             <div className="quizzes">

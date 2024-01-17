@@ -15,7 +15,7 @@ export default function Addquiz() {
         questions: [{
             id: 0,
             quizID: 0,
-            text: '',
+            questionText: '',
             answer1: '',
             answer2: '',
             answer3: '',
@@ -31,7 +31,7 @@ export default function Addquiz() {
         {
             id: 0, 
             quizID: 0,
-            text: '',
+            questionText: '',
             answer1: '',
             answer2: '',
             answer3: '',
@@ -92,7 +92,7 @@ export default function Addquiz() {
 
     async function submitQuiz(){
         await fetch(`${BASE_URL}/NewQuiz`, options).then((res) => console.log(res)).catch((res) => console.log(res));
-        navigate("/adminSidebar/adminQuiz")
+        navigate("/Sidebar/Quizzes")
         location.reload();
     } 
 
